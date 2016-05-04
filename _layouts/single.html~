@@ -1,5 +1,8 @@
 ---
 layout: default
+
+header:
+  image: header-img.JPG
 ---
 
 {% include base_path %}
