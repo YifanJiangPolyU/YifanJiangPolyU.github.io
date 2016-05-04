@@ -1,0 +1,7 @@
+{% include base_path %}
+
+{% include tag-list.html %}
+
+
+{% include category-list.html %}
+
