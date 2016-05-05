@@ -5,8 +5,26 @@ main:
     url: /about_me/
 
   - title: "Posts"
-    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
+    url: /archive/posts_by_year/
 
 
 
+post-archive:
+  - title: Posts by Year
+    children:
+      - title: "Posts by Years"
+        url: /posts_by_year/
+
+  - title: Posts by Tags
+    children: 
+      - title: "DIY"
+        url: /archive/posts_by_tag/DIY/
+      - title: "hobby"
+        url: /archive/posts_by_tag/hobby/
+      - title: "life"
+        url: /archive/posts_by_tag/life/
+      - title: "tech"
+        url: /archive/posts_by_tag/tech/
+      - title: "travel"
+        url: /archive/posts_by_tag/travel/
 

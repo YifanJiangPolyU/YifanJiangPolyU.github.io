@@ -1,0 +1,24 @@
+---
+layout: archive
+permalink: /archive/posts_by_tag/life/
+title: "Posts by Tags"
+
+author_profile: false
+sidebar:
+  nav: "post-archive"
+---
+
+{% include base_path %}
+{% include group-by-array collection=site.posts field="tags" %}
+
+{% for tag in group_names %}
+  {% if tag == "life" %}
+    {% assign posts = group_items[forloop.index0] %}
+    <h2 id="{{ tag | slugify }}" class="archive__subtitle">{{ tag }}</h2>
+    {% assign sorted_posts = (posts | sort: 'date' | reverse) %}
+    {% for post in sorted_posts %}
+      {% include archive-single.html %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+

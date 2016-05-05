@@ -11,17 +11,17 @@ title                    : "Yifan Jiang"
 title_separator          : "-"
 name                     : "Yifan Jiang"
 description              : "My personal homepage."
-url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : # "https://yifanjiangpolyu.github.io" # e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 gh_repo                  :
 teaser                   : # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 # breadcrumbs            : false # true, false (default)
-words_per_minute         : 200
+words_per_minute         : 100
 comments:
   provider               : "facebook" # false (default), "disqus", "facebook", "google-plus", custom"
   disqus:
     shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
-  facebook:
+  facebook: 
     # https://developers.facebook.com/docs/plugins/comments
     appid                :
     num_posts            : # 5 (default)
