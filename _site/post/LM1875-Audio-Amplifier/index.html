@@ -207,7 +207,7 @@
             <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
 
 
-  5 minutes read
+  6 minutes read
 </p>
           
         </header>
@@ -257,6 +257,22 @@
 </figure>
 
 <p>The working principle of the ICL circuit is simple. As shown in Fig.3, on power-up, the relay SW4 is in OFF state, and AC current has to flow through the 56-ohm resistor R-ICL, which limits the charging current of the power supply capacitors. When the power supply output voltage rises to a level (around 12V), SW4 is activated (into ON state), short-connecting R-ICL. The power supply then finishes charging, and no current flows through R-ICL in normal amplifier operation. The 2 terminals, V-IN and PE1, are used to sense the power-supply output voltage. With the ICL circuit, the power supply fully starts up in around 8 seconds.</p>
+
+<p style="text-align: center;"><strong>The PCBs</strong></p>
+
+<p>Fig.5 and Fig.6 shows the PCB layouts of the amplifier circuit and power supply circuit. I quickly sketched them using Eagle, and am not sure whether everything is perfect. A few useful guidelines in the amplifier circuit PCB layout:</p>
+<ul>
+  <li> Separate small-signal (audio input) and large-signal (amplifier power supply and output) GND. The 2 joins together only at a single point. </li>
+  <li> Use star-grounding whenever possible. </li>
+  <li> Try not to let signal and power paths cross one another in different layers, to minimise cross-coupling of noise (in fact I tried to layout all the traces in the same layer). </li>
+</ul>
+
+<figure class="half">
+    <a href="/images/2016-05-02-LM1875-Audio-Amplifier/amp-pcb.png"><img src="/images/2016-05-02-LM1875-Audio-Amplifier/amp-pcb.png" /></a>
+    <a href="/images/2016-05-02-LM1875-Audio-Amplifier/power-supply-pcb.png"><img src="/images/2016-05-02-LM1875-Audio-Amplifier/power-supply-pcb.png" /></a>
+    <figcaption>Fig.5 (Left) Amplifier circuit PCB</figcaption>
+    <figcaption>Fig.6 (Right) Power supply circuit PCB</figcaption>
+</figure>
 
 <p>to be continued.</p>
 
