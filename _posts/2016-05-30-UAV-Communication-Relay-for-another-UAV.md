@@ -49,3 +49,30 @@ To demonstrate radio communication relay, a small UAV was constructed using 2 UA
     <figcaption>Fig.3 (Right) Subsystems</figcaption>
 </figure>
 
+<strong> Communication </strong>
+{: style="text-align: center;"}
+
+915MHz Radio telemetry by 3DR (3DR Radio) was used to construct the communication network. A total of 4 3DR Radios were used to establish 2 independent radio data links, one between <span style="color:#008000"> Mom and GCS</span>, and the other between <span style="color:#008000"> Mom and Son</span> (Fig.4). The 2 radio links are kept interference-free using the Frequency Hopping (FHSS) technique, which is a built-in feature of 3DR Radio. The 2 radio links use different frequency hopping sequence, which are determined by a unique "Net ID" (shown in Fig.5).
+
+<figure class="third">
+    <a href="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/radio.png"><img src="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/radio.png"></a>
+    <a href="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/radio_setting.png"><img src="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/radio_setting.png"></a>
+    <a href="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/frame.png"><img src="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/frame.png"></a>
+    <figcaption>Fig.4 (Left) Radio Communication Architecture</figcaption>
+    <figcaption>Fig.5 (Mid) Frequency Hopping Settings</figcaption>
+    <figcaption>Fig.5 (Right) Format of Data Frame</figcaption>
+</figure>
+
+In order to detect errors in data transmission, a Cyclic Redundancy Checking (CRC) error checking stage was added. To do this, data is organized into frames, and the frames have fixed format (Fig.5). At then end of each frame, a 4-byte CRC code is attached. When a frame is received by UAV or GCS, the receiver will first record the CRC code received over radio (CRC\_remote), and then compute a new CRC code based on the received data (CRC\_local). If CRC\_remote is equal to CRC\_local, then the frame is error-free. Otherwise, the received frame has error(s) in it and has to be discarded. More details about CRC can be found <a href="https://en.wikipedia.org/wiki/Cyclic_redundancy_check">here</a>.
+
+<strong> Mission Control </strong>
+{: style="text-align: center;"}
+
+<strong> Flight Control & Aircraft </strong>
+{: style="text-align: center;"}
+
+<strong> Ground Control Station (GCS) </strong>
+{: style="text-align: center;"}
+
+
+## System Construction & Testing
