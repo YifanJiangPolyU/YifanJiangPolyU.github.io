@@ -1,4 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.1.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2016-05-06T00:34:44+08:00</updated><id>/</id><title>Yifan Jiang</title><subtitle>My personal homepage.</subtitle><author><name>Yifan Jiang</name></author><entry><title>Audio Amplifier based on LM1875</title><link href="/post/LM1875-Audio-Amplifier/" rel="alternate" type="text/html" title="Audio Amplifier based on LM1875" /><published>2016-05-02T00:00:00+08:00</published><updated>2016-05-02T00:00:00+08:00</updated><id>/post/LM1875-Audio-Amplifier</id><content type="html" xml:base="/post/LM1875-Audio-Amplifier/">&lt;p&gt;I am not (yet) a big fan of Hi-Fi audio. However, driven by some interests and some willingness to explore new things, I decided to build my own in-house audio amplifier, using the famous LM1875 audio power amplifier IC. LM1875 is a (supposedly) easy-to-use audio amplifier IC, with numerous reference designs available from the internet. For a first-time try-out, using this IC should guarantee reasonable sound quality without too much debugging efforts. Staying within beginner-friendly region, at least for the first few times, is always smart.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.1.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2016-05-30T22:02:48+08:00</updated><id>/</id><title>Yifan Jiang</title><subtitle>My personal homepage.</subtitle><author><name>Yifan Jiang</name></author><entry><title>UAV Communication Relay for another UAV</title><link href="/post/UAV-Communication-Relay-for-another-UAV/" rel="alternate" type="text/html" title="UAV Communication Relay for another UAV" /><published>2016-05-30T00:00:00+08:00</published><updated>2016-05-30T00:00:00+08:00</updated><id>/post/UAV-Communication-Relay-for-another-UAV</id><content type="html" xml:base="/post/UAV-Communication-Relay-for-another-UAV/">&lt;p&gt;This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea about what I’ve done. This project was a teamwork, I could not complete it without my team mates Cai Lingfeng and Wan Hiu Fung. Credits also go to our supervisor Prof Wen Chih Yung.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-idea&quot;&gt;The Idea&lt;/h2&gt;
+
+&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong&gt;Why do we need radio communication ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;If your UAV goes out for a mission, you want to make sure that you can contact the UAV at any time, to send commands to it, and to know what it is doing. There are two reasons for this. The first one is also the most obvious: if you cannot even contact your UAV, how can you do the mission with it? The second one is, if you lose contact with your UAV, your UAV may do unexpected actions without you knowing it, such actions can damage properties, and can ever hurt or kill somebody.&lt;/p&gt;
+
+&lt;p&gt;The choice of radio over other technologies such as WiFi or 3G/4G mobile network is made for 2 reasons:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Radio has longer range than WiFi &lt;/li&gt;
+  &lt;li&gt;Radio has shorter (and more predictable) delay than 3G/4G &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Although radio generally has lower data rates.&lt;/p&gt;
+
+&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong&gt;Why relaying radio communication ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;If your UAV does a mission in areas where you cannot directly, does it mean you have to abort the mission? With traditional UAV systems, yes. But with radio communication relay, NO! With the help of radio communication relay, the UAV can fly into areas where direct radio communication with you is blocked.&lt;/p&gt;
+
+&lt;p&gt;This idea is illustrated in Fig.1. If radio communication is blocked by, say, a mountain, then the use of relay can easily help us get arround the obstacle. In addition, relay can also help extend the range of communication, so you can go further with a radio transceiver of smaller power.&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;a href=&quot;/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/idea.png&quot;&gt;&lt;img src=&quot;/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/idea.png&quot; /&gt;&lt;/a&gt;
+    &lt;figcaption&gt;Fig.1 UAV Radio Communication Relay&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;system-architecture&quot;&gt;System Architecture&lt;/h2&gt;
+
+&lt;p&gt;To demonstrate radio communication relay, a small UAV was constructed using 2 UAVs and a Ground Control Station, which we call “Mini GCS”. As shown in Fig.2, names are given to the UAVs: Mom is the one that relays communication at the middle, and Son is the one that actually executes the mission. Fig.3 shows the critical subsystems of the demonstration UAV system.&lt;/p&gt;
+
+&lt;figure class=&quot;half&quot;&gt;
+    &lt;a href=&quot;/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/mom_son.png&quot;&gt;&lt;img src=&quot;/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/mom_son.png&quot; /&gt;&lt;/a&gt;
+    &lt;a href=&quot;/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/sys_block.png&quot;&gt;&lt;img src=&quot;/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/sys_block.png&quot; /&gt;&lt;/a&gt;
+    &lt;figcaption&gt;Fig.2 (Left) Mom, Son, and Mini GCS&lt;/figcaption&gt;
+    &lt;figcaption&gt;Fig.3 (Right) Subsystems&lt;/figcaption&gt;
+&lt;/figure&gt;</content><author><name>Yifan Jiang</name></author><category term="tech" /><summary>This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea about what I’ve done. This project was a teamwork, I could not complete it without my team mates Cai Lingfeng and Wan Hiu Fung. Credits also go to our supervisor Prof Wen Chih Yung.</summary></entry><entry><title>Audio Amplifier based on LM1875</title><link href="/post/LM1875-Audio-Amplifier/" rel="alternate" type="text/html" title="Audio Amplifier based on LM1875" /><published>2016-05-02T00:00:00+08:00</published><updated>2016-05-02T00:00:00+08:00</updated><id>/post/LM1875-Audio-Amplifier</id><content type="html" xml:base="/post/LM1875-Audio-Amplifier/">&lt;p&gt;I am not (yet) a big fan of Hi-Fi audio. However, driven by some interests and some willingness to explore new things, I decided to build my own in-house audio amplifier, using the famous LM1875 audio power amplifier IC. LM1875 is a (supposedly) easy-to-use audio amplifier IC, with numerous reference designs available from the internet. For a first-time try-out, using this IC should guarantee reasonable sound quality without too much debugging efforts. Staying within beginner-friendly region, at least for the first few times, is always smart.&lt;/p&gt;
 
 &lt;h2 id=&quot;design&quot;&gt;Design&lt;/h2&gt;
 

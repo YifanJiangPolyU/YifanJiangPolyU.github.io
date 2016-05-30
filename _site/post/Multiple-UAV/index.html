@@ -19,7 +19,7 @@
 
 
 
-<title>Audio Amplifier based on LM1875 - Yifan Jiang</title>
+<title>UAV Communication Relay for another UAV - Yifan Jiang</title>
 
 
 
@@ -29,12 +29,12 @@
 
 <meta property="og:locale" content="en-US">
 <meta property="og:site_name" content="Yifan Jiang">
-<meta property="og:title" content="Audio Amplifier based on LM1875">
+<meta property="og:title" content="UAV Communication Relay for another UAV">
 
 
 
 
-  <meta property="og:description" content="I am not (yet) a big fan of Hi-Fi audio. However, driven by some interests and some willingness to explore new things, I decided to build my own in-house audio amplifier, using the famous LM1875 audio power amplifier IC. LM1875 is a (supposedly) easy-to-use audio amplifier IC, with numerous reference designs available from the internet. For a first-time try-out, using this IC should guarantee reasonable sound quality without too much debugging efforts. Staying within beginner-friendly region, at least for the first few times, is always smart.">
+  <meta property="og:description" content="This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea about what I’ve done.">
 
 
 
@@ -49,12 +49,10 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2016-05-02T00:00:00+08:00">
-  
-    <link rel="next" href="/post/UAV-Communication-Relay-for-another-UAV/" title="UAV Communication Relay for another UAV">
+  <meta property="article:published_time" content="2016-05-30T00:00:00+08:00">
   
   
-    <link rel="prev" href="/post/try/" title="First Post">
+    <link rel="prev" href="/post/LM1875-Audio-Amplifier/" title="Audio Amplifier based on LM1875">
   
 
 
@@ -195,15 +193,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Audio Amplifier based on LM1875">
-    <meta itemprop="description" content="I am not (yet) a big fan of Hi-Fi audio. However, driven by some interests and some willingness to explore new things, I decided to build my own in-house audio amplifier, using the famous LM1875 audio power amplifier IC. LM1875 is a (supposedly) easy-to-use audio amplifier IC, with numerous reference designs available from the internet. For a first-time try-out, using this IC should guarantee reasonable sound quality without too much debugging efforts. Staying within beginner-friendly region, at least for the first few times, is always smart.">
-    <meta itemprop="datePublished" content="May 02, 2016">
+    <meta itemprop="headline" content="UAV Communication Relay for another UAV">
+    <meta itemprop="description" content="This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea about what I’ve done.">
+    <meta itemprop="datePublished" content="May 30, 2016">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 class="page__title" itemprop="headline">Audio Amplifier based on LM1875
+          <h1 class="page__title" itemprop="headline">UAV Communication Relay for another UAV
 </h1>
           
             <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
@@ -216,23 +214,27 @@
       
 
       <section class="page__content" itemprop="text">
-        <p>I am not (yet) a big fan of Hi-Fi audio. However, driven by some interests and some willingness to explore new things, I decided to build my own in-house audio amplifier, using the famous LM1875 audio power amplifier IC. LM1875 is a (supposedly) easy-to-use audio amplifier IC, with numerous reference designs available from the internet. For a first-time try-out, using this IC should guarantee reasonable sound quality without too much debugging efforts. Staying within beginner-friendly region, at least for the first few times, is always smart.</p>
+        <p>This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea about what I’ve done.</p>
 
-<h2 id="design">Design</h2>
+<h2 id="the-idea">The Idea</h2>
 
-<p style="text-align: center;"><strong>The Amplifier Circuit</strong></p>
+<p style="text-align: center;"><strong>Why do we need radio communication ?</strong></p>
 
-<p>As I mentioned earlier, LM1875 is a pretty easy-to-use audio amplifier IC. According to its manufacturer, Texas Instruments, LM1875 is a high-performance and low-distortion amplifier designed to operate with minimum external components. To work out my own design, I referred to a number of designs made by other audio hobbyists as well as the reference design provided in LM1875’s datasheet. The following sources have been valuable:</p>
+<p>If your UAV goes out for a mission, you want to make sure that you can contact the UAV at any time, to send commands to it, and to know what it is doing. There are two reasons for this. The first one is also the most obvious: if you cannot even contact your UAV, how can you do the mission with it? The second one is, if you lose contact with your UAV, your UAV may do unexpected actions without you knowing it, such actions can damage properties, and can ever hurt or kill somebody.</p>
+
+<p>The choice of radio over other technologies such as WiFi or 3G/4G mobile network is made for 2 reasons:</p>
 <ul>
-  <li> LM1875 datasheet, available at <a href="http://www.ti.com/product/LM1875">here</a> </li>
-  <li> An audio hobbyist's design, unknown author, available at <a href="https://sites.google.com/site/amplificatoare/lm1875-audio-amplifier-20w">here</a> </li>
+  <li>Radio has longer range than WiFi </li>
+  <li>Radio has shorter (and more predictable) delay than 3G/4G </li>
 </ul>
 
-<p>Fig.1 shows the schematic of the amplifier circuit. The supply voltages, V+ and V-, are +16V and -16V respectively. The closed loop gain of the circuit is about 26.4dB. Resistor R6 and capacitor C9 form a low-pass filter, screening out high-frequency noise from input. Inductors L1 and L2 and resistor R12 form another low-pass filter, taking out high-frequency noise from amplifier output. Audio signal input and feed-back GND is isolated from the real power ground by a 10-ohm resistor, R7. This design further reduces noise.</p>
+<p>Although radio generally has lower data rates.</p>
 
-<p style="text-align: center;"><strong>The Power Supply Circuit</strong></p>
+<p style="text-align: center;"><strong>Why relaying radio communication ?</strong></p>
 
-<p>Fig.2 shows the schematic of the power supply circuit. The power supply unit takes in 12VAC, rectifies and filters it, giving out +-16VDC outputs. I may have added more filtering capacitors than actually needed. But it helps reduce output voltage ripples.</p>
+<p>If your UAV does a mission in areas where you cannot directly, does it mean you have to abort the mission? With traditional UAV systems, yes. But with radio communication relay, NO! With the help of radio communication relay, the UAV can fly into areas where direct radio communication with you is blocked.</p>
+
+<p>This idea is illustrated in Fig.1.</p>
 
 <figure class="half">
     <a href="/images/2016-05-02-LM1875-Audio-Amplifier/amplifier-circuit.png"><img src="/images/2016-05-02-LM1875-Audio-Amplifier/amplifier-circuit.png" /></a>
@@ -303,10 +305,6 @@
     
       
       
-      <a href="/tags/diy" class="page__taxonomy-item" rel="tag">DIY</a><span class="sep">, </span>
-    
-      
-      
       <a href="/tags/tech" class="page__taxonomy-item" rel="tag">tech</a>
     
     </span>
@@ -325,7 +323,7 @@
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2016-05-02T00:00:00+08:00">May 02, 2016</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2016-05-30T00:00:00+08:00">May 30, 2016</time></p>
         
 
       </footer>
@@ -337,13 +335,13 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=/post/LM1875-Audio-Amplifier/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=/post/Multiple-UAV/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=/post/LM1875-Audio-Amplifier/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=/post/Multiple-UAV/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=/post/LM1875-Audio-Amplifier/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=/post/Multiple-UAV/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=/post/LM1875-Audio-Amplifier/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=/post/Multiple-UAV/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
       
@@ -351,12 +349,11 @@
 
   <nav class="pagination">
     
-      <a href="/post/try/" class="pagination--pager" title="First Post
+      <a href="/post/LM1875-Audio-Amplifier/" class="pagination--pager" title="Audio Amplifier based on LM1875
 ">Previous</a>
     
     
-      <a href="/post/UAV-Communication-Relay-for-another-UAV/" class="pagination--pager" title="UAV Communication Relay for another UAV
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -368,7 +365,7 @@
 <div class="page__comments">
   <h4 class="page__comments-title">Leave a Comment</h4>
   
-    <section class="fb-comments" data-href="/post/LM1875-Audio-Amplifier/" data-mobile="true" data-num-posts="5" data-width="100%" data-colorscheme="light"></section>
+    <section class="fb-comments" data-href="/post/Multiple-UAV/" data-mobile="true" data-num-posts="5" data-width="100%" data-colorscheme="light"></section>
   
 </div>
 
@@ -389,20 +386,20 @@
 
 <div class="grid__item">
   
-    <a href="/post/UAV-Communication-Relay-for-another-UAV/">
+    <a href="/post/LM1875-Audio-Amplifier/">
   
     <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
       
-      <h2 class="archive__item-title" itemprop="headline">UAV Communication Relay for another UAV
+      <h2 class="archive__item-title" itemprop="headline">Audio Amplifier based on LM1875
 </h2>
       
         <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
 
 
-  4 minutes read
+  6 minutes read
 </p>
       
-      <p class="archive__item-excerpt" itemprop="description">This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea a...</p>
+      <p class="archive__item-excerpt" itemprop="description">I am not (yet) a big fan of Hi-Fi audio. However, driven by some interests and some willingness to explore new things, I decided to build my own in-house aud...</p>
     </article>
   </a>
 </div>

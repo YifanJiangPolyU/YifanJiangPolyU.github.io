@@ -1,0 +1,454 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>UAV Communication Relay for another UAV - Yifan Jiang</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Yifan Jiang">
+<meta property="og:title" content="UAV Communication Relay for another UAV">
+
+
+
+
+  <meta property="og:description" content="This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea about what I’ve done. This project was a teamwork, I could not complete it without my team mates Cai Lingfeng and Wan Hiu Fung. Credits also go to our supervisor Prof Wen Chih Yung.">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2016-05-30T00:00:00+08:00">
+  
+  
+    <link rel="prev" href="/post/LM1875-Audio-Amplifier/" title="Audio Amplifier based on LM1875">
+  
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "person",
+      "name" : "Yifan Jiang",
+      "url" : null,
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yifan Jiang Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="/">Yifan Jiang</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="/about_me/">About Me</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="/archive/posts_by_year/">Posts</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="/images/bio-photo.jpg" class="author__avatar" alt="Yifan Jiang">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Yifan Jiang</h3>
+    <p class="author__bio">An Enthusiastic Mechanical Engineer</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Hong Kong</li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="UAV Communication Relay for another UAV">
+    <meta itemprop="description" content="This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea about what I’ve done. This project was a teamwork, I could not complete it without my team mates Cai Lingfeng and Wan Hiu Fung. Credits also go to our supervisor Prof Wen Chih Yung.">
+    <meta itemprop="datePublished" content="May 30, 2016">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">UAV Communication Relay for another UAV
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  3 minutes read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea about what I’ve done. This project was a teamwork, I could not complete it without my team mates Cai Lingfeng and Wan Hiu Fung. Credits also go to our supervisor Prof Wen Chih Yung.</p>
+
+<h2 id="the-idea">The Idea</h2>
+
+<p style="text-align: center;"><strong>Why do we need radio communication ?</strong></p>
+
+<p>If your UAV goes out for a mission, you want to make sure that you can contact the UAV at any time, to send commands to it, and to know what it is doing. There are two reasons for this. The first one is also the most obvious: if you cannot even contact your UAV, how can you do the mission with it? The second one is, if you lose contact with your UAV, your UAV may do unexpected actions without you knowing it, such actions can damage properties, and can ever hurt or kill somebody.</p>
+
+<p>The choice of radio over other technologies such as WiFi or 3G/4G mobile network is made for 2 reasons:</p>
+<ul>
+  <li>Radio has longer range than WiFi </li>
+  <li>Radio has shorter (and more predictable) delay than 3G/4G </li>
+</ul>
+
+<p>Although radio generally has lower data rates.</p>
+
+<p style="text-align: center;"><strong>Why relaying radio communication ?</strong></p>
+
+<p>If your UAV does a mission in areas where you cannot directly, does it mean you have to abort the mission? With traditional UAV systems, yes. But with radio communication relay, NO! With the help of radio communication relay, the UAV can fly into areas where direct radio communication with you is blocked.</p>
+
+<p>This idea is illustrated in Fig.1. If radio communication is blocked by, say, a mountain, then the use of relay can easily help us get arround the obstacle. In addition, relay can also help extend the range of communication, so you can go further with a radio transceiver of smaller power.</p>
+
+<figure>
+    <a href="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/idea.png"><img src="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/idea.png" /></a>
+    <figcaption>Fig.1 UAV Radio Communication Relay</figcaption>
+</figure>
+
+<h2 id="system-architecture">System Architecture</h2>
+
+<p>To demonstrate radio communication relay, a small UAV was constructed using 2 UAVs and a Ground Control Station, which we call “Mini GCS”. As shown in Fig.2, names are given to the UAVs: Mom is the one that relays communication at the middle, and Son is the one that actually executes the mission. Fig.3 shows the critical subsystems of the demonstration UAV system.</p>
+
+<figure class="half">
+    <a href="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/mom_son.png"><img src="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/mom_son.png" /></a>
+    <a href="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/sys_block.png"><img src="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/sys_block.png" /></a>
+    <figcaption>Fig.2 (Left) Mom, Son, and Mini GCS</figcaption>
+    <figcaption>Fig.3 (Right) Subsystems</figcaption>
+</figure>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+
+        
+
+
+
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/tech" class="page__taxonomy-item" rel="tag">tech</a>
+    
+    </span>
+  </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2016-05-30T00:00:00+08:00">May 30, 2016</time></p>
+        
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=/post/UAV-Communication-Relay-for-another-UAV/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=/post/UAV-Communication-Relay-for-another-UAV/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=/post/UAV-Communication-Relay-for-another-UAV/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=/post/UAV-Communication-Relay-for-another-UAV/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="/post/LM1875-Audio-Amplifier/" class="pagination--pager" title="Audio Amplifier based on LM1875
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      
+
+<div class="page__comments">
+  <h4 class="page__comments-title">Leave a Comment</h4>
+  
+    <section class="fb-comments" data-href="/post/UAV-Communication-Relay-for-another-UAV/" data-mobile="true" data-num-posts="5" data-width="100%" data-colorscheme="light"></section>
+  
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  
+    <a href="/post/LM1875-Audio-Amplifier/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Audio Amplifier based on LM1875
+</h2>
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  6 minutes read
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">I am not (yet) a big fan of Hi-Fi audio. However, driven by some interests and some willingness to explore new things, I decided to build my own in-house aud...</p>
+    </article>
+  </a>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  
+    <a href="/post/try/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">First Post
+</h2>
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  less than 1 minute read
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">Hey guys. I am trying to construct a personal homepage, and this is my very first post. GitHub provids a really convenient place to host my homepage, and Jek...</p>
+    </article>
+  </a>
+</div>
+        
+      </div>
+    </div>
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+    
+    <li><a href="/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2016 Yifan Jiang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+    <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+
+  </body>
+</html>
+
