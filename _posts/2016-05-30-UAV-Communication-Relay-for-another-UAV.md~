@@ -60,10 +60,10 @@ To demonstrate radio communication relay, a small UAV was constructed using 2 UA
     <a href="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/frame.png"><img src="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/frame.png"></a>
     <figcaption>Fig.4 (Left) Radio Communication Architecture</figcaption>
     <figcaption>Fig.5 (Mid) Frequency Hopping Settings</figcaption>
-    <figcaption>Fig.5 (Right) Format of Data Frame</figcaption>
+    <figcaption>Fig.6 (Right) Format of Data Frame</figcaption>
 </figure>
 
-In order to detect errors in data transmission, a Cyclic Redundancy Checking (CRC) error checking stage was added. To do this, data is organized into frames, and the frames have fixed format (Fig.5). At then end of each frame, a 4-byte CRC code is attached. When a frame is received by UAV or GCS, the receiver will first record the CRC code received over radio (CRC\_remote), and then compute a new CRC code based on the received data (CRC\_local). If CRC\_remote is equal to CRC\_local, then the frame is error-free. Otherwise, the received frame has error(s) in it and has to be discarded. More details about CRC can be found <a href="https://en.wikipedia.org/wiki/Cyclic_redundancy_check">here</a>.
+In order to detect errors in data transmission, a Cyclic Redundancy Checking (CRC) error checking stage was added. To do this, data is organized into frames, and the frames have fixed format (Fig.6). At then end of each frame, a 4-byte CRC code is attached. When a frame is received by UAV or GCS, the receiver will first record the CRC code received over radio (CRC\_remote), and then compute a new CRC code based on the received data (CRC\_local). If CRC\_remote is equal to CRC\_local, then the frame is error-free. Otherwise, the received frame has error(s) in it and has to be discarded. More details about CRC can be found <a href="https://en.wikipedia.org/wiki/Cyclic_redundancy_check">here</a>.
 
 <strong> Mission Control </strong>
 {: style="text-align: center;"}
@@ -80,21 +80,38 @@ The mission control unit is in fact a software system, developed with <a href="h
 <strong> Flight Control & Aircraft </strong>
 {: style="text-align: center;"}
 
-There is nothing very special with the actual aircraft used. For testing, we built 2 quad-rotor copters out of off-the-shelf components, and used them as Mom and Son. For flight controller, we selected <a href="https://pixhawk.org/choice">PixHawk Flight Controller</a> because it is powerful and plenty of resources are available online. Fig.7 shows the UAVs during a field flight test.
+There is nothing very special with the actual aircraft used. For testing, we built 2 quad-rotor copters out of off-the-shelf components, and used them as Mom and Son. For flight controller, we selected <a href="https://pixhawk.org/choice">PixHawk Flight Controller</a> because it is powerful and plenty of resources are available online. Fig.8 shows the UAVs during a field flight test.
 
 <figure class="half">
     <a href="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/mission-control.png"><img src="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/mission-control.png"></a>
     <a href="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/test.png"><img src="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/test.png"></a>
-    <figcaption>Fig.6 (Left) Mission Control Unit Mounted on UAV</figcaption>
-    <figcaption>Fig.7 (Right) UAV Mom and Son, during a test</figcaption>
+    <figcaption>Fig.7 (Left) Mission Control Unit Mounted on UAV</figcaption>
+    <figcaption>Fig.8 (Right) UAV Mom and Son, during a test</figcaption>
 </figure>
 
 <strong> Ground Control Station (GCS) </strong>
 {: style="text-align: center;"}
 
-We developed our own version of GCS software, which we call "Mini GCS". It was writen fully in-house using C#. The Mini GCS has a number of cool features:
+We developed our own version of GCS software, which we call "Mini GCS". It was writen fully in-house using C#. A screen shoot is given in Fig.9 The Mini GCS has a number of cool features:
 
-1.
+1. A UAV status window, which allows you to monitor BOTH UAVs at the same time.
+2. A map display, that shows the location of both UAVs in real time.
+3. A Linux command line style interface, in which you can type commands and send them to the UAV that you specify, Mom or Son.
+
+A number of useful commands:
+
+	arm              be ready to fly, engage motors
+	takeoff	         takeoff and fly to specified height
+	land             land immediately
+	setmode          change to flight mode of the UAV
+	rtl              return to home position, and land there
+
+<figure>
+    <a href="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/mini-gcs.png"><img src="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/mini-gcs.png"></a>
+    <figcaption>Fig.9 Mini GCS screen shoot (UAVs not yet displayed on map)</figcaption>
+</figure>
 
 
-## System Construction & Testing
+## Testing and results
+
+
