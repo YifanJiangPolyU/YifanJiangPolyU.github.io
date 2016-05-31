@@ -207,7 +207,7 @@
             <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
 
 
-  6 minutes read
+  8 minutes read
 </p>
           
         </header>
@@ -269,9 +269,32 @@
 
 <p style="text-align: center;"><strong> Mission Control </strong></p>
 
+<p>This mission control unit is used to do a number of jobs:</p>
+
+<ol>
+  <li>It handles message routing and communication relay.</li>
+  <li>It interfaces GCS to flight controller. User can send relatively simple commands from GCS, then mission control translates them into the low-level instructions to the flight controller.</li>
+  <li>It is supposed to control the mission with intelligence, sadly we still haven’t implemented that (will we ?).</li>
+</ol>
+
+<p>The mission control unit is in fact a software system, developed with <a href="http://www.ros.org/">ROS</a>, than runs on a <a href="https://www.raspberrypi.org/products/raspberry-pi-2-model-b/">Raspberry Pi 2B</a>. The mission control unit communicates with radio telemetries and flight controller through UART ports. So it means as long as you are using a UAV with supported flight controller (in our case, the <a href="https://pixhawk.org/choice">PixHawk Flight Controller</a>), then you can plug this mission control unit into it and turn it into an on-air communication relay station! The system is totally platform independent, which is cool and convenient.</p>
+
 <p style="text-align: center;"><strong> Flight Control &amp; Aircraft </strong></p>
 
+<p>There is nothing very special with the actual aircraft used. For testing, we built 2 quad-rotor copters out of off-the-shelf components, and used them as Mom and Son. For flight controller, we selected <a href="https://pixhawk.org/choice">PixHawk Flight Controller</a> because it is powerful and plenty of resources are available online. Fig.7 shows the UAVs during a field flight test.</p>
+
+<figure class="half">
+    <a href="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/mission-control.png"><img src="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/mission-control.png" /></a>
+    <a href="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/test.png"><img src="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/test.png" /></a>
+    <figcaption>Fig.6 (Left) Mission Control Unit Mounted on UAV</figcaption>
+    <figcaption>Fig.7 (Right) UAV Mom and Son, during a test</figcaption>
+</figure>
+
 <p style="text-align: center;"><strong> Ground Control Station (GCS) </strong></p>
+
+<p>We developed our own version of GCS software, which we call “Mini GCS”. It was writen fully in-house using C#. The Mini GCS has a number of cool features:</p>
+
+<p>1.</p>
 
 <h2 id="system-construction--testing">System Construction &amp; Testing</h2>
 
