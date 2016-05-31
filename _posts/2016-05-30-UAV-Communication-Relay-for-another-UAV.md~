@@ -8,7 +8,11 @@ tags:
 layout: single
 ---
 
-This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea about what I've done. This project was a teamwork, I could not complete it without my team mates Cai Lingfeng and Wan Hiu Fung. Credits also go to our supervisor Prof Wen Chih Yung.
+This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea about what I've done. This project was a teamwork, I could not complete it without my team mates Cai Lingfeng and Wan Hiu Fung. I would also like to thank our supervisor Prof Wen Chih Yung, an absolutely nice and helpful prof.
+
+This project has helped us win <strong>champion</strong> at the <a href="http://www.iaa.ncku.edu.tw/~whlai/uav/2016/index.html">2016 Taiwan Unmanned Aircraft Design Competition</a> (website in Chinese), in which we take great pride. we are also looking to publish a paper based on it.
+
+
 
 ## The Idea
 
