@@ -9,7 +9,7 @@ permalink: /about_me/
 
 I am a passionate mechanical engineer with an interest in robotics, automation, and control. I have rich experience in designing and implementing automation systems, in mechanical-electrical integration, in mechanical design, as well as in programming.
 
-I am currently studying for my bachelor degree in Mechanical Engineering at the Hong Kong Polytechnic University (graduating soon), and will soon start my Master of Science in robotics and control, at ETH Zurich. I'm really looking forward to all the challenges and opportunities that ETH will bring, and hoping to fully exercise my love for robotics there.
+I have recently graduated from my bachelor degree in Mechanical Engineering at the Hong Kong Polytechnic University, and will soon start my Master of Science in robotics and control, at ETH Zurich. I'm really looking forward to all the challenges and opportunities that ETH will bring, and hoping to fully exercise my love for robotics there.
 
 More details about me? Please see my resume below. Click on the <a class="btn btn--info">blue buttons</a> to jump to the section that interests you.
 
@@ -121,3 +121,5 @@ system, CAD, finite element analysis, manufacturing.
 <hr>
 # <font color="#000000"> Hobbies </font>
 Robotics, programming, tennis, horology (watchmaking), cooking.
+
+<a href="#">Back to Top</a>
