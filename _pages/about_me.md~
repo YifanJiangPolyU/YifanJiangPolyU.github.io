@@ -17,7 +17,7 @@ More details about me? Please see my resume below. Click on the <a class="btn bt
 <a href="#tag_exp" class="btn btn--info">Experience</a> 
 <a href="#tag_proj" class="btn btn--info">Projects</a>
 <a href="#tag_extra" class="btn btn--info">Extra-Curricular</a>
-<a href="#tag_award" class="btn btn--info">Awards and Tests</a>
+<a href="#tag_awards" class="btn btn--info">Awards and Tests</a>
 <a href="#tag_skills" class="btn btn--info">Skills</a>
 <a href="#tag_hobbies" class="btn btn--info">Hobbies</a>
 
@@ -92,6 +92,10 @@ More details about me? Please see my resume below. Click on the <a class="btn bt
 <b>Volunteer English Tutor</b>
 
   * Gave English tutorials to children in underprivileged schools; hosted a cultural sharing program in a local university.
+
+<A NAME="tag_awards">
+<hr>
+# <font color="#000000"> Awards and Tests </font>
 
 <A NAME="tag_skills">
 <hr>
