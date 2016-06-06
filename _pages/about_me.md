@@ -96,12 +96,28 @@ More details about me? Please see my resume below. Click on the <a class="btn bt
 <A NAME="tag_awards">
 <hr>
 # <font color="#000000"> Awards and Tests </font>
+<b><font color="#000000"> Awards: </font></b>
+
+  * <b>Champion</b>, Taiwan Innovative Unmanned Aircraft Design Competition (2016)
+  * <b>Dean's Honors List</b>, HKPU (2012 ~ 2013)
+
+<b><font color="#000000"> Tests: </font></b>
+
+  * <b>GRE</b>: Verbal – 157, Quantitative – 167, Analytical Writing – 3.5
+  * <b>IELTS Academic</b>: Overall – 7.5, Listening – 8, Reading – 8, Writing – 6.5, Speaking – 6.5
 
 <A NAME="tag_skills">
 <hr>
 # <font color="#000000"> Skills </font>
 
+<b>Mechanical Engineering</b>: Control engineering, electromechanics, mechanical design, embedded
+system, CAD, finite element analysis, manufacturing.
+
+<b>IT & Computer</b>: Linux, python, C/C++, C#, Matlab, LabView, computer vision.
+
+<b>Language</b>: English, Mandarin, Cantonese, German (limited).
+
 <A NAME="tag_hobbies">
 <hr>
 # <font color="#000000"> Hobbies </font>
-
+Robotics, programming, tennis, horology (watchmaking), cooking.
