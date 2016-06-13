@@ -1,0 +1,532 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Building a 3-Phase Servo Motor Driver - Yifan Jiang</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Yifan Jiang">
+<meta property="og:title" content="Building a 3-Phase Servo Motor Driver">
+
+
+
+
+  <meta property="og:description" content="In the past few months I was intensively exposed to servo motors: their constructions, working principles, and driving circuits, thanks to my internship. These motors are brushless, driven by 3-phase AC currents, and when properly controlled (as in my internship company), can execute motion with nanometer-level of resolution. The science and technology behind these motors deeply fascinated me, which inspired me to try building my own 3-phase servo motor driver, one of the core components in the motor’s control.">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2014-05-10T00:00:00+08:00">
+  
+    <link rel="next" href="/post/try/" title="First Post">
+  
+  
+    <link rel="prev" href="/post/Minecraft/" title="Learning Logic Circuits with Minecraft">
+  
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "person",
+      "name" : "Yifan Jiang",
+      "url" : null,
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yifan Jiang Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="/">Yifan Jiang</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="/about_me/">About Me</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="/archive/posts_by_year/">Posts</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="/contact/">Contact Me</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="/images/bio-photo.jpg" class="author__avatar" alt="Yifan Jiang">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Yifan Jiang</h3>
+    <p class="author__bio">An Enthusiastic Mechanical Engineer</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Hong Kong</li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Building a 3-Phase Servo Motor Driver">
+    <meta itemprop="description" content="In the past few months I was intensively exposed to servo motors: their constructions, working principles, and driving circuits, thanks to my internship. These motors are brushless, driven by 3-phase AC currents, and when properly controlled (as in my internship company), can execute motion with nanometer-level of resolution. The science and technology behind these motors deeply fascinated me, which inspired me to try building my own 3-phase servo motor driver, one of the core components in the motor’s control.">
+    <meta itemprop="datePublished" content="May 10, 2014">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Building a 3-Phase Servo Motor Driver
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  5 minutes read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>In the past few months I was intensively exposed to servo motors: their constructions, working principles, and driving circuits, thanks to my internship. These motors are brushless, driven by 3-phase AC currents, and when properly controlled (as in my internship company), can execute motion with nanometer-level of resolution. The science and technology behind these motors deeply fascinated me, which inspired me to try building my own 3-phase servo motor driver, one of the core components in the motor’s control.</p>
+
+<p>The 3-phase servo motor driver is essentially a 3-phase DC-to-AC converter, which provides current measurement and feedback for control purpose. The major functional blocks of the driver are as follows:</p>
+
+<ul>
+  <li>3-Phase MOSFET inverter and MOSFET gate drivers.</li>
+  <li>Phase Current Sensing.</li>
+  <li>Power Supply System.</li>
+  <li>Feedback Signal Conditioning &amp; ADC (Optional).</li>
+</ul>
+
+<p>In addition, this driver will also provide complete isolation between high-power circuit and MCU control circuit (MCU control circuit is external to the driver).</p>
+
+<h3 id="the-3-phase-inverter">The 3-Phase Inverter</h3>
+
+<p>The 3-phase inverter circuit consists of 3 half-bridge circuits, which controls the 3 phases of the motor. Each half-bridge is made up of 2 MOSFETs (I used Fairchild 40N25). the inverter circuit is shown in Fig.1. The inverter is powered from V+, which is the motor’s power supply with user-defined voltage (according to needs, max 100V DC).</p>
+
+<p>Because both high- and low-side of the half-bridge uses N-channel MOSFET, and becuase of the characteristics of N-Channel MOSFET, a gate driving circuit becomes necessary. I used IR2183 integrated half-bridge driver to do this job. The driver circuit (for one phase only) is shown in Fig.2. Opto-coupler HCPL0630 was used to isolate the high-power driver circuit from MCU. Sorry but please notice that value of R7 and R8 shown in Fig.2 (1K ohm) is <span style="color:#F00000">WRONG</span> because I misunderstood some datasheets. The value for R7 and R8 in the final design is 330 ohm.</p>
+
+<figure class="half">
+    <a href="/images/2014-05-10-Servo-Motor-Driver-Project/inverter.png"><img src="/images/2014-05-10-Servo-Motor-Driver-Project/inverter.png" /></a>
+    <a href="/images/2014-05-10-Servo-Motor-Driver-Project/gate-driver.png"><img src="/images/2014-05-10-Servo-Motor-Driver-Project/gate-driver.png" /></a>
+    <figcaption>Fig.1 (Left) 3-Phase Inverter</figcaption>
+    <figcaption>Fig.2 (Right) MOSFET Gate Driver (1 phase only, same for all 3 phases)</figcaption>
+</figure>
+
+<p>To make sure the design works, I built a prototype of the inverter circuit (1 phase only) and tested it (shown in Fig.3 and Fig.4). Fig.4 shows the halg-bridge switching an inductive load with approx. 70% duty. The MOSFET gate driver circuit (Fig.2) does not operate when PWM duty is below approx. 3% or above approx 95%.</p>
+
+<figure class="half">
+    <a href="/images/2014-05-10-Servo-Motor-Driver-Project/test-gate-driver-1.jpg"><img src="/images/2014-05-10-Servo-Motor-Driver-Project/test-gate-driver-1.jpg" /></a>
+    <a href="/images/2014-05-10-Servo-Motor-Driver-Project/test-gate-driver-2.jpg"><img src="/images/2014-05-10-Servo-Motor-Driver-Project/test-gate-driver-2.jpg" /></a>
+    <figcaption>Fig.3 (Left) Test Setup</figcaption>
+    <figcaption>Fig.4 (Right) MOSFET Switching Waveform</figcaption>
+</figure>
+
+<h3 id="phase-current-sensing">Phase Current Sensing</h3>
+
+<p>The job of the current sensing circuit is to accurately measure the amount of current flowing in each phase. The measurement is then provided MCU, which executes a close-loop control algorithm that controls the current flow in phases (the current loop).</p>
+
+<h3 id="power-supply-system">Power Supply System</h3>
+
+<p>In my driver, the motor is powered from V+ (user-defined, max 100V DC). However, the rest of the system: MOSFET gate drivers, current sensors, etc, are powered from a separate power source, fixed at 24V DC. A system of voltage regulators, then, converts this 24V voltage into a number of different voltages for different uses. The power supply curcuit is shown in Fig.6.</p>
+
+<figure>
+    <a href="/images/2014-05-10-Servo-Motor-Driver-Project/power-supply.png"><img src="/images/2014-05-10-Servo-Motor-Driver-Project/power-supply.png" /></a>
+    <figcaption>Fig.6 Power Supply</figcaption>
+</figure>
+
+<h3 id="feedback--signal-conditioning--adc">Feedback  Signal Conditioning &amp; ADC</h3>
+
+<p>to be continued</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+
+        
+
+
+
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/diy" class="page__taxonomy-item" rel="tag">DIY</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/hobby" class="page__taxonomy-item" rel="tag">hobby</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/tech" class="page__taxonomy-item" rel="tag">tech</a>
+    
+    </span>
+  </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2014-05-10T00:00:00+08:00">May 10, 2014</time></p>
+        
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=/post/Servo-Motor-Driver-Project/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=/post/Servo-Motor-Driver-Project/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=/post/Servo-Motor-Driver-Project/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=/post/Servo-Motor-Driver-Project/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="/post/Minecraft/" class="pagination--pager" title="Learning Logic Circuits with Minecraft
+">Previous</a>
+    
+    
+      <a href="/post/try/" class="pagination--pager" title="First Post
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      
+
+<div class="page__comments">
+  <h4 class="page__comments-title">Leave a Comment</h4>
+  
+    <section class="fb-comments" data-href="/post/Servo-Motor-Driver-Project/" data-mobile="true" data-num-posts="5" data-width="100%" data-colorscheme="light"></section>
+  
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  
+    <a href="/post/UAV-Communication-Relay-for-another-UAV/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">UAV Communication Relay for another UAV
+</h2>
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  11 minutes read
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea a...</p>
+    </article>
+  </a>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  
+    <a href="/post/LM1875-Audio-Amplifier/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Audio Amplifier based on LM1875
+</h2>
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  6 minutes read
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">I am not (yet) a big fan of Hi-Fi audio. However, driven by some interests and some willingness to explore new things, I decided to build my own in-house aud...</p>
+    </article>
+  </a>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  
+    <a href="/post/try/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">First Post
+</h2>
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  less than 1 minute read
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">Hey guys. I am trying to construct a personal homepage, and this is my very first post. GitHub provids a really convenient place to host my homepage, and Jek...</p>
+    </article>
+  </a>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  
+    <a href="/post/Minecraft/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Learning Logic Circuits with Minecraft
+</h2>
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  1 minute read
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">I’m not a game person, and I rarely play games. However, there’s one game to which I’m particularly addicted: Minecraft!!!
+
+</p>
+    </article>
+  </a>
+</div>
+        
+      </div>
+    </div>
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+    
+    <li><a href="/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2016 Yifan Jiang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+    <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+
+  </body>
+</html>
+
