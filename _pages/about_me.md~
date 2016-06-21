@@ -39,6 +39,13 @@ More details about me? Please see my resume below. Click on the <a class="btn bt
 <A NAME="tag_exp">
 <hr>
 # <font color="#000000"> Experience </font>
+<p style="margin:0" ><b><font color="#000000"> The Hong Kong Polytechnic Unviersity, Hong Kong (2016-06 ~ Present) </font></b></p>
+
+<b>Research Assistant</b>
+
+  * Developing a system to perform hardware-in-loop control simulation for a vertical take-off and landing (VTOL) aircraft.
+  * Developing and testing a multiple unmanned aircraft (UAVs) system that is capable of performing radio communication relay.
+
 <p style="margin:0" ><b><font color="#000000"> ASM Pacific Technology Ltd, Hong Kong (2014-06 ~ 2015-06) </font></b></p>
 
 <b>Engineer Trainee, R&D Motion Group</b>

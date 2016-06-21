@@ -6,6 +6,7 @@ tags:
   - tech
   - DIY
   - hobby
+
 ---
 
 In the past few months I was intensively exposed to servo motors: their constructions, working principles, and driving circuits, thanks to my internship. These motors are brushless, driven by 3-phase AC currents, and when properly controlled (as in my internship company), can execute motion with nanometer-level of resolution. The science and technology behind these motors deeply fascinated me, which inspired me to try building my own 3-phase servo motor driver, one of the core components in the motor's control.
@@ -44,12 +45,21 @@ To make sure the design works, I built a prototype of the inverter circuit (1 ph
 
 ### Phase Current Sensing
 
-The job of the current sensing circuit is to accurately measure the amount of current flowing in each phase. The measurement is then provided MCU, which executes a close-loop control algorithm that controls the current flow in phases (the current loop). 
+The job of the current sensing circuit is to accurately measure the amount of current flowing in each phase. The measurement is then provided MCU, which executes a close-loop control algorithm that controls the current flow in phases (the current loop). I used LTSR-25NP current transducer to sense the phase currents. LTSR-25NP is a hall-effect current censor, and its output is completely isolated from the current that it measures. It helps isolate high- and low-power parts of the driver board.
 
 
 ### Power Supply System
 
-In my driver, the motor is powered from V+ (user-defined, max 100V DC). However, the rest of the system: MOSFET gate drivers, current sensors, etc, are powered from a separate power source, fixed at 24V DC. A system of voltage regulators, then, converts this 24V voltage into a number of different voltages for different uses. The power supply curcuit is shown in Fig.6. 
+In my driver, the motor is powered from V+ (user-defined, max 100V DC). However, the rest of the system: MOSFET gate drivers, current sensors, etc, are powered from a separate power source, fixed at 24V DC. This 24V voltage is converted by switch-mode voltage regulators into 2 different voltages:
+
+  * 15V: power supply to MOSTEF gate drivers
+  * 5V: for high-power circuits that needs 5V supply (e.g. opto-isolator, high-power side).
+
+In addition, there is another 5V linear regulator, which supplies power for low-power circuits that needs 5V: opto-isolator low-power side, current transducers, etc. 
+
+An additional 5V voltage, VREF, is provided by REF195 (by Analog Devices). this is the precision voltage reference for an the onboard ADC (which was never tested, sadly)
+
+The power supply curcuit is shown in Fig.6. 
 
 <figure>
     <a href="/images/2014-05-10-Servo-Motor-Driver-Project/power-supply.png"><img src="/images/2014-05-10-Servo-Motor-Driver-Project/power-supply.png"></a>
@@ -59,7 +69,30 @@ In my driver, the motor is powered from V+ (user-defined, max 100V DC). However,
 ### Feedback  Signal Conditioning & ADC
 
 
-to be continued
+to be added
 
+### PCB Design
 
+My driver board features 4-layer PCB, with middle layers dedicated to GND and power supply. In the layout I paid attention to keep the ground panel for high- and low-power circuits separated. Total isolation is achieved by using opto-isolators and isolated current sensors. The Layers are shown in Fig.7 ~ Fig.10, and the completed PCB is shown in Fig.11(front side) and Fig.12(back side).
+
+<figure class="half">
+    <a href="/images/2014-05-10-Servo-Motor-Driver-Project/L1.png"><img src="/images/2014-05-10-Servo-Motor-Driver-Project/L1.png"></a>
+    <a href="/images/2014-05-10-Servo-Motor-Driver-Project/supply.png"><img src="/images/2014-05-10-Servo-Motor-Driver-Project/supply.png"></a>
+    <figcaption>Fig.7 (Left) Front Side Gerber</figcaption>
+    <figcaption>Fig.8 (Right) Supply Layer Gerber</figcaption>
+</figure>
+
+<figure class="half">
+    <a href="/images/2014-05-10-Servo-Motor-Driver-Project/gnd.png"><img src="/images/2014-05-10-Servo-Motor-Driver-Project/gnd.png"></a>
+    <a href="/images/2014-05-10-Servo-Motor-Driver-Project/L4.png"><img src="/images/2014-05-10-Servo-Motor-Driver-Project/L4.png"></a>
+    <figcaption>Fig.9 (Left) Ground Panel Gerber</figcaption>
+    <figcaption>Fig.10 (Right) Back Side Gerber</figcaption>
+</figure>
+
+<figure class="half">
+    <a href="/images/2014-05-10-Servo-Motor-Driver-Project/front-detail.png"><img src="/images/2014-05-10-Servo-Motor-Driver-Project/front-detail.png"></a>
+    <a href="/images/2014-05-10-Servo-Motor-Driver-Project/back-detail.png"><img src="/images/2014-05-10-Servo-Motor-Driver-Project/back-detail.png"></a>
+    <figcaption>Fig.11 (Left) Finished PCB, Front Side</figcaption>
+    <figcaption>Fig.12 (Right) Finished PCB, Back Side</figcaption>
+</figure>
 
