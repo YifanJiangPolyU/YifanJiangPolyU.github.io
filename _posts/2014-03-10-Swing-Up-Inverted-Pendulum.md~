@@ -1,0 +1,18 @@
+---
+title: "Swinging Up an Inverted Pendulum"
+categories:
+  - post
+tags:
+  - tech
+  - hobby
+---
+
+
+<figure class="third">
+    <a href="/images/2013-06-10-Minecraft/gate.png"><img src="/images/2013-06-10-Minecraft/gate.png"></a>
+    <a href="/images/2013-06-10-Minecraft/adder.png"><img src="/images/2013-06-10-Minecraft/adder.png"></a>
+    <a href="/images/2013-06-10-Minecraft/multiplier.png"><img src="/images/2013-06-10-Minecraft/multiplier.png"></a>
+    <figcaption>Fig.1 (Left) OR gate, my design</figcaption>
+    <figcaption>Fig.2 (Mid) 8-bit binary adder/subtractor</figcaption>
+    <figcaption>Fig.3 (Right) 4-bit binary multiplier</figcaption>
+</figure>

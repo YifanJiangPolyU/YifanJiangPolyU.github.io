@@ -1,0 +1,39 @@
+---
+title: "Interesting Collections out of Ordinary Life"
+categories:
+  - post
+tags:
+  - Hobby
+  - life
+
+layout: single
+---
+
+Life is hard, but doing interesting things makes it easier. I'm not an artist or photographer by trade, but it doesn't bother me when I want to express my love for life with love. This is a collection of some memorable moments in my life, for my own reference (so I don't forget them), and for your fun. I'll keep updating it ~
+
+## 2016
+
+## 2014
+Travelled to probably the most mysterious country in the world, Turkey. Previously only existed in stories and fairy tales, being so close to it made me feel unreal. 
+
+Being in Istanbul itself is like being in fairy tale: the churches and mosques, the calls for prayer from minarets, the old streets and dessert shops, everything seems frozen back in time, just as they were hundreds (or thousands) of years ago. History makes this city romantic, maybe even dog and cat can fall in love~
+
+<figure class="half">
+    <a href="/images/Life-Collection/turkey-1.jpg"><img src="/images/Life-Collection/turkey-1.jpg"></a>
+    <a href="/images/Life-Collection/turkey-cat-dog.jpg"><img src="/images/Life-Collection/turkey-cat-dog.jpg"></a>
+</figure>
+
+In Turkey there are many ducks, and strangely people don't eat them. Instead they are pretty generously fed (in an unhealthy diet though). Like in Pamukkale, people enjoy feeding ducks with bread.
+<figure >
+    <a href="/images/Life-Collection/turkey-feed-duck.jpg"><img src="/images/Life-Collection/turkey-feed-duck.jpg"></a>
+</figure>
+
+## 2013
+My first time in Canada, everything seemed so friendly to me. In the morning of my first day at Montreal, I saw some surprisingly beautiful patterns of frozen moisture, right on the window! Squirrels seem to like me as well, or did this one mistook my leg for a tree?
+
+<figure class="half">
+    <a href="/images/Life-Collection/Montreal-ice.JPG"><img src="/images/Life-Collection/Montreal-ice.JPG"></a>
+    <a href="/images/Life-Collection/Montreal-squirrel.jpg"><img src="/images/Life-Collection/Montreal-squirrel.jpg"></a>
+</figure>
+
+
