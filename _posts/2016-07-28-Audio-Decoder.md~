@@ -30,6 +30,8 @@ The complete and most updated schematic is shown in Fig.1, alone with some layou
     <figcaption>Fig.1 Schematic</figcaption>
 </figure>
 
+
+
 ## The PCB
 The PCB layout was created based on the schematic in Fig.1. It's a 2-layer PCB, and it features separated ground panels for digital and analog circuitries, which helps reduce cross-over noise. According to the data sheet of TPA60120, for stable operation and optimum performance, there should be no ground panel underneath the output and feed-back pins of the IC. This recommendation was very well implemented. In addition, the output and feed-back paths were made as short as possible.
 
