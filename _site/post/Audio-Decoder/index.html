@@ -1,0 +1,520 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>My First Home Made HiFi Audio Decoder and Amplifier - Yifan Jiang</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Yifan Jiang">
+<meta property="og:title" content="My First Home Made HiFi Audio Decoder and Amplifier">
+
+
+
+
+  <meta property="og:description" content="Recently I developed my first in-house hi-fi audio decoder + amplifier project. Having tested it with my own ears I was very much surprised by the outstanding sound quality. Considering the fact that this project has costed me less than 300 HKD (thanks to cheap PCBs from Shenzhen), I am sooooo happy with the result! It has a name: “JAudio Decoder Amp”">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2016-07-28T00:00:00+08:00">
+  
+  
+    <link rel="prev" href="/post/Life-Collections/" title="Interesting Collections out of Ordinary Life">
+  
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "person",
+      "name" : "Yifan Jiang",
+      "url" : null,
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yifan Jiang Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="/">Yifan Jiang</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="/about_me/">About Me</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="/archive/posts_by_year/">Posts</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="/contact/">Contact Me</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="/images/bio-photo.jpg" class="author__avatar" alt="Yifan Jiang">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Yifan Jiang</h3>
+    <p class="author__bio">An Enthusiastic Mechanical Engineer</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Hong Kong</li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="My First Home Made HiFi Audio Decoder and Amplifier">
+    <meta itemprop="description" content="Recently I developed my first in-house hi-fi audio decoder + amplifier project. Having tested it with my own ears I was very much surprised by the outstanding sound quality. Considering the fact that this project has costed me less than 300 HKD (thanks to cheap PCBs from Shenzhen), I am sooooo happy with the result! It has a name: “JAudio Decoder Amp”">
+    <meta itemprop="datePublished" content="July 28, 2016">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">My First Home Made HiFi Audio Decoder and Amplifier
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  6 minutes read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>Recently I developed my first in-house hi-fi audio decoder + amplifier project. Having tested it with my own ears I was very much surprised by the outstanding sound quality. Considering the fact that this project has costed me less than 300 HKD (thanks to cheap PCBs from Shenzhen), I am sooooo happy with the result! It has a name: “JAudio Decoder Amp”</p>
+
+<h2 id="the-design">The Design</h2>
+
+<p>To realise this project with simple techniques and low budget, I selected a number of good-quality yet easy-to-use chips to base my design on.</p>
+
+<p>I used <a href="http://www.ti.com/product/PCM2707">PCM2707</a> computer interface chip + decoder + DAC. PCM2707 is a USB audio interface that enables music playback through USB. In addition to that it also has a built-in DAC that can convert 16-bit 44 kHz sound source with down to 0.006% THD into line. 16-bit 44kHz is standard CD-quality sound source, which I believe is the highest quality sound source that I can get most of the time. So I would not bother myself to use higher-quality DAC chips, which costs more and makes the design more complicated.</p>
+
+<p>The built-in DAC of PCM 2707 can directly drive headphones with 32 ohm impedance, but the THD would be higher this way. Wanting to further improve sound quality, I used <a href="http://www.ti.com/product/TPA6120A2">TPA6120</a> audio amplifier as output buffer. The amplifier is supplied with +5V ~ -5V, and the gain is set to 1.5V/V.</p>
+
+<p>To generate the -5V required to drive TPA6120, a switch mode voltage converter, LM2594, was employeed to convert +5V (from USB Vbus) to -5V.</p>
+
+<p>All 3 devices come from IT. Check data sheets for details and application information.</p>
+
+<p>The complete and most updated schematic is shown in Fig.1, alone with some layout considerations.</p>
+
+<figure>
+    <a href="/images/2016-07-31-Audio-Decoder/sch.png"><img src="/images/2016-07-31-Audio-Decoder/sch.png" /></a>
+    <figcaption>Fig.1 Schematic</figcaption>
+</figure>
+
+<h2 id="the-pcb">The PCB</h2>
+<p>The PCB layout was created based on the schematic in Fig.1. It’s a 2-layer PCB, and it features separated ground panels for digital and analog circuitries, which helps reduce cross-over noise. According to the data sheet of TPA60120, for stable operation and optimum performance, there should be no ground panel underneath the output and feed-back pins of the IC. This recommendation was very well implemented. In addition, the output and feed-back paths were made as short as possible.</p>
+
+<p>The design of the PCB is shown in Fig.2 and Fig.3.</p>
+
+<figure class="half">
+    <a href="/images/2016-07-31-Audio-Decoder/pcb-top.png"><img src="/images/2016-07-31-Audio-Decoder/pcb-top.png" /></a>
+    <a href="/images/2016-07-31-Audio-Decoder/pcb-bot.png"><img src="/images/2016-07-31-Audio-Decoder/pcb-bot.png" /></a>
+    <figcaption>Fig.2 PCB, top layer</figcaption>
+    <figcaption>Fig.3 PCB, bottom layer</figcaption>
+</figure>
+
+<h2 id="the-final-product">The Final Product</h2>
+<p>After a few hours of assembly and some hardware debugging, my computer finally successfully recognized the chip, and sound flowed out like water. It has a crystal clear high-frequency, and rich mid-frequency, and decent low-frequency. The response is quite flat, being totally loyal to the original recording. When the music is off, there is no noise what so ever. I made a 5-minute comparison between my laptop’s audio output and this decoder. There is subtle differences, and the later offers clearer sound. From first impression I like my decoder better.</p>
+
+<p>I used my Beyerdynamics DT880 headphone (32ohm version) for the above testings.</p>
+
+<p>Haven’t washed the PCB yet, still covered with flux. But here is the final product (Fig.4 and 5). Later I’ll make a small case for it.</p>
+
+<figure class="half">
+    <a href="/images/2016-07-31-Audio-Decoder/final-product.png"><img src="/images/2016-07-31-Audio-Decoder/final-product.png" /></a>
+    <a href="/images/2016-07-31-Audio-Decoder/testing.png"><img src="/images/2016-07-31-Audio-Decoder/testing.png" /></a>
+    <figcaption>Fig.4 JAudio Decoder Amp, Finished Product</figcaption>
+    <figcaption>Fig.3 Listening Test</figcaption>
+</figure>
+
+<p>There are minor problems with the board. First, sometimes my computer fails to recognize PCM2707, because of power supply instability at power-up. PCM2707 is supplied with 5V USB bus voltage, and its internal voltage regulator generates the 3.3V voltage needed for its internal operations. The internal voltage regulator, however, occasionally exhibits instability at power-up, causing the device to malfunction. The cause of the instability is the inadequate value of decoupling capacitor. I added as much as I could, and the device could function normally 90% of the time. Second, the power and status indicator LEDs have different brightnesses, which is kind of annoying.</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+
+        
+
+
+
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/diy" class="page__taxonomy-item" rel="tag">DIY</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/hobby" class="page__taxonomy-item" rel="tag">Hobby</a>
+    
+    </span>
+  </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2016-07-28T00:00:00+08:00">July 28, 2016</time></p>
+        
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=/post/Audio-Decoder/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=/post/Audio-Decoder/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=/post/Audio-Decoder/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=/post/Audio-Decoder/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="/post/Life-Collections/" class="pagination--pager" title="Interesting Collections out of Ordinary Life
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      
+
+<div class="page__comments">
+  <h4 class="page__comments-title">Leave a Comment</h4>
+  
+    <section class="fb-comments" data-href="/post/Audio-Decoder/" data-mobile="true" data-num-posts="5" data-width="100%" data-colorscheme="light"></section>
+  
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  
+    <a href="/post/Life-Collections/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Interesting Collections out of Ordinary Life
+</h2>
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  1 minute read
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">Life is hard, but doing interesting things makes it easier. I’m not an artist or photographer by trade, but it doesn’t bother me when I want to express my lo...</p>
+    </article>
+  </a>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  
+    <a href="/post/UAV-Communication-Relay-for-another-UAV/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">UAV Communication Relay for another UAV
+</h2>
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  10 minutes read
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea a...</p>
+    </article>
+  </a>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  
+    <a href="/post/LM1875-Audio-Amplifier/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Audio Amplifier based on LM1875
+</h2>
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  6 minutes read
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">I am not (yet) a big fan of Hi-Fi audio. However, driven by some interests and some willingness to explore new things, I decided to build my own in-house aud...</p>
+    </article>
+  </a>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  
+    <a href="/post/try/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">First Post
+</h2>
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  less than 1 minute read
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">Hey guys. I am trying to construct a personal homepage, and this is my very first post. GitHub provids a really convenient place to host my homepage, and Jek...</p>
+    </article>
+  </a>
+</div>
+        
+      </div>
+    </div>
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+    
+    <li><a href="/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2016 Yifan Jiang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+    <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+
+  </body>
+</html>
+
