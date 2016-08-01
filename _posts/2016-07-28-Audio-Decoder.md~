@@ -49,19 +49,23 @@ After a few hours of assembly and some hardware debugging, my computer finally s
 
 I used my Beyerdynamics DT880 headphone (32ohm version) for the above testings.
 
-Haven't washed the PCB yet, still covered with flux. But here is the final product (Fig.4 and 5). Later I'll make a small case for it.
-
+Haven't washed the PCB yet, still covered with flux. But here is the final product (Fig.4 and 5).
 <figure class="half">
-    <a href="/images/2016-07-31-Audio-Decoder/final-product.png"><img src="/images/2016-07-31-Audio-Decoder/final-product.png"></a>
-    <a href="/images/2016-07-31-Audio-Decoder/testing.png"><img src="/images/2016-07-31-Audio-Decoder/testing.png"></a>
-    <figcaption>Fig.4 JAudio Decoder Amp, Finished Product</figcaption>
-    <figcaption>Fig.3 Listening Test</figcaption>
+    <a href="/images/2016-07-31-Audio-Decoder/final-product.jpg"><img src="/images/2016-07-31-Audio-Decoder/final-product.jpg"></a>
+    <a href="/images/2016-07-31-Audio-Decoder/testing.jpg"><img src="/images/2016-07-31-Audio-Decoder/testing.jpg"></a>
+    <figcaption>Fig.4 (Left) JAudio Decoder Amp, Finished Product</figcaption>
+    <figcaption>Fig.5 (Right) Listening Test</figcaption>
 </figure>
 
 There are minor problems with the board. First, sometimes my computer fails to recognize PCM2707, because of power supply instability at power-up. PCM2707 is supplied with 5V USB bus voltage, and its internal voltage regulator generates the 3.3V voltage needed for its internal operations. The internal voltage regulator, however, occasionally exhibits instability at power-up, causing the device to malfunction. The cause of the instability is the inadequate value of decoupling capacitor. I added as much as I could, and the device could function normally 90% of the time. Second, the power and status indicator LEDs have different brightnesses, which is kind of annoying.
 
-
-
+I made a cute little case for my decoder and amplifier, using a Snoopy pencil case. Look very nice, feel better to the touch!
+<figure class="half">
+    <a href="/images/2016-07-31-Audio-Decoder/case-1.jpg"><img src="/images/2016-07-31-Audio-Decoder/case-1.jpg"></a>
+    <a href="/images/2016-07-31-Audio-Decoder/case-2.jpg"><img src="/images/2016-07-31-Audio-Decoder/case-2.jpg"></a>
+    <figcaption>Fig.6 (Left) JAudio Decoder Amp, In a Lovely Case</figcaption>
+    <figcaption>Fig.7 (Right) In Use</figcaption>
+</figure>
 
 
 
