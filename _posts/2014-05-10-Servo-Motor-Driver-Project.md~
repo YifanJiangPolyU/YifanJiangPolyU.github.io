@@ -96,3 +96,8 @@ My driver board features 4-layer PCB, with middle layers dedicated to GND and po
     <figcaption>Fig.12 (Right) Finished PCB, Back Side</figcaption>
 </figure>
 
+Fig.13 shows the finished motor driver in use, driving a brushed DC motor (only one of the 3 phases are used).
+<figure>
+    <a href="/images/2014-05-10-Servo-Motor-Driver-Project/test-product.png"><img src="/images/2014-05-10-Servo-Motor-Driver-Project/test-product.png"></a>
+    <figcaption>Fig.13 Driving a Brushed DC Motor</figcaption>
+</figure>
