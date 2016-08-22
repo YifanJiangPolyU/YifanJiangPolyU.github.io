@@ -12,6 +12,10 @@ layout: single
 Life is hard, but doing interesting things makes it easier. I'm not an artist or photographer by trade, but it doesn't bother me when I want to express my love for life with love. This is a collection of some memorable moments in my life, for my own reference (so I don't forget them), and for your fun. I'll keep updating it ~
 
 ## 2016
+Travelling to Dawson city in Canada, a small town that took shape in early the 20th century because of the famous gold rush. Although it still produces some gold today, the town has almost lost its past glories. Glad to have found this nice slide rule in an antique shop in Dawson. I've wanted to own a slide rule for a long time. This little piece of history brings me back to the days before calculators, a deep emotional connection.
+<figure>
+    <a href="/images/Life-Collection/2016-08-20-slide-rule.jpg"><img src="/images/Life-Collection/2016-08-20-slide-rule.jpg"></a>
+</figure>
 
 ## 2014
 Travelled to probably the most mysterious country in the world, Turkey. Previously only existed in stories and fairy tales, being so close to it made me feel unreal. 
