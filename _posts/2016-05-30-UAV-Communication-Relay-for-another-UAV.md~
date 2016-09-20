@@ -118,7 +118,16 @@ A number of useful commands:
 
 ## Testing and results
 
-The video below shows how we tested the communication relay function. First, we let "Son" fly far enough so radio communication with GCS breaks (because radio telemetries are out of range). Then, we deploy "Mom" to serve as relay, after which radio communication of "Son" with GCS resumes. Communication status is indicated by the "Connected/Disconnected" icon in the bottom-right corner of the video, which turns <span style="color:#00F000">Green</span> when communication is healthy, and turns <span style="color:#F00000">Red</span> when communication breaks.
+The video below shows how we tested the communication relay function. First, we let "Son" fly far enough so radio communication with GCS breaks (because radio telemetries are out of range). Then, we deploy "Mom" to serve as relay, after which radio communication of "Son" with GCS resumes. Communication status is indicated by the "Connected/Disconnected" icon	 in the bottom-right corner of the video, which turns <span style="color:#00F000">Green</span> when communication is healthy, and turns <span style="color:#F00000">Red</span> when communication breaks.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/HxN0oafNmzw" frameborder="0" allowfullscreen></iframe>
++
+
+Fig.10 shows the variation of the radio's signal and noise levels between "Son" and GCS during a typical mission (measurements not taken during the test shown in the video, but during a later test). As we can see, from t = 0 to t = t1, as "Son" started its mission and its distance to GCS increased, radio signal level dropped steadily. At t = t1, the radio signal level was almost equal to the noise level, implying a lost to radio communication. At this moment, "Mom" was started and deployed to the designated relay position (between "Son" and GCS). as "Mom" approached "Son" and the relay started to function, the signal level gradually rose again. At t = t2, signal level was above noise level, implying that radio communication between "Son" and GCS was re-established.
+
+<figure>
+    <a href="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/RSSI.png"><img src="/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/RSSI.png"></a>
+    <figcaption>Fig.10 Radio signal & noise level, between "Son" and GCS</figcaption>
+</figure>
+
 
