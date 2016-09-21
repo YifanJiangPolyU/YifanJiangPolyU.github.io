@@ -9,7 +9,7 @@ permalink: /about_me/
 
 I am a passionate mechanical engineer with an interest in robotics, automation, and control. I have rich experience in designing and implementing automation systems, in mechanical-electrical integration, in mechanical design, as well as in programming.
 
-I have recently graduated from my bachelor degree in Mechanical Engineering at the Hong Kong Polytechnic University, and will soon start my Master of Science in robotics and control, at ETH Zurich. I'm really looking forward to all the challenges and opportunities that ETH will bring, and hoping to fully exercise my love for robotics there.
+I received my bachelor degree in Mechanical Engineering at the Hong Kong Polytechnic University, and am pursuing my MSc in robotics and control, at ETH Zurich. ETH brings me close to the world's most innovative and pioneering researchers in robotics and control, a great opportunity for me to learn and to train myself. I am really looking forward to the challenges!
 
 More details about me? Please see my resume below. Click on the <a class="btn btn--info">blue buttons</a> to jump to the section that interests you.
 
@@ -24,6 +24,12 @@ More details about me? Please see my resume below. Click on the <a class="btn bt
 <A NAME="tag_edu">
 <hr>
 # <font color="#000000"> Education </font>
+<b><font color="#000000"> ETH Zurich, Switzerland (2016-09 ~ Present) </font></b>
+
+  * MSc Robotics Systems and Control
+  * Cumulative GPA: -
+  * Selected courses: robotic dynamics, computer vision, industrial process control
+
 <b><font color="#000000"> The Hong Kong Polytechnic University (HKPU), Hong Kong (2011-09 ~ 2016-06) </font></b>
 
   * BEng Mechanical Engineering, <b>First Class Honour</b>
@@ -39,7 +45,7 @@ More details about me? Please see my resume below. Click on the <a class="btn bt
 <A NAME="tag_exp">
 <hr>
 # <font color="#000000"> Experience </font>
-<p style="margin:0" ><b><font color="#000000"> The Hong Kong Polytechnic Unviersity, Hong Kong (2016-06 ~ Present) </font></b></p>
+<p style="margin:0" ><b><font color="#000000"> The Hong Kong Polytechnic Unviersity, Hong Kong (2016-06 ~ 2016-08) </font></b></p>
 
 <b>Research Assistant</b>
 
