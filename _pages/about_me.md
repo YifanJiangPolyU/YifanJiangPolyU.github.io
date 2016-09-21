@@ -49,8 +49,8 @@ More details about me? Please see my resume below. Click on the <a class="btn bt
 
 <b>Research Assistant</b>
 
-  * Developing a system to perform hardware-in-loop control simulation for a vertical take-off and landing (VTOL) aircraft.
-  * Developing and testing a multiple unmanned aircraft (UAVs) system that is capable of performing radio communication relay.
+  * Developed a ROS application to realize hardware-in-loop simulation and off-board control of a vertical take-off and landing (VTOL) aircraft.
+  * Developed and tested a multiple unmanned aircraft (UAVs) system that is capable of performing radio communication relay.
 
 <p style="margin:0" ><b><font color="#000000"> ASM Pacific Technology Ltd, Hong Kong (2014-06 ~ 2015-06) </font></b></p>
 
