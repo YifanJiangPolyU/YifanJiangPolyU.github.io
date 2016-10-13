@@ -16,6 +16,7 @@ More details about me? Please see my resume below. Click on the <a class="btn bt
 <a href="#tag_edu" class="btn btn--info">Education</a> 
 <a href="#tag_exp" class="btn btn--info">Experience</a> 
 <a href="#tag_proj" class="btn btn--info">Projects</a>
+<a href="#tag_publications" class="btn btn--info">Publications</a>
 <a href="#tag_extra" class="btn btn--info">Extra-Curricular</a>
 <a href="#tag_awards" class="btn btn--info">Awards and Tests</a>
 <a href="#tag_skills" class="btn btn--info">Skills</a>
@@ -90,6 +91,11 @@ More details about me? Please see my resume below. Click on the <a class="btn bt
 
   * Contributed C/C++ codes to a project that aims to simulate the collision of two water droplets; studied smoothed particle method (SPH) for CFD simulation.
 
+
+<A NAME="tag_publications">
+<hr>
+# <font color="#000000"> Publications </font>
+  * Li B, Jiang Y, Sun J, Cai L, Wen C-Y. Development and Testing of a Two-UAV Communication Relay System. Sensors. 2016; 16(10):1696.
 
 <A NAME="tag_extra">
 <hr>
