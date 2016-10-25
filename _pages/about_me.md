@@ -11,7 +11,7 @@ I am a passionate mechanical engineer with an interest in robotics, automation, 
 
 I received my bachelor degree in Mechanical Engineering at the Hong Kong Polytechnic University, and am pursuing my MSc in robotics and control, at ETH Zurich. ETH brings me close to the world's most innovative and pioneering researchers in robotics and control, a great opportunity for me to learn and to train myself. I am really looking forward to the challenges!
 
-More details about me? Please see my resume below. Click on the <a class="btn btn--info">blue buttons</a> to jump to the section that interests you.
+More details about me? Please see my CV below. Click on the <a class="btn btn--info">blue buttons</a> to jump to the section that interests you.
 
 <a href="#tag_edu" class="btn btn--info">Education</a> 
 <a href="#tag_exp" class="btn btn--info">Experience</a> 
