@@ -95,6 +95,7 @@ More details about me? Please see my resume below. Click on the <a class="btn bt
 <A NAME="tag_publications">
 <hr>
 # <font color="#000000"> Publications </font>
+  * Sun J, Li B, Jiang Y, Wen C-Y. A Camera-Based Target Detection and Positioning UAV System for Search and Rescue (SAR) Purposes. Sensors. 2016; 16(11):1778.
   * Li B, Jiang Y, Sun J, Cai L, Wen C-Y. Development and Testing of a Two-UAV Communication Relay System. Sensors. 2016; 16(10):1696.
 
 <A NAME="tag_extra">
