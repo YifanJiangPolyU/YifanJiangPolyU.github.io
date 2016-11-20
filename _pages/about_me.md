@@ -135,7 +135,7 @@ system, CAD, finite element analysis, manufacturing.
 
 <b>IT & Computer</b>: Linux, python, C/C++, C#, Matlab, LabView, computer vision.
 
-<b>Language</b>: English, Mandarin, Cantonese, German (limited).
+<b>Language</b>: English, German, Mandarin, Cantonese.
 
 <A NAME="tag_hobbies">
 <hr>
