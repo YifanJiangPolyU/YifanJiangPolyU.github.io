@@ -46,6 +46,12 @@ More details about me? Please see my CV below. Click on the <a class="btn btn--i
 <A NAME="tag_exp">
 <hr>
 # <font color="#000000"> Experience </font>
+<p style="margin:0" ><b><font color="#000000"> Robotic System Lab, ETH Zürich, Switzerland (2016-10 ~ 2017-02) </font></b></p>
+
+<b>Research Assistant</b>
+
+  * Designing and implementing low-level power management and system monitor system for ANYmal, a quadrupedal robot.
+
 <p style="margin:0" ><b><font color="#000000"> The Hong Kong Polytechnic Unviersity, Hong Kong (2016-06 ~ 2016-08) </font></b></p>
 
 <b>Research Assistant</b>

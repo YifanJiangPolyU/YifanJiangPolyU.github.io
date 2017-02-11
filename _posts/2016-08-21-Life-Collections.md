@@ -9,7 +9,13 @@ tags:
 layout: single
 ---
 
-Life is hard, but doing interesting things makes it easier. I'm not an artist or photographer by trade, but it doesn't bother me when I want to express my love for life with love. This is a collection of some memorable moments in my life, for my own reference (so I don't forget them), and for your fun. I'll keep updating it ~
+A dairy-like record of interesting moments in my life~ I'll keep updating ~
+
+## 2017
+Got a part-time job at ETH's famous Robotic System Lab (RSL), a fantastic experience! RSL is among the world's best labs that study quadrupedal robots, or "robotic dogs" as I like call them. It's really exciting to see it walk and jump. Digging deep into the low-level control systems for the robot is also full of fun. 
+<figure>
+    <a href="/images/Life-Collection/2017-01-me-with-dog.jpg"><img src="/images/Life-Collection/2017-01-me-with-dog.jpg"></a>
+</figure>
 
 ## 2016
 Travelling to Dawson city in Canada, a small town that took shape in early the 20th century because of the famous gold rush. Although it still produces some gold today, the town has almost lost its past glories. Glad to have found this nice slide rule in an antique shop in Dawson. I've wanted to own a slide rule for a long time. This little piece of history brings me back to the days before calculators, a deep emotional connection.
