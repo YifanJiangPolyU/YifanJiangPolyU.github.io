@@ -11,6 +11,15 @@ layout: single
 
 A dairy-like record of interesting moments in my life~ I'll keep updating ~
 
+## Sep 2017
+An interesting jorney has ended, and another one must start. Having finished the internship at Maxon Motor, it's time to go back to school and be academic again :)
+
+About the internship, there is so much to love about it. I've got a lovely workplace, friendly and helpful colleagues, and a ton of interesting motors to work with. Now I've really got to know motors and drivers as well as my fingers, and my German did improve a lot. Not to mention that at the end of the job my colleagues gave me the most special gift I've ever received! Can't love it more.
+
+Worth mentioning, I've also started a project of my own, to develop a motor control platform. The target is to develop a controller for 3-phase PMSM, capable of executing current, speed, and position control. It will be able to control a series elastic actuator (SEA). Development has already started on a development kit, and the design of in-house hardware platform is underway. Hopefully a full solution can be turned out next year.
+
+Back in school, still a ton of work is waiting for me. A few courses, my small thesis, and finding a job. The small thesis is particularly interesting for me. It's about the modeling and control of a series elastic actuator (SEA), which is a special type of motor that's particularly useful for robots that have to interact safely with human. Given the boom in cobot market that everybody envisions, SEA is a technology with big potentials. Really excited to work on it!
+
 ## Feb 2017
 End of February is the begining of a new journey! Last December I got an offer for an internship at the world-famous Maxon Motor AG! Excited for quite a while, and I'm soon going to start it! Really like the company's nice location and huge lab, dream of all engineers~.
 

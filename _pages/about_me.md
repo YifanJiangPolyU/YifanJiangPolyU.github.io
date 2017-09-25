@@ -7,14 +7,14 @@ permalink: /about_me/
 
 <hr>
 
-I am a passionate mechanical engineer with an interest in robotics, automation, and control. I have rich experience in designing and implementing automation systems, in mechanical-electrical integration, in mechanical design, as well as in programming.
+I am a passionate mechanical engineer with an interest in robotics, automation, and control. I have rich experience in designing and implementing automation systems, in motor and motion control, in mechanical design, as well as in programming.
 
-I received my bachelor degree in Mechanical Engineering at the Hong Kong Polytechnic University, and am pursuing my MSc in robotics and control, at ETH Zurich. ETH brings me close to the world's most innovative and pioneering researchers in robotics and control, a great opportunity for me to learn and to train myself. I am really looking forward to the challenges!
+I received my bachelor degree in Mechanical Engineering at the Hong Kong Polytechnic University, and am pursuing my MSc in Robotics Systems and Control, at ETH Zurich. ETH brings me close to the world's most innovative and pioneering researchers in robotics and control, a great opportunity for me to learn and to train myself. I am really looking forward to the challenges!
 
 More details about me? Please see my CV below. Click on the <a class="btn btn--info">blue buttons</a> to jump to the section that interests you.
 
-<a href="#tag_edu" class="btn btn--info">Education</a> 
-<a href="#tag_exp" class="btn btn--info">Experience</a> 
+<a href="#tag_edu" class="btn btn--info">Education</a>
+<a href="#tag_exp" class="btn btn--info">Experience</a>
 <a href="#tag_proj" class="btn btn--info">Projects</a>
 <a href="#tag_publications" class="btn btn--info">Publications</a>
 <a href="#tag_extra" class="btn btn--info">Extra-Curricular</a>
@@ -46,11 +46,20 @@ More details about me? Please see my CV below. Click on the <a class="btn btn--i
 <A NAME="tag_exp">
 <hr>
 # <font color="#000000"> Experience </font>
-<p style="margin:0" ><b><font color="#000000"> Robotic System Lab, ETH Zürich, Switzerland (2016-10 ~ 2017-02) </font></b></p>
+
+<p style="margin:0" ><b><font color="#000000"> Maxon Motor AG, Switzerland (2017-03 ~ 2017-09) </font></b></p>
+
+<b>Trainee, Advanced Systems Group</b>
+
+  * Developed and tested a high-performance sensorless control algorithm for brushless servo motors.
+  * Implemented and tested advanced system identification methods for motion control systems.
+
+<p style="margin:0" ><b><font color="#000000"> Robotic System Lab, ETH Zürich, Switzerland (2016-10 ~ 2017-03) </font></b></p>
 
 <b>Research Assistant</b>
 
-  * Designing and implementing low-level power management and system monitor system for ANYmal, a quadrupedal robot.
+  * Designed and implemented a low-level power management and system monitor system for ANYmal, a quadrupedal robot.
+  * Developed a touchscreen-based user interface for the same robot.
 
 <p style="margin:0" ><b><font color="#000000"> The Hong Kong Polytechnic Unviersity, Hong Kong (2016-06 ~ 2016-08) </font></b></p>
 
@@ -91,13 +100,6 @@ More details about me? Please see my CV below. Click on the <a class="btn btn--i
   * Created mechanical design for a material feeder that feeds long pieces of cloth into UV printing machine; analysed the design to improve ease of manufacturing; manufactured the material feeder using CNC machine center and manual power tools.
 
 
-<p style="margin:0" ><b><font color="#000000"> Water Droplet Collision CFD, HKPU, Hong Kong (2013-05 ~ 2013-06) </font></b></p>
-
-<b>Undergraduate Research Helper</b>
-
-  * Contributed C/C++ codes to a project that aims to simulate the collision of two water droplets; studied smoothed particle method (SPH) for CFD simulation.
-
-
 <A NAME="tag_publications">
 <hr>
 # <font color="#000000"> Publications </font>
@@ -112,7 +114,7 @@ More details about me? Please see my CV below. Click on the <a class="btn btn--i
 <b>Internal Vice President</b>
 
   * Organized hiking and camping trips in Hong Kong, targeting international students.
-  
+
 <p style="margin:0" ><b><font color="#000000"> AIESEC Volunteer Service, Indonesia (2012-06 ~ 2012-08) </font></b></p>
 
 <b>Volunteer English Tutor</b>
@@ -136,16 +138,16 @@ More details about me? Please see my CV below. Click on the <a class="btn btn--i
 <hr>
 # <font color="#000000"> Skills </font>
 
-<b>Mechanical Engineering</b>: Control engineering, electromechanics, mechanical design, embedded
-system, CAD, finite element analysis, manufacturing.
+<b>Skills</b>: Control engineering, motor and motion control, mechatronics, mechanical design,
+embedded systems, CAD, manufacturing.
 
-<b>IT & Computer</b>: Linux, python, C/C++, C#, Matlab, LabView, computer vision.
+<b>Programming Languages</b>: C/C++, C#, Matlab, Python, LabView.
 
-<b>Language</b>: English, German, Mandarin, Cantonese.
+<b>Languages</b>: English, German, Mandarin, Cantonese.
 
 <A NAME="tag_hobbies">
 <hr>
 # <font color="#000000"> Hobbies </font>
-Robotics, programming, tennis, horology (watchmaking), cooking.
+Robotics, programming, tennis, table tennis, watchmaking, cooking.
 
 <a href="#">Back to Top</a>
