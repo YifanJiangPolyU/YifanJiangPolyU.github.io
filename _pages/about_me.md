@@ -52,7 +52,8 @@ More details about me? Please see my CV below. Click on the <a class="btn btn--i
 <b>Trainee, Advanced Systems Group</b>
 
   * Developed and tested a high-performance sensorless control algorithm for brushless servo motors.
-  * Implemented and tested advanced system identification methods for motion control systems.
+  * Developed and tested advanced system identification methods for motion control systems.
+  * Implementation and testing of firmware for real-time motion control systems.
 
 <p style="margin:0" ><b><font color="#000000"> Robotic System Lab, ETH Zürich, Switzerland (2016-10 ~ 2017-03) </font></b></p>
 
@@ -85,6 +86,22 @@ More details about me? Please see my CV below. Click on the <a class="btn btn--i
 <A NAME="tag_proj">
 <hr>
 # <font color="#000000"> Projects </font>
+<p style="margin:0" ><b><font color="#000000"> Modeling and Control of a Series Elastic Actuator, ETH Zürich (2017-09 ~ Present) </font></b></p>
+
+<b>Main Researcher</b>
+
+  * Model the dynamics of a PMSM-driven series elastic actuator, identify model parameters through experiments, and verify the model in simulation and experimentally.
+  * Develop a model-based control algorithm for this actuator to improve trajectory tracking and force control performance.
+  * Verify the performance of this actuator in a quadrupedal walking robot, testing its ability to interact with environmental uncertainties.
+
+<p style="margin:0" ><b><font color="#000000"> Brushless Motor Controller, Private (2017-04 ~ Present) </font></b></p>
+
+<b>Main Developer</b>
+
+  * Develop firmware for a controller for brushless permanent magnet servo motor (PMSM), based on a TI Delfino microprocessor (using TI LAUNCHXL-F28379D and BOOSTXL-DRV8301 development kits).
+  * Design and implement a modular firmware framework for multi-task hard-realtime control system.
+  * Implement CANOpen protocol stack.
+
 <p style="margin:0" ><b><font color="#000000"> Multiple UAV Mission System, HKPU, Hong Kong (2015-08 ~ 2016-04) </font></b></p>
 
 <b>Project Team Leader</b>
@@ -92,12 +109,6 @@ More details about me? Please see my CV below. Click on the <a class="btn btn--i
   * Designed, built, and tested a innovative unmanned aerial vehicle (UAV) system, that uses one UAV to relay radio communication for another UAV.
   * Developed C++ and python ROS applications for UAV mission control, using Raspberry Pi; analyzed and tested a permanent magnet based quadrotor copter release system; project management.
   * Won <b>Champion</b> at 2016 Taiwan Innovative Unmanned Aircraft Design Competition
-
-<p style="margin:0" ><b><font color="#000000"> Material Feeder for UV Printing Machine, HKPU, Hong Kong (2015-07 ~ 2015-08) </font></b></p>
-
-<b>Project Team Member</b>
-
-  * Created mechanical design for a material feeder that feeds long pieces of cloth into UV printing machine; analysed the design to improve ease of manufacturing; manufactured the material feeder using CNC machine center and manual power tools.
 
 
 <A NAME="tag_publications">
