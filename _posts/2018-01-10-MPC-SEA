@@ -1,0 +1,117 @@
+---
+title: "Model Predictive Control of a Series Elastic Actuator"
+categories:
+  - post
+tags:
+  - tech
+  - life
+
+layout: single
+---
+
+Recently I had the pleasure to work on what is probably the best-made Series
+Elastic Actuator (SEA) module in the world: the <a
+href="https://www.anybotics.com/anydrive/">ANYdrive</a>. from Robotic Systems
+Lab at ETH Zürich. I took this chance to try out something really novel: a Model
+Predictive Controller (MPC) for this SEA, but not a normal MPC. **Due to my
+agreement with ETH, I'll only talk about the controller that I designed, no
+details about the ANYdrive or its secrets :)** But feel free take a look at <a
+href="https://www.anybotics.com/">ANYbotics</a>.
+
+You can click on the <a class="btn btn--info">blue buttons</a> to navigate in
+this post.
+
+<a href="#tag_intro" class="btn btn--info">Introduction</a>
+<a href="#tag_modeling" class="btn btn--info">Modeling</a>
+<a href="#tag_control" class="btn btn--info">The Controller</a>
+
+
+<A NAME="tag_intro">
+
+## Introduction
+
+SEA is a special class of actuators that is considered particularly suitable for
+robots that physically interact with uncertain environments. It consists of a
+motor and a gearbox, but the load is connected to the output of the gearbox via
+a spring. This spring acts as a buffer between the environment and the rather
+STIFF gearbox, making the robot compliant (less likely to harm people). The
+spring also let you sense torque easily, using Hooke's Law.
+
+The ANYdrive is just an example of such actuators. It is drive by a 3-phase
+brushless Permanent Magnet Synchronous Motor (PMSM). The **major novelty** of my
+MPC is that, instead of using a cascaded loop to control the PMSM, the PMSM
+**AND** the spring in series are controlled by a single unified controller. You
+provide a output torque setpoint, and the MPC computes directly the voltage to
+be applied to the PMSM. I gave this controller a pretty stupid name: the Model
+Based Unified Torque Controller (MBUTC).
+
+<A NAME="tag_modeling">
+
+## Modeling
+
+The first step is to model the ANYdrive. The model contains 2 parts. The first
+part is the electrical dynamics of the PMSM, and the second part the the
+dynamics of the mechanical system.
+
+The modeling of the PMSM is well established, and exists in a lot of
+literatures. Here, the PMSM is modeled using space vector. All 3-phase
+quantities, currents and voltages, and represented in the DQ coordinate system,
+which is attached to and rotates with the rotor of the PMSM. The <a
+href="https://en.wikipedia.org/wiki/Direct-quadrature-zero_transformation">Park
+Transformation</a> is used to do this job.
+
+In DQ coordinate system the dynamics is greatly simplified, and can be writen
+down as follows:
+
+<figure>
+    <a href="/images/2018-01-10-MPC-SEA/pmsm_eq.png"><img src="/images/2018-01-10-MPC-SEA/pmsm_eq.png"></a>
+    <figcaption>Equation of the PMSM</figcaption>
+</figure>
+
+The mechanical system is essentially a spring-mass-damper system, and its
+free-body diagram is shown below:
+
+<figure>
+    <a href="/images/2018-01-10-MPC-SEA/sea_free_body.png"><img src="/images/2018-01-10-MPC-SEA/sea_free_body.png"></a>
+    <figcaption>Free-body Diagram of the SEA</figcaption>
+</figure>
+
+The equation of motion is given by:
+
+<figure>
+    <a href="/images/2018-01-10-MPC-SEA/sea_eq.png"><img src="/images/2018-01-10-MPC-SEA/sea_eq.png"></a>
+    <figcaption>Free-body Diagram of the SEA</figcaption>
+</figure>
+
+The nonlinear friction effect is rather strong in this case, and has to be
+accounted for in the model. Here, the nonlinear friction is modeled as a
+hyperbolic tangent function of the motor's velocity. This function is continuous
+and differentiable w.r.t velocity, which is a very desirable property. In the
+equation below, Fs is the maximum static friction.
+
+<figure>
+    <a href="/images/2018-01-10-MPC-SEA/friction_eq.png"><img src="/images/2018-01-10-MPC-SEA/friction_eq.png"></a>
+    <figcaption>Modeling of Nonlinear Friction</figcaption>
+</figure>
+
+Now we define the state vector, x, and state space matrices, as follows:
+
+<a href="/images/2018-01-10-MPC-SEA/state_eq.png"><img src="/images/2018-01-10-MPC-SEA/state_eq.png"></a>
+<a href="/images/2018-01-10-MPC-SEA/action_eq.png"><img src="/images/2018-01-10-MPC-SEA/action_eq.png"></a>
+<a href="/images/2018-01-10-MPC-SEA/state_eq.png"><img src="/images/2018-01-10-MPC-SEA/A_eq.png"></a>
+<a href="/images/2018-01-10-MPC-SEA/state_eq.png"><img src="/images/2018-01-10-MPC-SEA/B_eq.png"></a>
+<a href="/images/2018-01-10-MPC-SEA/state_eq.png"><img src="/images/2018-01-10-MPC-SEA/g_eq.png"></a>
+
+The resulting state space equation of the ANYdrive then looks like this:
+
+<figure>
+    <a href="/images/2018-01-10-MPC-SEA/ss_eq.png"><img src="/images/2018-01-10-MPC-SEA/ss_eq.png"></a>
+    <figcaption>State Space Model of a PSMS-drive SEA</figcaption>
+</figure>
+
+In fact all SEAs that are driven by a PMSM can be modeled this way. This model
+is therefore potentially applicable to many other SEAs.
+
+<A NAME="tag_control">
+
+## The Controller

@@ -1,5 +1,5 @@
 ---
-title: "Interesting Life Archive"
+title: "Dairy Archive"
 categories:
   - post
 tags:
@@ -16,7 +16,7 @@ Travelling to Dawson city in Canada, a small town that took shape in early the 2
 </figure>
 
 ## 2014
-Travelled to probably the most mysterious country in the world, Turkey. Previously only existed in stories and fairy tales, being so close to it made me feel unreal. 
+Travelled to probably the most mysterious country in the world, Turkey. Previously only existed in stories and fairy tales, being so close to it made me feel unreal.
 
 Being in Istanbul itself is like being in fairy tale: the churches and mosques, the calls for prayer from minarets, the old streets and dessert shops, everything seems frozen back in time, just as they were hundreds (or thousands) of years ago. History makes this city romantic, maybe even dog and cat can fall in love~
 
@@ -37,5 +37,3 @@ My first time in Canada, everything seemed so friendly to me. In the morning of 
     <a href="/images/Life-Collection/Montreal-ice.JPG"><img src="/images/Life-Collection/Montreal-ice.JPG"></a>
     <a href="/images/Life-Collection/Montreal-squirrel.jpg"><img src="/images/Life-Collection/Montreal-squirrel.jpg"></a>
 </figure>
-
-
