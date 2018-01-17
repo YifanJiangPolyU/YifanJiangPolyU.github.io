@@ -3,7 +3,7 @@
 <generator uri="http://jekyllrb.com" version="3.0.3">Jekyll</generator>
 <link href="/feed.xml" rel="self" type="application/atom+xml" />
 <link href="/" rel="alternate" type="text/html" />
-<updated>2018-01-17T20:37:27+01:00</updated>
+<updated>2018-01-17T20:40:50+01:00</updated>
 <id>/</id>
 <title>Yifan Jiang</title>
 <subtitle>My personal homepage.</subtitle>
@@ -278,79 +278,6 @@ rtl              return to home position, and land there
 </content>
 <category term="tech" />
 <summary>This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea about what I’ve done. This project was a teamwork, I could not complete it without my team mates Cai Lingfeng and Wan Hiu Fung. I would also like to thank our supervisor Prof Wen Chih Yung, an absolutely nice and helpful prof.</summary>
-</entry>
-<entry>
-<title>Audio Amplifier based on LM1875</title>
-<link href="/post/LM1875-Audio-Amplifier/" rel="alternate" type="text/html" title="Audio Amplifier based on LM1875" />
-<published>2016-05-02T00:00:00+02:00</published>
-<updated>2016-05-02T00:00:00+02:00</updated>
-<id>/post/LM1875-Audio-Amplifier</id>
-<content type="html" xml:base="/post/LM1875-Audio-Amplifier/">&lt;p&gt;I am not (yet) a big fan of Hi-Fi audio. However, driven by some interests and some willingness to explore new things, I decided to build my own in-house audio amplifier, using the famous LM1875 audio power amplifier IC. LM1875 is a (supposedly) easy-to-use audio amplifier IC, with numerous reference designs available from the internet. For a first-time try-out, using this IC should guarantee reasonable sound quality without too much debugging efforts. Staying within beginner-friendly region, at least for the first few times, is always smart.&lt;/p&gt;
-
-&lt;h2 id=&quot;design&quot;&gt;Design&lt;/h2&gt;
-
-&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong&gt;The Amplifier Circuit&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;As I mentioned earlier, LM1875 is a pretty easy-to-use audio amplifier IC. According to its manufacturer, Texas Instruments, LM1875 is a high-performance and low-distortion amplifier designed to operate with minimum external components. To work out my own design, I referred to a number of designs made by other audio hobbyists as well as the reference design provided in LM1875’s datasheet. The following sources have been valuable:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt; LM1875 datasheet, available at &lt;a href=&quot;http://www.ti.com/product/LM1875&quot;&gt;here&lt;/a&gt; &lt;/li&gt;
-  &lt;li&gt; An audio hobbyist&#39;s design, unknown author, available at &lt;a href=&quot;https://sites.google.com/site/amplificatoare/lm1875-audio-amplifier-20w&quot;&gt;here&lt;/a&gt; &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Fig.1 shows the schematic of the amplifier circuit. The supply voltages, V+ and V-, are +16V and -16V respectively. The closed loop gain of the circuit is about 26.4dB. Resistor R6 and capacitor C9 form a low-pass filter, screening out high-frequency noise from input. Inductors L1 and L2 and resistor R12 form another low-pass filter, taking out high-frequency noise from amplifier output. Audio signal input and feed-back GND is isolated from the real power ground by a 10-ohm resistor, R7. This design further reduces noise.&lt;/p&gt;
-
-&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong&gt;The Power Supply Circuit&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Fig.2 shows the schematic of the power supply circuit. The power supply unit takes in 12VAC, rectifies and filters it, giving out +-16VDC outputs. I may have added more filtering capacitors than actually needed. But it helps reduce output voltage ripples.&lt;/p&gt;
-
-&lt;figure class=&quot;half&quot;&gt;
-    &lt;a href=&quot;/images/2016-05-02-LM1875-Audio-Amplifier/amplifier-circuit.png&quot;&gt;&lt;img src=&quot;/images/2016-05-02-LM1875-Audio-Amplifier/amplifier-circuit.png&quot; /&gt;&lt;/a&gt;
-    &lt;a href=&quot;/images/2016-05-02-LM1875-Audio-Amplifier/power-supply-circuit.png&quot;&gt;&lt;img src=&quot;/images/2016-05-02-LM1875-Audio-Amplifier/power-supply-circuit.png&quot; /&gt;&lt;/a&gt;
-    &lt;figcaption&gt;Fig.1 (Left) Amplifier circuit schematic&lt;/figcaption&gt;
-    &lt;figcaption&gt;Fig.2 (Right) Power supply circuit schematic&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong&gt;Others Circuits&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;The amplifier also features a number of other circuits:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;A simple in-rush current limiter (ICL) circuit, to slow down the charging process of power supply capacitors on power-up (Fig.3).&lt;/li&gt;
-  &lt;li&gt;A manual-controlled speaker protection circuit, protecting the speakers from the start-up transients. The speakers are simply disconnected from amplifier output when the amplifier is powering up. After full power-up, the speakers are re-connected. This is realized using 2 relays, which are in turn controlled manually, using a switch (Fig.4).&lt;/li&gt;
-  &lt;li&gt;A potentiometer for volume adjustment. It in fact builds 2 potentiometers on the same axis, allowing volume of both Left and Right channels to be adjusted equally. On the same axis there is also a rotary switch, which I use to control the speaker protection circuit.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;figure class=&quot;half&quot;&gt;
-    &lt;a href=&quot;/images/2016-05-02-LM1875-Audio-Amplifier/ICL-circuit.png&quot;&gt;&lt;img src=&quot;/images/2016-05-02-LM1875-Audio-Amplifier/ICL-circuit.png&quot; /&gt;&lt;/a&gt;
-    &lt;a href=&quot;/images/2016-05-02-LM1875-Audio-Amplifier/speaker-protection-circuit.png&quot;&gt;&lt;img src=&quot;/images/2016-05-02-LM1875-Audio-Amplifier/speaker-protection-circuit.png&quot; /&gt;&lt;/a&gt;
-    &lt;figcaption&gt;Fig.3 (Left) Inrush current limiter (ICL) circuit schematic&lt;/figcaption&gt;
-    &lt;figcaption&gt;Fig.4 (Right) Speaker protection circuit schematic&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;The working principle of the ICL circuit is simple. As shown in Fig.3, on power-up, the relay SW4 is in OFF state, and AC current has to flow through the 56-ohm resistor R-ICL, which limits the charging current of the power supply capacitors. When the power supply output voltage rises to a level (around 12V), SW4 is activated (into ON state), short-connecting R-ICL. The power supply then finishes charging, and no current flows through R-ICL in normal amplifier operation. The 2 terminals, V-IN and PE1, are used to sense the power-supply output voltage. With the ICL circuit, the power supply fully starts up in around 8 seconds.&lt;/p&gt;
-
-&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong&gt;The PCBs&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Fig.5 and Fig.6 shows the PCB layouts of the amplifier circuit and power supply circuit. I quickly sketched them using Eagle, and am not sure whether everything is perfect. A few useful guidelines in the amplifier circuit PCB layout:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt; Separate small-signal (audio input) and large-signal (amplifier power supply and output) GND. The 2 joins together only at a single point. &lt;/li&gt;
-  &lt;li&gt; Use star-grounding whenever possible. &lt;/li&gt;
-  &lt;li&gt; Try not to let signal and power paths cross one another in different layers, to minimise cross-coupling of noise (in fact I tried to layout all the traces in the same layer). &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;figure class=&quot;half&quot;&gt;
-    &lt;a href=&quot;/images/2016-05-02-LM1875-Audio-Amplifier/amp-pcb.png&quot;&gt;&lt;img src=&quot;/images/2016-05-02-LM1875-Audio-Amplifier/amp-pcb.png&quot; /&gt;&lt;/a&gt;
-    &lt;a href=&quot;/images/2016-05-02-LM1875-Audio-Amplifier/power-supply-pcb.png&quot;&gt;&lt;img src=&quot;/images/2016-05-02-LM1875-Audio-Amplifier/power-supply-pcb.png&quot; /&gt;&lt;/a&gt;
-    &lt;figcaption&gt;Fig.5 (Left) Amplifier circuit PCB&lt;/figcaption&gt;
-    &lt;figcaption&gt;Fig.6 (Right) Power supply circuit PCB&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;to be continued.&lt;/p&gt;
-
-</content>
-<category term="tech" />
-<category term="DIY" />
-<summary>I am not (yet) a big fan of Hi-Fi audio. However, driven by some interests and some willingness to explore new things, I decided to build my own in-house audio amplifier, using the famous LM1875 audio power amplifier IC. LM1875 is a (supposedly) easy-to-use audio amplifier IC, with numerous reference designs available from the internet. For a first-time try-out, using this IC should guarantee reasonable sound quality without too much debugging efforts. Staying within beginner-friendly region, at least for the first few times, is always smart.</summary>
 </entry>
 <entry>
 <title>First Post</title>

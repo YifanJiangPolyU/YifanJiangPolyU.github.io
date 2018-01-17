@@ -22,7 +22,7 @@ As I mentioned earlier, LM1875 is a pretty easy-to-use audio amplifier IC. Accor
   <li> An audio hobbyist's design, unknown author, available at <a href="https://sites.google.com/site/amplificatoare/lm1875-audio-amplifier-20w">here</a> </li>
 </ul>
 
-Fig.1 shows the schematic of the amplifier circuit. The supply voltages, V+ and V-, are +16V and -16V respectively. The closed loop gain of the circuit is about 26.4dB. Resistor R6 and capacitor C9 form a low-pass filter, screening out high-frequency noise from input. Inductors L1 and L2 and resistor R12 form another low-pass filter, taking out high-frequency noise from amplifier output. Audio signal input and feed-back GND is isolated from the real power ground by a 10-ohm resistor, R7. This design further reduces noise. 
+Fig.1 shows the schematic of the amplifier circuit. The supply voltages, V+ and V-, are +16V and -16V respectively. The closed loop gain of the circuit is about 26.4dB. Resistor R6 and capacitor C9 form a low-pass filter, screening out high-frequency noise from input. Inductors L1 and L2 and resistor R12 form another low-pass filter, taking out high-frequency noise from amplifier output. Audio signal input and feed-back GND is isolated from the real power ground by a 10-ohm resistor, R7. This design further reduces noise.
 
 <strong>The Power Supply Circuit</strong>
 {: style="text-align: center;"}
@@ -72,5 +72,3 @@ Fig.5 and Fig.6 shows the PCB layouts of the amplifier circuit and power supply 
 </figure>
 
 to be continued.
-
-
