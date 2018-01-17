@@ -13,9 +13,9 @@ Recently I had the pleasure to work on what is probably the best-made Series
 Elastic Actuator (SEA) module in the world: the <a
 href="https://www.anybotics.com/anydrive/">ANYdrive</a>. from Robotic Systems
 Lab at ETH Zürich. I took this chance to try out something really novel: a Model
-Predictive Controller (MPC) for this SEA, but not a normal MPC. **Due to my
-agreement with ETH, I'll only talk about the controller that I designed, no
-details about the ANYdrive or its secrets :)** But feel free take a look at <a
+Predictive Controller (MPC) for this SEA, but not a normal MPC. No specs or
+details about the design of the ANYdrive will be discussed because those are
+proprietary. But feel free take a look at <a
 href="https://www.anybotics.com/">ANYbotics</a>.
 
 You can click on the <a class="btn btn--info">blue buttons</a> to navigate in
@@ -24,7 +24,8 @@ this post.
 <a href="#tag_intro" class="btn btn--info">Introduction</a>
 <a href="#tag_modeling" class="btn btn--info">Modeling</a>
 <a href="#tag_control" class="btn btn--info">The Controller</a>
-
+<a href="#tag_experiment" class="btn btn--info">Experimental Results</a>
+<a href="#tag_conclusion" class="btn btn--info">Conclusion</a>
 
 <A NAME="tag_intro">
 
@@ -112,6 +113,69 @@ The resulting state space equation of the ANYdrive then looks like this:
 In fact all SEAs that are driven by a PMSM can be modeled this way. This model
 is therefore potentially applicable to many other SEAs.
 
+The parameters of the model are identified in a series of experiments. Then, the
+response of the real SEA in an experiment is compared to the result of a
+numerical simulation using the model (implemented in <a
+href="https://ch.mathworks.com/products/simulink.html">Simulink</a>). Results
+are seen in figures below.
+
+<figure class="half">
+    <a href="/images/2018-01-10-MPC-SEA/verify-model-time.png"><img src="/images/2018-01-10-MPC-SEA/verify-model-time.png"></a>
+    <a href="/images/2018-01-10-MPC-SEA/verify-model-bode.png"><img src="/images/2018-01-10-MPC-SEA/verify-model-bode.png"></a>
+    <figcaption>Comparison between Experimental Data and Numerical Simulation</figcaption>
+</figure>
+
+The fact that simulation matches well with experimental data shows the validity
+and accuracy of the model.
+
 <A NAME="tag_control">
 
 ## The Controller
+
+The controller is essentially an MPC that controls the deflection of the spring.
+The following steps are involved at each timestep:
+
+1. measurements of the state variables are taken
+2. desired joint torque is converted to the desired spring deflection (using Hooke's law)
+3. the system model derived before is linearized about the measured states
+4. formulate a finite-horizon linear-quadratic-regulator (LQR) for the linearized system
+5. solve this LOR deterministically, using the dynamic programming algorithm.
+6. apply the computed optimal action (i.e. voltage) to the motor
+
+Similar to most MPCs, this control law is relatively computationally expensive.
+It was a challenge to implement it in the MCU that controls the SEA, which is
+strictly real-time. In spite of that I successfully coded it in a bare-metal
+way, and was able to run the controller deterministically at 2500 Hz.
+
+<A NAME="tag_experiment">
+
+## Experimental Results
+
+The controller is verified experimentally. In the figures, this MPC controller
+is referred to as the MBUTC.
+
+First, I blocked the output shaft of the SEA, and applied a step input (desired
+joint torque) to the controller.
+
+<A NAME="tag_conclusion">
+
+## Conclusion
+
+It's a pitty that the MPC controller actually gives worse performance than the
+default PID controller. Although I don't want to admit that, I'll just have to
+face the music LOL.
+
+I thought about a few explanations for this results, which I'd share below:
+
+1. the MPC controller does not have a integrator action to eliminate steady-state error.
+2. the MPC is too short-sighted, due to the finite (and short) horizon used here.
+3. the model of static friction is not perfect (the model is continous w.r.t velocity, but the real static friction is not).
+
+The most promising candidate for improvement is to add an disturbance observer
+to this MPC. An disturbance observer will help eliminating steady-state error,
+and may be able to mitigate the effect of imperfect friction model.
+
+It's time to say goodbye to the lovely ANYdrive, so it's unlikely I'll have a
+chance to test my algorithm on the real system in the near future. I'll
+nevertheless try some fixes (inc. the disturbance observer) in my free time
+using simulations, and hope to see some more positive results.

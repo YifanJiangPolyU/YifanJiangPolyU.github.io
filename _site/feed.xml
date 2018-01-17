@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.1.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-01-13T14:57:52+01:00</updated><id>/</id><title>Yifan Jiang</title><subtitle>My personal homepage.</subtitle><author><name>Yifan Jiang</name></author><entry><title>Dairy</title><link href="/post/Dairy-2017-2018/" rel="alternate" type="text/html" title="Dairy" /><published>2017-02-25T00:00:00+01:00</published><updated>2017-02-25T00:00:00+01:00</updated><id>/post/Dairy-2017-2018</id><content type="html" xml:base="/post/Dairy-2017-2018/">&lt;p&gt;A dairy-like record of interesting moments in my life~ I’ll keep updating ~&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<generator uri="http://jekyllrb.com" version="3.0.3">Jekyll</generator>
+<link href="/feed.xml" rel="self" type="application/atom+xml" />
+<link href="/" rel="alternate" type="text/html" />
+<updated>2018-01-17T20:30:43+01:00</updated>
+<id>/</id>
+<title>Yifan Jiang</title>
+<subtitle>My personal homepage.</subtitle>
+<author>
+<name>Yifan Jiang</name>
+</author>
+<entry>
+<title>Dairy</title>
+<link href="/post/Dairy-2017-2018/" rel="alternate" type="text/html" title="Dairy" />
+<published>2017-02-25T00:00:00+01:00</published>
+<updated>2017-02-25T00:00:00+01:00</updated>
+<id>/post/Dairy-2017-2018</id>
+<content type="html" xml:base="/post/Dairy-2017-2018/">&lt;p&gt;A dairy-like record of interesting moments in my life~ I’ll keep updating ~&lt;/p&gt;
 
 &lt;h2 id=&quot;sep-2017&quot;&gt;Sep 2017&lt;/h2&gt;
 &lt;p&gt;An interesting jorney has ended, and another one must start. Having finished the internship at Maxon Motor, it’s time to go back to school and be academic again :)&lt;/p&gt;
@@ -22,7 +40,19 @@
 &lt;p&gt;Have been doing a part-time job at ETH’s famous Robotic System Lab (RSL) for a few months, a fantastic experience! RSL is among the world’s best labs that study quadrupedal robots, or “robotic dogs” as I like call them. It’s really exciting to see it walk and jump. Digging deep into the low-level control systems for the robot is also full of fun.&lt;/p&gt;
 &lt;figure&gt;
     &lt;a href=&quot;/images/Life-Collection/2017-01-me-with-dog.jpg&quot;&gt;&lt;img src=&quot;/images/Life-Collection/2017-01-me-with-dog.jpg&quot; /&gt;&lt;/a&gt;
-&lt;/figure&gt;</content><author><name>Yifan Jiang</name></author><category term="Hobby" /><category term="life" /><summary>A dairy-like record of interesting moments in my life~ I’ll keep updating ~</summary></entry><entry><title>Dairy Archive</title><link href="/post/Dairy-Archive/" rel="alternate" type="text/html" title="Dairy Archive" /><published>2016-08-21T00:00:00+02:00</published><updated>2016-08-21T00:00:00+02:00</updated><id>/post/Dairy-Archive</id><content type="html" xml:base="/post/Dairy-Archive/">&lt;h2 id=&quot;section&quot;&gt;2016&lt;/h2&gt;
+&lt;/figure&gt;
+</content>
+<category term="Hobby" />
+<category term="life" />
+<summary>A dairy-like record of interesting moments in my life~ I’ll keep updating ~</summary>
+</entry>
+<entry>
+<title>Dairy Archive</title>
+<link href="/post/Dairy-Archive/" rel="alternate" type="text/html" title="Dairy Archive" />
+<published>2016-08-21T00:00:00+02:00</published>
+<updated>2016-08-21T00:00:00+02:00</updated>
+<id>/post/Dairy-Archive</id>
+<content type="html" xml:base="/post/Dairy-Archive/">&lt;h2 id=&quot;section&quot;&gt;2016&lt;/h2&gt;
 &lt;p&gt;Travelling to Dawson city in Canada, a small town that took shape in early the 20th century because of the famous gold rush. Although it still produces some gold today, the town has almost lost its past glories. Glad to have found this nice slide rule in an antique shop in Dawson. I’ve wanted to own a slide rule for a long time. This little piece of history brings me back to the days before calculators, a deep emotional connection.&lt;/p&gt;
 &lt;figure&gt;
     &lt;a href=&quot;/images/Life-Collection/2016-08-20-slide-rule.jpg&quot;&gt;&lt;img src=&quot;/images/Life-Collection/2016-08-20-slide-rule.jpg&quot; /&gt;&lt;/a&gt;
@@ -49,8 +79,19 @@
 &lt;figure class=&quot;half&quot;&gt;
     &lt;a href=&quot;/images/Life-Collection/Montreal-ice.JPG&quot;&gt;&lt;img src=&quot;/images/Life-Collection/Montreal-ice.JPG&quot; /&gt;&lt;/a&gt;
     &lt;a href=&quot;/images/Life-Collection/Montreal-squirrel.jpg&quot;&gt;&lt;img src=&quot;/images/Life-Collection/Montreal-squirrel.jpg&quot; /&gt;&lt;/a&gt;
-&lt;/figure&gt;</content><author><name>Yifan Jiang</name></author><category term="Hobby" /><category term="life" /><summary>2016
-Travelling to Dawson city in Canada, a small town that took shape in early the 20th century because of the famous gold rush. Although it still produces some gold today, the town has almost lost its past glories. Glad to have found this nice slide rule in an antique shop in Dawson. I’ve wanted to own a slide rule for a long time. This little piece of history brings me back to the days before calculators, a deep emotional connection.</summary></entry><entry><title>My First Home Made HiFi Audio Decoder and Amplifier</title><link href="/post/Audio-Decoder/" rel="alternate" type="text/html" title="My First Home Made HiFi Audio Decoder and Amplifier" /><published>2016-07-28T00:00:00+02:00</published><updated>2016-07-28T00:00:00+02:00</updated><id>/post/Audio-Decoder</id><content type="html" xml:base="/post/Audio-Decoder/">&lt;p&gt;Recently I developed my first in-house hi-fi audio decoder + amplifier project. Having tested it with my own ears I was very much surprised by the outstanding sound quality. Considering the fact that this project has costed me less than 300 HKD (thanks to cheap PCBs from Shenzhen), I am sooooo happy with the result! It has a name: “JAudio Decoder Amp”&lt;/p&gt;
+&lt;/figure&gt;
+</content>
+<category term="Hobby" />
+<category term="life" />
+<summary>2016Travelling to Dawson city in Canada, a small town that took shape in early the 20th century because of the famous gold rush. Although it still produces some gold today, the town has almost lost its past glories. Glad to have found this nice slide rule in an antique shop in Dawson. I’ve wanted to own a slide rule for a long time. This little piece of history brings me back to the days before calculators, a deep emotional connection.    </summary>
+</entry>
+<entry>
+<title>My First Home Made HiFi Audio Decoder and Amplifier</title>
+<link href="/post/Audio-Decoder/" rel="alternate" type="text/html" title="My First Home Made HiFi Audio Decoder and Amplifier" />
+<published>2016-07-28T00:00:00+02:00</published>
+<updated>2016-07-28T00:00:00+02:00</updated>
+<id>/post/Audio-Decoder</id>
+<content type="html" xml:base="/post/Audio-Decoder/">&lt;p&gt;Recently I developed my first in-house hi-fi audio decoder + amplifier project. Having tested it with my own ears I was very much surprised by the outstanding sound quality. Considering the fact that this project has costed me less than 300 HKD (thanks to cheap PCBs from Shenzhen), I am sooooo happy with the result! It has a name: “JAudio Decoder Amp”&lt;/p&gt;
 
 &lt;h2 id=&quot;the-design&quot;&gt;The Design&lt;/h2&gt;
 
@@ -104,7 +145,20 @@ Travelling to Dawson city in Canada, a small town that took shape in early the 2
     &lt;a href=&quot;/images/2016-07-31-Audio-Decoder/case-2.jpg&quot;&gt;&lt;img src=&quot;/images/2016-07-31-Audio-Decoder/case-2.jpg&quot; /&gt;&lt;/a&gt;
     &lt;figcaption&gt;Fig.6 (Left) JAudio Decoder Amp, In a Lovely Case&lt;/figcaption&gt;
     &lt;figcaption&gt;Fig.7 (Right) In Use&lt;/figcaption&gt;
-&lt;/figure&gt;</content><author><name>Yifan Jiang</name></author><category term="Hobby" /><category term="DIY" /><summary>Recently I developed my first in-house hi-fi audio decoder + amplifier project. Having tested it with my own ears I was very much surprised by the outstanding sound quality. Considering the fact that this project has costed me less than 300 HKD (thanks to cheap PCBs from Shenzhen), I am sooooo happy with the result! It has a name: “JAudio Decoder Amp”</summary></entry><entry><title>UAV Communication Relay for another UAV</title><link href="/post/UAV-Communication-Relay-for-another-UAV/" rel="alternate" type="text/html" title="UAV Communication Relay for another UAV" /><published>2016-05-30T00:00:00+02:00</published><updated>2016-05-30T00:00:00+02:00</updated><id>/post/UAV-Communication-Relay-for-another-UAV</id><content type="html" xml:base="/post/UAV-Communication-Relay-for-another-UAV/">&lt;p&gt;This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea about what I’ve done. This project was a teamwork, I could not complete it without my team mates Cai Lingfeng and Wan Hiu Fung. I would also like to thank our supervisor Prof Wen Chih Yung, an absolutely nice and helpful prof.&lt;/p&gt;
+&lt;/figure&gt;
+
+</content>
+<category term="Hobby" />
+<category term="DIY" />
+<summary>Recently I developed my first in-house hi-fi audio decoder + amplifier project. Having tested it with my own ears I was very much surprised by the outstanding sound quality. Considering the fact that this project has costed me less than 300 HKD (thanks to cheap PCBs from Shenzhen), I am sooooo happy with the result! It has a name: “JAudio Decoder Amp”</summary>
+</entry>
+<entry>
+<title>UAV Communication Relay for another UAV</title>
+<link href="/post/UAV-Communication-Relay-for-another-UAV/" rel="alternate" type="text/html" title="UAV Communication Relay for another UAV" />
+<published>2016-05-30T00:00:00+02:00</published>
+<updated>2016-05-30T00:00:00+02:00</updated>
+<id>/post/UAV-Communication-Relay-for-another-UAV</id>
+<content type="html" xml:base="/post/UAV-Communication-Relay-for-another-UAV/">&lt;p&gt;This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea about what I’ve done. This project was a teamwork, I could not complete it without my team mates Cai Lingfeng and Wan Hiu Fung. I would also like to thank our supervisor Prof Wen Chih Yung, an absolutely nice and helpful prof.&lt;/p&gt;
 
 &lt;p&gt;This project has helped us win &lt;strong&gt;champion&lt;/strong&gt; at the &lt;a href=&quot;http://www.iaa.ncku.edu.tw/~whlai/uav/2016/index.html&quot;&gt;2016 Taiwan Unmanned Aircraft Design Competition&lt;/a&gt; (website in Chinese), in which we take great pride. we are also looking to publish a paper based on it.&lt;/p&gt;
 
@@ -219,7 +273,19 @@ rtl              return to home position, and land there
 &lt;figure&gt;
     &lt;a href=&quot;/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/RSSI.png&quot;&gt;&lt;img src=&quot;/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/RSSI.png&quot; /&gt;&lt;/a&gt;
     &lt;figcaption&gt;Fig.10 Radio signal &amp;amp; noise level, between &quot;Son&quot; and GCS&lt;/figcaption&gt;
-&lt;/figure&gt;</content><author><name>Yifan Jiang</name></author><category term="tech" /><summary>This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea about what I’ve done. This project was a teamwork, I could not complete it without my team mates Cai Lingfeng and Wan Hiu Fung. I would also like to thank our supervisor Prof Wen Chih Yung, an absolutely nice and helpful prof.</summary></entry><entry><title>Audio Amplifier based on LM1875</title><link href="/post/LM1875-Audio-Amplifier/" rel="alternate" type="text/html" title="Audio Amplifier based on LM1875" /><published>2016-05-02T00:00:00+02:00</published><updated>2016-05-02T00:00:00+02:00</updated><id>/post/LM1875-Audio-Amplifier</id><content type="html" xml:base="/post/LM1875-Audio-Amplifier/">&lt;p&gt;I am not (yet) a big fan of Hi-Fi audio. However, driven by some interests and some willingness to explore new things, I decided to build my own in-house audio amplifier, using the famous LM1875 audio power amplifier IC. LM1875 is a (supposedly) easy-to-use audio amplifier IC, with numerous reference designs available from the internet. For a first-time try-out, using this IC should guarantee reasonable sound quality without too much debugging efforts. Staying within beginner-friendly region, at least for the first few times, is always smart.&lt;/p&gt;
+&lt;/figure&gt;
+
+</content>
+<category term="tech" />
+<summary>This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea about what I’ve done. This project was a teamwork, I could not complete it without my team mates Cai Lingfeng and Wan Hiu Fung. I would also like to thank our supervisor Prof Wen Chih Yung, an absolutely nice and helpful prof.</summary>
+</entry>
+<entry>
+<title>Audio Amplifier based on LM1875</title>
+<link href="/post/LM1875-Audio-Amplifier/" rel="alternate" type="text/html" title="Audio Amplifier based on LM1875" />
+<published>2016-05-02T00:00:00+02:00</published>
+<updated>2016-05-02T00:00:00+02:00</updated>
+<id>/post/LM1875-Audio-Amplifier</id>
+<content type="html" xml:base="/post/LM1875-Audio-Amplifier/">&lt;p&gt;I am not (yet) a big fan of Hi-Fi audio. However, driven by some interests and some willingness to explore new things, I decided to build my own in-house audio amplifier, using the famous LM1875 audio power amplifier IC. LM1875 is a (supposedly) easy-to-use audio amplifier IC, with numerous reference designs available from the internet. For a first-time try-out, using this IC should guarantee reasonable sound quality without too much debugging efforts. Staying within beginner-friendly region, at least for the first few times, is always smart.&lt;/p&gt;
 
 &lt;h2 id=&quot;design&quot;&gt;Design&lt;/h2&gt;
 
@@ -279,11 +345,36 @@ rtl              return to home position, and land there
     &lt;figcaption&gt;Fig.6 (Right) Power supply circuit PCB&lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;p&gt;to be continued.&lt;/p&gt;</content><author><name>Yifan Jiang</name></author><category term="tech" /><category term="DIY" /><summary>I am not (yet) a big fan of Hi-Fi audio. However, driven by some interests and some willingness to explore new things, I decided to build my own in-house audio amplifier, using the famous LM1875 audio power amplifier IC. LM1875 is a (supposedly) easy-to-use audio amplifier IC, with numerous reference designs available from the internet. For a first-time try-out, using this IC should guarantee reasonable sound quality without too much debugging efforts. Staying within beginner-friendly region, at least for the first few times, is always smart.</summary></entry><entry><title>First Post</title><link href="/post/try/" rel="alternate" type="text/html" title="First Post" /><published>2016-04-25T00:00:00+02:00</published><updated>2016-04-25T00:00:00+02:00</updated><id>/post/try</id><content type="html" xml:base="/post/try/">&lt;p&gt;Hey guys. I am trying to construct a personal homepage, and this is my very first post. GitHub provids a really convenient place to host my homepage, and Jekyll is making the development easy.&lt;/p&gt;
+&lt;p&gt;to be continued.&lt;/p&gt;
+
+</content>
+<category term="tech" />
+<category term="DIY" />
+<summary>I am not (yet) a big fan of Hi-Fi audio. However, driven by some interests and some willingness to explore new things, I decided to build my own in-house audio amplifier, using the famous LM1875 audio power amplifier IC. LM1875 is a (supposedly) easy-to-use audio amplifier IC, with numerous reference designs available from the internet. For a first-time try-out, using this IC should guarantee reasonable sound quality without too much debugging efforts. Staying within beginner-friendly region, at least for the first few times, is always smart.</summary>
+</entry>
+<entry>
+<title>First Post</title>
+<link href="/post/try/" rel="alternate" type="text/html" title="First Post" />
+<published>2016-04-25T00:00:00+02:00</published>
+<updated>2016-04-25T00:00:00+02:00</updated>
+<id>/post/try</id>
+<content type="html" xml:base="/post/try/">&lt;p&gt;Hey guys. I am trying to construct a personal homepage, and this is my very first post. GitHub provids a really convenient place to host my homepage, and Jekyll is making the development easy.&lt;/p&gt;
 
 &lt;p&gt;Building a homepage requires consistent efforts. I will try to add interesting things to it bit by bit, and hopefully one day this homepage will become lively and interesting.&lt;/p&gt;
 
-&lt;p&gt;Don’t be surprised to see posts earlier than this “First Post”, because when I move old stuff into this website, I’ll keep the original date.&lt;/p&gt;</content><author><name>Yifan Jiang</name></author><category term="life" /><summary>Hey guys. I am trying to construct a personal homepage, and this is my very first post. GitHub provids a really convenient place to host my homepage, and Jekyll is making the development easy.</summary></entry><entry><title>Building a 3-Phase Servo Motor Driver</title><link href="/post/Servo-Motor-Driver-Project/" rel="alternate" type="text/html" title="Building a 3-Phase Servo Motor Driver" /><published>2014-05-10T00:00:00+02:00</published><updated>2014-05-10T00:00:00+02:00</updated><id>/post/Servo-Motor-Driver-Project</id><content type="html" xml:base="/post/Servo-Motor-Driver-Project/">&lt;p&gt;In the past few months I was intensively exposed to servo motors: their constructions, working principles, and driving circuits, thanks to my internship. These motors are brushless, driven by 3-phase AC currents, and when properly controlled (as in my internship company), can execute motion with nanometer-level of resolution. The science and technology behind these motors deeply fascinated me, which inspired me to try building my own 3-phase servo motor driver, one of the core components in the motor’s control.&lt;/p&gt;
+&lt;p&gt;Don’t be surprised to see posts earlier than this “First Post”, because when I move old stuff into this website, I’ll keep the original date.&lt;/p&gt;
+
+</content>
+<category term="life" />
+<summary>Hey guys. I am trying to construct a personal homepage, and this is my very first post. GitHub provids a really convenient place to host my homepage, and Jekyll is making the development easy.</summary>
+</entry>
+<entry>
+<title>Building a 3-Phase Servo Motor Driver</title>
+<link href="/post/Servo-Motor-Driver-Project/" rel="alternate" type="text/html" title="Building a 3-Phase Servo Motor Driver" />
+<published>2014-05-10T00:00:00+02:00</published>
+<updated>2014-05-10T00:00:00+02:00</updated>
+<id>/post/Servo-Motor-Driver-Project</id>
+<content type="html" xml:base="/post/Servo-Motor-Driver-Project/">&lt;p&gt;In the past few months I was intensively exposed to servo motors: their constructions, working principles, and driving circuits, thanks to my internship. These motors are brushless, driven by 3-phase AC currents, and when properly controlled (as in my internship company), can execute motion with nanometer-level of resolution. The science and technology behind these motors deeply fascinated me, which inspired me to try building my own 3-phase servo motor driver, one of the core components in the motor’s control.&lt;/p&gt;
 
 &lt;p&gt;The 3-phase servo motor driver is essentially a 3-phase DC-to-AC converter, which provides current measurement and feedback for control purpose. The major functional blocks of the driver are as follows:&lt;/p&gt;
 
@@ -375,7 +466,20 @@ rtl              return to home position, and land there
 &lt;figure&gt;
     &lt;a href=&quot;/images/2014-05-10-Servo-Motor-Driver-Project/test-product.jpg&quot;&gt;&lt;img src=&quot;/images/2014-05-10-Servo-Motor-Driver-Project/test-product.jpg&quot; /&gt;&lt;/a&gt;
     &lt;figcaption&gt;Fig.13 Driving a Brushed DC Motor&lt;/figcaption&gt;
-&lt;/figure&gt;</content><author><name>Yifan Jiang</name></author><category term="tech" /><category term="DIY" /><category term="hobby" /><summary>In the past few months I was intensively exposed to servo motors: their constructions, working principles, and driving circuits, thanks to my internship. These motors are brushless, driven by 3-phase AC currents, and when properly controlled (as in my internship company), can execute motion with nanometer-level of resolution. The science and technology behind these motors deeply fascinated me, which inspired me to try building my own 3-phase servo motor driver, one of the core components in the motor’s control.</summary></entry><entry><title>Learning Logic Circuits with Minecraft</title><link href="/post/Minecraft/" rel="alternate" type="text/html" title="Learning Logic Circuits with Minecraft" /><published>2013-06-10T00:00:00+02:00</published><updated>2013-06-10T00:00:00+02:00</updated><id>/post/Minecraft</id><content type="html" xml:base="/post/Minecraft/">&lt;p&gt;I’m not a game person, and I rarely play games. However, there’s one game to which I’m particularly addicted: Minecraft!!!&lt;/p&gt;
+&lt;/figure&gt;
+</content>
+<category term="tech" />
+<category term="DIY" />
+<category term="hobby" />
+<summary>In the past few months I was intensively exposed to servo motors: their constructions, working principles, and driving circuits, thanks to my internship. These motors are brushless, driven by 3-phase AC currents, and when properly controlled (as in my internship company), can execute motion with nanometer-level of resolution. The science and technology behind these motors deeply fascinated me, which inspired me to try building my own 3-phase servo motor driver, one of the core components in the motor’s control.</summary>
+</entry>
+<entry>
+<title>Learning Logic Circuits with Minecraft</title>
+<link href="/post/Minecraft/" rel="alternate" type="text/html" title="Learning Logic Circuits with Minecraft" />
+<published>2013-06-10T00:00:00+02:00</published>
+<updated>2013-06-10T00:00:00+02:00</updated>
+<id>/post/Minecraft</id>
+<content type="html" xml:base="/post/Minecraft/">&lt;p&gt;I’m not a game person, and I rarely play games. However, there’s one game to which I’m particularly addicted: Minecraft!!!&lt;/p&gt;
 
 &lt;p&gt;Minecraft is a game which allows you to build things in it, using pre-defined blocks. There are so many types of blocks and so many ways to combine them that there is virtually no limit on what you can build: houses, gardens, weapons, trains, and even computers! Minecraft has so many interesting aspects, find out by yourself at &lt;a href=&quot;https://minecraft.net/&quot;&gt;their homepage&lt;/a&gt;!&lt;/p&gt;
 
@@ -390,4 +494,10 @@ rtl              return to home position, and land there
     &lt;figcaption&gt;Fig.1 (Left) OR gate, my design&lt;/figcaption&gt;
     &lt;figcaption&gt;Fig.2 (Mid) 8-bit binary adder/subtractor&lt;/figcaption&gt;
     &lt;figcaption&gt;Fig.3 (Right) 4-bit binary multiplier&lt;/figcaption&gt;
-&lt;/figure&gt;</content><author><name>Yifan Jiang</name></author><category term="life" /><category term="hobby" /><summary>I’m not a game person, and I rarely play games. However, there’s one game to which I’m particularly addicted: Minecraft!!!</summary></entry></feed>
+&lt;/figure&gt;
+</content>
+<category term="life" />
+<category term="hobby" />
+<summary>I’m not a game person, and I rarely play games. However, there’s one game to which I’m particularly addicted: Minecraft!!!</summary>
+</entry>
+</feed>

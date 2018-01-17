@@ -34,7 +34,7 @@
 
 
 
-  <meta property="og:description" content="Recently I had the pleasure to work on what is probably the best-made SeriesElastic Actuator (SEA) module in the world: the ANYdrive. from Robotic SystemsLab at ETH Zürich. I took this chance to try out something really novel: a ModelPredictive Controller (MPC) for this SEA, but not a normal MPC. Due to myagreement with ETH, I’ll only talk about the controller that I designed, nodetails about the ANYdrive or its secrets :) But feel free take a look at ANYbotics.">
+  <meta property="og:description" content="Recently I had the pleasure to work on what is probably the best-made SeriesElastic Actuator (SEA) module in the world: the ANYdrive. from Robotic SystemsLab at ETH Zürich. I took this chance to try out something really novel: a ModelPredictive Controller (MPC) for this SEA, but not a normal MPC. No specs ordetails about the design of the ANYdrive will be discussed because those areproprietary. But feel free take a look at ANYbotics.">
 
 
 
@@ -197,7 +197,7 @@
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Model Predictive Control of a Series Elastic Actuator">
-    <meta itemprop="description" content="Recently I had the pleasure to work on what is probably the best-made SeriesElastic Actuator (SEA) module in the world: the ANYdrive. from Robotic SystemsLab at ETH Zürich. I took this chance to try out something really novel: a ModelPredictive Controller (MPC) for this SEA, but not a normal MPC. Due to myagreement with ETH, I’ll only talk about the controller that I designed, nodetails about the ANYdrive or its secrets :) But feel free take a look at ANYbotics.">
+    <meta itemprop="description" content="Recently I had the pleasure to work on what is probably the best-made SeriesElastic Actuator (SEA) module in the world: the ANYdrive. from Robotic SystemsLab at ETH Zürich. I took this chance to try out something really novel: a ModelPredictive Controller (MPC) for this SEA, but not a normal MPC. No specs ordetails about the design of the ANYdrive will be discussed because those areproprietary. But feel free take a look at ANYbotics.">
     <meta itemprop="datePublished" content="January 10, 2018">
     
 
@@ -210,7 +210,7 @@
             <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
 
 
-  5 minutes read
+  9 minutes read
 </p>
           
         </header>
@@ -220,16 +220,18 @@
         <p>Recently I had the pleasure to work on what is probably the best-made Series
 Elastic Actuator (SEA) module in the world: the <a href="https://www.anybotics.com/anydrive/">ANYdrive</a>. from Robotic Systems
 Lab at ETH Zürich. I took this chance to try out something really novel: a Model
-Predictive Controller (MPC) for this SEA, but not a normal MPC. <strong>Due to my
-agreement with ETH, I’ll only talk about the controller that I designed, no
-details about the ANYdrive or its secrets :)</strong> But feel free take a look at <a href="https://www.anybotics.com/">ANYbotics</a>.</p>
+Predictive Controller (MPC) for this SEA, but not a normal MPC. No specs or
+details about the design of the ANYdrive will be discussed because those are
+proprietary. But feel free take a look at <a href="https://www.anybotics.com/">ANYbotics</a>.</p>
 
 <p>You can click on the <a class="btn btn--info">blue buttons</a> to navigate in
 this post.</p>
 
 <p><a href="#tag_intro" class="btn btn--info">Introduction</a>
 <a href="#tag_modeling" class="btn btn--info">Modeling</a>
-<a href="#tag_control" class="btn btn--info">The Controller</a></p>
+<a href="#tag_control" class="btn btn--info">The Controller</a>
+<a href="#tag_experiment" class="btn btn--info">Experimental Results</a>
+<a href="#tag_conclusion" class="btn btn--info">Conclusion</a></p>
 
 <p><a name="tag_intro"></a></p>
 
@@ -316,9 +318,75 @@ equation below, Fs is the maximum static friction.</p>
 <p>In fact all SEAs that are driven by a PMSM can be modeled this way. This model
 is therefore potentially applicable to many other SEAs.</p>
 
+<p>The parameters of the model are identified in a series of experiments. Then, the
+response of the real SEA in an experiment is compared to the result of a
+numerical simulation using the model (implemented in <a href="https://ch.mathworks.com/products/simulink.html">Simulink</a>). Results
+are seen in figures below.</p>
+
+<figure class="half">
+    <a href="/images/2018-01-10-MPC-SEA/verify-model-time.png"><img src="/images/2018-01-10-MPC-SEA/verify-model-time.png" /></a>
+    <a href="/images/2018-01-10-MPC-SEA/verify-model-bode.png"><img src="/images/2018-01-10-MPC-SEA/verify-model-bode.png" /></a>
+    <figcaption>Comparison between Experimental Data and Numerical Simulation</figcaption>
+</figure>
+
+<p>The fact that simulation matches well with experimental data shows the validity
+and accuracy of the model.</p>
+
 <p><a name="tag_control"></a></p>
 
 <h2 id="the-controller">The Controller</h2>
+
+<p>The controller is essentially an MPC that controls the deflection of the spring.
+The following steps are involved at each timestep:</p>
+
+<ol>
+  <li>measurements of the state variables are taken</li>
+  <li>desired joint torque is converted to the desired spring deflection (using Hooke’s law)</li>
+  <li>the system model derived before is linearized about the measured states</li>
+  <li>formulate a finite-horizon linear-quadratic-regulator (LQR) for the linearized system</li>
+  <li>solve this LOR deterministically, using the dynamic programming algorithm.</li>
+  <li>apply the computed optimal action (i.e. voltage) to the motor</li>
+</ol>
+
+<p>Similar to most MPCs, this control law is relatively computationally expensive.
+It was a challenge to implement it in the MCU that controls the SEA, which is
+strictly real-time. In spite of that I successfully coded it in a bare-metal
+way, and was able to run the controller deterministically at 2500 Hz.</p>
+
+<p><a name="tag_experiment"></a></p>
+
+<h2 id="experimental-results">Experimental Results</h2>
+
+<p>The controller is verified experimentally. In the figures, this MPC controller
+is referred to as the MBUTC.</p>
+
+<p>First, I blocked the output shaft of the SEA, and applied a step input (desired
+joint torque) to the controller.</p>
+
+<p><a name="tag_conclusion"></a></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>It’s a pitty that the MPC controller actually gives worse performance than the
+default PID controller. Although I don’t want to admit that, I’ll just have to
+face the music LOL.</p>
+
+<p>I thought about a few explanations for this results, which I’d share below:</p>
+
+<ol>
+  <li>the MPC controller does not have a integrator action to eliminate steady-state error.</li>
+  <li>the MPC is too short-sighted, due to the finite (and short) horizon used here.</li>
+  <li>the model of static friction is not perfect (the model is continous w.r.t velocity, but the real static friction is not).</li>
+</ol>
+
+<p>The most promising candidate for improvement is to add an disturbance observer
+to this MPC. An disturbance observer will help eliminating steady-state error,
+and may be able to mitigate the effect of imperfect friction model.</p>
+
+<p>It’s time to say goodbye to the lovely ANYdrive, so it’s unlikely I’ll have a
+chance to test my algorithm on the real system in the near future. I’ll
+nevertheless try some fixes (inc. the disturbance observer) in my free time
+using simulations, and hope to see some more positive results.</p>
 
         
       </section>
@@ -362,6 +430,21 @@ is therefore potentially applicable to many other SEAs.</p>
 
 
 
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#post" class="page__taxonomy-item" rel="tag">post</a>
+    
+    </span>
+  </p>
 
 
 
