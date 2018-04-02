@@ -86,21 +86,21 @@ More details about me? Please see my CV below. Click on the <a class="btn btn--i
 <A NAME="tag_proj">
 <hr>
 # <font color="#000000"> Projects </font>
-<p style="margin:0" ><b><font color="#000000"> Modeling and Control of a Series Elastic Actuator, ETH Zürich (2017-09 ~ 2017-12) </font></b></p>
+<p style="margin:0" ><b><font color="#000000"> Master Thesis: Collaborative Workpiece Manipulation with a Torque-Controllable Robot Arm, ETH Zürich (2018-02 ~ Present) </font></b></p>
 
 <b>Researcher</b>
 
-  * Model the dynamics of a PMSM-driven series elastic actuator, identify model parameters through experiments, and verify the model in simulation and experimentally.
-  * Develop a model-based control algorithm for this actuator to improve trajectory tracking and force control performance.
-  * Verify the performance of this actuator in a quadrupedal walking robot, testing its ability to interact with environmental uncertainties.
+  * Implement and evaluate state-of-the-art control algorithms (e.g. inverse kinematics control, impedance control, and admittance control) on a MABI Speedy 12 collaborative robot arm.
+  * Develop an semi-automatic workpiece manipulation process, where the robot arm manipulates and assembles workpieces under the guidance of human.
+  * Develop a software framework for the high-level controller of the robot arm.
 
-<p style="margin:0" ><b><font color="#000000"> Brushless Motor Controller, Private (2017-04 ~ Present) </font></b></p>
 
-<b>Main Developer</b>
+<p style="margin:0" ><b><font color="#000000"> Model Predictive Control of a Series Elastic Actuator, ETH Zürich (2017-09 ~ 2017-12) </font></b></p>
 
-  * Develop firmware for a controller for brushless permanent magnet servo motor (PMSM), based on a TI Delfino microprocessor (using TI LAUNCHXL-F28379D and BOOSTXL-DRV8301 development kits).
-  * Design and implement a modular firmware framework for multi-task hard-realtime control system.
-  * Implement CANOpen protocol stack.
+<b>Researcher</b>
+
+  * Developed and tested a novel model-predictive controller (MPC) for ANYdrive, a series elastic actuator (SEA). The controller is formulated for the whole electro-mechanical system, computing 3-phase voltage to the motor directly from output torque setpoints (output torque is measured as the deflection of the elastic component of the SEA).
+  * System identification for ANYdrive; optimization for computational efficiency of the MPC on a MCU;  implementation of firmware.
 
 <p style="margin:0" ><b><font color="#000000"> Multiple UAV Mission System, HKPU, Hong Kong (2015-08 ~ 2016-04) </font></b></p>
 
