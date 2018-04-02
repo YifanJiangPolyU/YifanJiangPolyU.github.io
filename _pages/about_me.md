@@ -86,9 +86,9 @@ More details about me? Please see my CV below. Click on the <a class="btn btn--i
 <A NAME="tag_proj">
 <hr>
 # <font color="#000000"> Projects </font>
-<p style="margin:0" ><b><font color="#000000"> Modeling and Control of a Series Elastic Actuator, ETH Zürich (2017-09 ~ Present) </font></b></p>
+<p style="margin:0" ><b><font color="#000000"> Modeling and Control of a Series Elastic Actuator, ETH Zürich (2017-09 ~ 2017-12) </font></b></p>
 
-<b>Main Researcher</b>
+<b>Researcher</b>
 
   * Model the dynamics of a PMSM-driven series elastic actuator, identify model parameters through experiments, and verify the model in simulation and experimentally.
   * Develop a model-based control algorithm for this actuator to improve trajectory tracking and force control performance.
