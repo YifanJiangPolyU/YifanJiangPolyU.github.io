@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.0.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-04-28T12:09:14+02:00</updated><id>/</id><title>Yifan Jiang</title><subtitle>My personal homepage.</subtitle><author><name>Yifan Jiang</name></author><entry><title>Tracking a Patch of Color with OpenCV</title><link href="/post/OpenVC-Color-Tracking/" rel="alternate" type="text/html" title="Tracking a Patch of Color with OpenCV" /><published>2018-02-10T00:00:00+01:00</published><updated>2018-02-10T00:00:00+01:00</updated><id>/post/OpenVC-Color-Tracking</id><content type="html" xml:base="/post/OpenVC-Color-Tracking/">&lt;p&gt;OpenCV is a really powerful tool for computer vision developers. Combined with
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.0.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-04-28T12:14:10+02:00</updated><id>/</id><title>Yifan Jiang</title><subtitle>My personal homepage.</subtitle><author><name>Yifan Jiang</name></author><entry><title>Tracking a Patch of Color with OpenCV</title><link href="/post/OpenVC-Color-Tracking/" rel="alternate" type="text/html" title="Tracking a Patch of Color with OpenCV" /><published>2018-02-10T00:00:00+01:00</published><updated>2018-02-10T00:00:00+01:00</updated><id>/post/OpenVC-Color-Tracking</id><content type="html" xml:base="/post/OpenVC-Color-Tracking/">&lt;p&gt;OpenCV is a really powerful tool for computer vision developers. Combined with
 python, prototyping and deployment becomes really fast. Motivated by the heat in
 computer vision recently, I revisited some basic features of OpenCV, and
 re-discovered this little project I did a few years ago.&lt;/p&gt;
@@ -8,8 +8,7 @@ in this case, green. Green areas are identified and labeled automatically, and
 the centroid of the area is computed and labeled with a red dot. The results are
 shown in video below:&lt;/p&gt;
 
-&lt;iframe width=&quot;640&quot; height=&quot;360&quot; src=&quot;https://youtu.be/VmGkj5CtbUY&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;
-&lt;/iframe&gt;
+&lt;iframe width=&quot;1294&quot; height=&quot;480&quot; src=&quot;https://www.youtube.com/embed/VmGkj5CtbUY&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 
 &lt;p&gt;The realization of this function involves a number of steps:&lt;/p&gt;
 

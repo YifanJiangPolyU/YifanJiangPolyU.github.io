@@ -19,8 +19,8 @@ in this case, green. Green areas are identified and labeled automatically, and
 the centroid of the area is computed and labeled with a red dot. The results are
 shown in video below:
 
-<iframe width="640" height="360" src="https://youtu.be/VmGkj5CtbUY" frameborder="0" allowfullscreen>
-</iframe>
+<iframe width="1294" height="480" src="https://www.youtube.com/embed/VmGkj5CtbUY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 
 The realization of this function involves a number of steps:
 
