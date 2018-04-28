@@ -19,7 +19,7 @@
 
 
 
-<title>Tracking a Patch of Color with OpenCV - Yifan Jiang</title>
+<title>Driver for MPU6050 IMU Sensor, and Pose Estimation with Kalman Filter - Yifan Jiang</title>
 
 
 
@@ -29,12 +29,12 @@
 
 <meta property="og:locale" content="en-US">
 <meta property="og:site_name" content="Yifan Jiang">
-<meta property="og:title" content="Tracking a Patch of Color with OpenCV">
+<meta property="og:title" content="Driver for MPU6050 IMU Sensor, and Pose Estimation with Kalman Filter">
 
 
 
 
-  <meta property="og:description" content="OpenCV is a really powerful tool for computer vision developers. Combined withpython, prototyping and deployment becomes really fast. Motivated by the heat incomputer vision recently, I revisited some basic features of OpenCV, andre-discovered this little project I did a few years ago.">
+  <meta property="og:description" content="MPU6050is a low-cost IMU sensor, which provides 3-axis acceleration and 3-axis angularvelocity measurements (6 DOF in total). This sensor is really handy when itcomes to implementing things like wearable devices and drones. I got anevaluation module of this sensor, and decided to build a very simple interfaceto it using Arduino. Source code is available at https://github.com/YifanJiangPolyU/MPU6050">
 
 
 
@@ -49,10 +49,12 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2018-02-10T00:00:00+01:00">
+  <meta property="article:published_time" content="2016-08-02T00:00:00+02:00">
+  
+    <link rel="next" href="/post/Dairy-Archive/" title="Dairy Archive">
   
   
-    <link rel="prev" href="/post/Dairy-2017-2018/" title="Dairy">
+    <link rel="prev" href="/post/Audio-Decoder/" title="My First Home Made HiFi Audio Decoder and Amplifier">
   
 
 
@@ -196,15 +198,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Tracking a Patch of Color with OpenCV">
-    <meta itemprop="description" content="OpenCV is a really powerful tool for computer vision developers. Combined withpython, prototyping and deployment becomes really fast. Motivated by the heat incomputer vision recently, I revisited some basic features of OpenCV, andre-discovered this little project I did a few years ago.">
-    <meta itemprop="datePublished" content="February 10, 2018">
+    <meta itemprop="headline" content="Driver for MPU6050 IMU Sensor, and Pose Estimation with Kalman Filter">
+    <meta itemprop="description" content="MPU6050is a low-cost IMU sensor, which provides 3-axis acceleration and 3-axis angularvelocity measurements (6 DOF in total). This sensor is really handy when itcomes to implementing things like wearable devices and drones. I got anevaluation module of this sensor, and decided to build a very simple interfaceto it using Arduino. Source code is available at https://github.com/YifanJiangPolyU/MPU6050">
+    <meta itemprop="datePublished" content="August 02, 2016">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 class="page__title" itemprop="headline">Tracking a Patch of Color with OpenCV
+          <h1 class="page__title" itemprop="headline">Driver for MPU6050 IMU Sensor, and Pose Estimation with Kalman Filter
 </h1>
           
             <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
@@ -217,52 +219,34 @@
       
 
       <section class="page__content" itemprop="text">
-        <p>OpenCV is a really powerful tool for computer vision developers. Combined with
-python, prototyping and deployment becomes really fast. Motivated by the heat in
-computer vision recently, I revisited some basic features of OpenCV, and
-re-discovered this little project I did a few years ago.</p>
+        <p><a href="https://www.invensense.com/products/motion-tracking/6-axis/mpu-6050/">MPU6050</a>
+is a low-cost IMU sensor, which provides 3-axis acceleration and 3-axis angular
+velocity measurements (6 DOF in total). This sensor is really handy when it
+comes to implementing things like wearable devices and drones. I got an
+evaluation module of this sensor, and decided to build a very simple interface
+to it using Arduino. Source code is available at <a href="https://github.com/YifanJiangPolyU/MPU6050">https://github.com/YifanJiangPolyU/MPU6050</a></p>
 
-<p>This program detects from a stream of video areas that have a predefined color,
-in this case, green. Green areas are identified and labeled automatically, and
-the centroid of the area is computed and labeled with a red dot. The results are
-shown in video below:</p>
+<p>A video showing how it works:</p>
 
-<iframe width="1294" height="480" src="https://www.youtube.com/embed/VmGkj5CtbUY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+<iframe width="1294" height="480" src="https://www.youtube.com/embed/-LPgOFSReEU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
 
-<p>The realization of this function involves a number of steps:</p>
+<p>MPU6050 has build-in ADC and is capable of outputting readings digitally via a
+I2C interface. In this interface, a Arduino Nano, which has a 8MHz 8-bit MCU, is
+used as the I2C master. The Arduino reads measurements from MPU6050 cyclically,
+and estimates the pose of the sensor, represented as Euler angles, using
+a Kalman filter.</p>
 
-<ul>
-  <li>A video stream is captured from the webcam of my laptop, and is feed to the program a frame at a time. The program processes the video stream in real time.</li>
-  <li>The frame is smoothed using a Gaussian kernel, and is then transformed from RGB color space to HSV color space.</li>
-  <li>The frame is thresholded by the Hue value at each pixel, creating a binary image.</li>
-  <li>Contours are detected in the thresholded binary image, and the centroid is computed.</li>
-</ul>
+<p>The estimated Euler angles are then transmitted to the PC via serial port (i.e.
+UART). On the PC side, a python script reads the pose data and visualizes it in
+real time.</p>
 
-<p>The HSV (Hue-Saturation-Value) color space is preferred over RGB, because the
-Hue axis of HSV is directly related to the perceived color of a pixel. In
-contrast, the relationship between the perceived color and the RGB values is
-more complicated. In this program, “green” is defined as a Hue value between 50
-and 80 (255 is maximum).</p>
-
-<figure>
-    <a href=""><img src="/images/2018-02-10-OpenVC-Color-Tracking/hsv.png" /></a>
-    <figcaption>Fig.1 HSV Color Space</figcaption>
-</figure>
-
-<p>Due to variations in lighting conditions and reflections, using a single set of
-hue thresholds results in very bad tracking robustness. In this program, an
-adaptive thresholding method is implemented and is found to greatly improve
-tracking robustness. Namely:</p>
+<p>The current implementation has a number of problems, but improvements are also easy to implement.</p>
 
 <ol>
-  <li>Thresholds are initialized at <code class="highlighter-rouge">hue_min=50</code> and <code class="highlighter-rouge">hue_max=80</code>.</li>
-  <li>When a new frame is processed, identify the centroid of the largest green area, and store the Hue value at the centroid (name it <code class="highlighter-rouge">hue_central</code>).</li>
-  <li>Update the thresholds as follows: <code class="highlighter-rouge">hue_min=hue_central-10</code>, <code class="highlighter-rouge">hue_max=hue_central+10</code>.</li>
+  <li>The 8-bit MCU is not powerful enough to execute pose estimation.</li>
+  <li>Delay is sever, because of inadequate processing power of the MCU.</li>
+  <li>Communication protocol between Arduino and PC is too primitive. Better protocol can be used to enable data integrity checking and miss data detection.</li>
 </ol>
-
-<p>The adaptive thresholding method ensures that the program consistently tracks
-the largest green area in the video stream. The method fails horribly, however,
-when lighting conditions change too drastically (e.g. shadows or reflections).</p>
 
         
       </section>
@@ -325,7 +309,7 @@ when lighting conditions change too drastically (e.g. shadows or reflections).</
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-02-10T00:00:00+01:00">February 10, 2018</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2016-08-02T00:00:00+02:00">August 02, 2016</time></p>
         
 
       </footer>
@@ -337,13 +321,13 @@ when lighting conditions change too drastically (e.g. shadows or reflections).</
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=/post/OpenVC-Color-Tracking/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=/post/MPU6050/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=/post/OpenVC-Color-Tracking/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=/post/MPU6050/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=/post/OpenVC-Color-Tracking/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=/post/MPU6050/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=/post/OpenVC-Color-Tracking/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=/post/MPU6050/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
       
@@ -351,11 +335,12 @@ when lighting conditions change too drastically (e.g. shadows or reflections).</
 
   <nav class="pagination">
     
-      <a href="/post/Dairy-2017-2018/" class="pagination--pager" title="Dairy
+      <a href="/post/Audio-Decoder/" class="pagination--pager" title="My First Home Made HiFi Audio Decoder and Amplifier
 ">Previous</a>
     
     
-      <a href="#" class="pagination--pager disabled">Next</a>
+      <a href="/post/Dairy-Archive/" class="pagination--pager" title="Dairy Archive
+">Next</a>
     
   </nav>
 
@@ -367,7 +352,7 @@ when lighting conditions change too drastically (e.g. shadows or reflections).</
 <div class="page__comments">
   <h4 class="page__comments-title">Leave a Comment</h4>
   
-    <section class="fb-comments" data-href="/post/OpenVC-Color-Tracking/" data-mobile="true" data-num-posts="5" data-width="100%" data-colorscheme="light"></section>
+    <section class="fb-comments" data-href="/post/MPU6050/" data-mobile="true" data-num-posts="5" data-width="100%" data-colorscheme="light"></section>
   
 </div>
 
@@ -381,6 +366,31 @@ when lighting conditions change too drastically (e.g. shadows or reflections).</
         <h4 class="page__related-title">You May Also Enjoy</h4>
       
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  
+    <a href="/post/OpenVC-Color-Tracking/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Tracking a Patch of Color with OpenCV
+</h2>
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  1 minute read
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">OpenCV is a really powerful tool for computer vision developers. Combined with
+python, prototyping and deployment becomes really fast. Motivated by the heat ...</p>
+    </article>
+  </a>
+</div>
         
           
 
@@ -429,32 +439,6 @@ when lighting conditions change too drastically (e.g. shadows or reflections).</
       
       <p class="archive__item-excerpt" itemprop="description">2016
 Travelling to Dawson city in Canada, a small town that took shape in early the 20th century because of the famous gold rush. Although it still produces ...</p>
-    </article>
-  </a>
-</div>
-        
-          
-
-
-
-<div class="grid__item">
-  
-    <a href="/post/MPU6050/">
-  
-    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-      
-      <h2 class="archive__item-title" itemprop="headline">Driver for MPU6050 IMU Sensor, and Pose Estimation with Kalman Filter
-</h2>
-      
-        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
-
-
-  1 minute read
-</p>
-      
-      <p class="archive__item-excerpt" itemprop="description">MPU6050
-is a low-cost IMU sensor, which provides 3-axis acceleration and 3-axis angular
-velocity measurements (6 DOF in total). This sensor is really handy w...</p>
     </article>
   </a>
 </div>
