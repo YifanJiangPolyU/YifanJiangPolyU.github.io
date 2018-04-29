@@ -19,7 +19,7 @@
 
 
 
-<title>Dairy - Yifan Jiang</title>
+<title>Swing-up and Balancing Control of an Inverted Pendulum - Yifan Jiang</title>
 
 
 
@@ -29,12 +29,12 @@
 
 <meta property="og:locale" content="en-US">
 <meta property="og:site_name" content="Yifan Jiang">
-<meta property="og:title" content="Dairy">
+<meta property="og:title" content="Swing-up and Balancing Control of an Inverted Pendulum">
 
 
 
 
-  <meta property="og:description" content="April 2018">
+  <meta property="og:description" content="In this mini project, nonlinear control strategies for the swing-up control of an inverted pendulum on a cart (i.e. the cart-pole system) is explored. The controller is verified in a simulation. Let’s take a look at how it works in the video below. Only the pendulum is visualized, and the cart is not visible.">
 
 
 
@@ -49,12 +49,12 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2017-02-25T00:00:00+01:00">
+  <meta property="article:published_time" content="2016-04-01T00:00:00+02:00">
   
-    <link rel="next" href="/post/OpenVC-Color-Tracking/" title="Tracking a Patch of Color with OpenCV">
+    <link rel="next" href="/post/MPU6050/" title="Driver for MPU6050 IMU Sensor, and Pose Estimation with Kalman Filter">
   
   
-    <link rel="prev" href="/post/Audio-Decoder/" title="My First Home Made HiFi Audio Decoder and Amplifier">
+    <link rel="prev" href="/post/Servo-Motor-Driver-Project/" title="Building a 3-Phase Servo Motor Driver">
   
 
 
@@ -198,58 +198,60 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Dairy">
-    <meta itemprop="description" content="April 2018">
-    <meta itemprop="datePublished" content="February 25, 2017">
+    <meta itemprop="headline" content="Swing-up and Balancing Control of an Inverted Pendulum">
+    <meta itemprop="description" content="In this mini project, nonlinear control strategies for the swing-up control of an inverted pendulum on a cart (i.e. the cart-pole system) is explored. The controller is verified in a simulation. Let’s take a look at how it works in the video below. Only the pendulum is visualized, and the cart is not visible.">
+    <meta itemprop="datePublished" content="April 01, 2016">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 class="page__title" itemprop="headline">Dairy
+          <h1 class="page__title" itemprop="headline">Swing-up and Balancing Control of an Inverted Pendulum
 </h1>
           
             <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
 
 
-  4 minutes read
+  3 minutes read
 </p>
           
         </header>
       
 
       <section class="page__content" itemprop="text">
-        <h2 id="april-2018">April 2018</h2>
+        <p>In this mini project, nonlinear control strategies for the swing-up control of an inverted pendulum on a cart (i.e. the cart-pole system) is explored. The controller is verified in a simulation. Let’s take a look at how it works in the video below. Only the pendulum is visualized, and the cart is not visible.</p>
 
-<p>Got a fancy new toy for my master thesis :)</p>
+<iframe width="1294" height="480" src="https://www.youtube.com/embed/SJh4P6uV5ag" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
 
-<figure>
-    <a href="/images/Life-Collection/2018-03-mabi.jpg"><img src="/images/Life-Collection/2018-03-mabi.jpg" /></a>
+<p>Source code for this project is available at <a href="https://github.com/YifanJiangPolyU/cart-pole-nonlinear-control">https://github.com/YifanJiangPolyU/cart-pole-nonlinear-control</a></p>
+
+<h2 id="the-system">The System</h2>
+
+<p>A cart-pole system is a classical example used in control engineering. It is something that looks like Figure 1.</p>
+
+<figure style="width: 360px" class="align-center">
+  <img src="/images/2016-04-01-Inverted-Pendulum/cart-pole.png" />
+  <figcaption>Fig 1. The Cart Pole System (<a href="https://danielpiedrahita.wordpress.com/portfolio/cart-pole-control/">source</a>)</figcaption>
 </figure>
 
-<h2 id="sep-2017">Sep 2017</h2>
-<p>An interesting jorney has ended, and another one must start. Having finished the internship at Maxon Motor, it’s time to go back to school and be academic again :)</p>
+<p>A pendulum (the pole) freely rotates on a shaft mounted on a moving cart. The shaft is NOT
+actuated, and the only control action applicable is a force on the cart.</p>
 
-<p>About the internship, there is so much to love about it. I’ve got a lovely workplace, friendly and helpful colleagues, and a ton of interesting motors to work with. Now I’ve really got to know motors and drivers as well as my fingers, and my German did improve a lot. Not to mention that at the end of the job my colleagues gave me the most special gift I’ve ever received! Can’t love it more.</p>
+<h2 id="the-algorithm">The Algorithm</h2>
 
-<p>Worth mentioning, I’ve also started a project of my own, to develop a motor control platform. The target is to develop a controller for 3-phase PMSM, capable of executing current, speed, and position control. It will be able to control a series elastic actuator (SEA). Development has already started on a development kit, and the design of in-house hardware platform is underway. Hopefully a full solution can be turned out next year.</p>
+<p>Initially, the pendulum is at its stable equilibrium position (i.e. lowest position). The control algorithm does 2 jobs. First, it tires to move the cart so that the pendulum swings up to the unstable equilibrium position (i.e. the highest position). Second, it tries to balance the pendulum at its unstable equilibrium.</p>
 
-<p>Back in school, still a ton of work is waiting for me. A few courses, my small thesis, and finding a job. The small thesis is particularly interesting for me. It’s about the modeling and control of a series elastic actuator (SEA), which is a special type of motor that’s particularly useful for robots that have to interact safely with human. Given the boom in cobot market that everybody envisions, SEA is a technology with big potentials. Really excited to work on it!</p>
+<p>The swing-up part of the job is more interesting and more challenging. The during swing-up, the pendulum travels through highly nonlinear regions of the state space, rendering conventional linear system techniques unusable. Further more, the system is under-actuated, and when the pendulum is horizontal, moving the cart does not generate any effect on the pendulum (even for a very brief moment).</p>
 
-<h2 id="feb-2017">Feb 2017</h2>
-<p>End of February is the begining of a new journey! Last December I got an offer for an internship at the world-famous Maxon Motor AG! Excited for quite a while, and I’m soon going to start it! Really like the company’s nice location and huge lab, dream of all engineers~.</p>
+<p>The method implemented here was mentioned in the course materials of <a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-832-underactuated-robotics-spring-2009/">MIT OpenCourseWare 6.832, Underactuated Robotics</a> This method transforms the swing-up control problem into the regulation problem of an energy-like term. Namely, the energy error term is defined as follows:</p>
 
-<p>My part-time job at RSL has also come to an end. Must say it’s a nice experience, in which I learned a ton of things about electronics, system integration, team working, and much more. The people are supper nice and supportive, a great part of the job. Although it’s a bit stressful sometimes, it’s not too bad, and I’m happy in the end. Hope to do my semester project or thesis with them, would be a great option!</p>
-
-<figure>
-    <a href="/images/Life-Collection/2017-01-maxon.jpg"><img src="/images/Life-Collection/2017-01-maxon.jpg" /></a>
+<figure style="width: 254px" class="align-center">
+  <img src="/images/2016-04-01-Inverted-Pendulum/energy-error.png" />
 </figure>
 
-<h2 id="jan-2017">Jan 2017</h2>
-<p>Have been doing a part-time job at ETH’s famous Robotic System Lab (RSL) for a few months, a fantastic experience! RSL is among the world’s best labs that study quadrupedal robots, or “robotic dogs” as I like call them. It’s really exciting to see it walk and jump. Digging deep into the low-level control systems for the robot is also full of fun.</p>
-<figure>
-    <a href="/images/Life-Collection/2017-01-me-with-dog.jpg"><img src="/images/Life-Collection/2017-01-me-with-dog.jpg" /></a>
-</figure>
+<p>In the equation, J is the moment of inertia of the pendulum, and g is the gravitational acceleration. Other notations are consistent with Figure 1. Note that when the pendulum is at upright position, the energy error term goes to zero. A regulator is then added to drive the energy error to zero, which is effectively the same as making the pendulum approach the upright position.</p>
+
+<p>When the pendulum is close enough to the upright position, the system can effectively be replaced by its linearization about the upright position. At this moment, the energy error regulator is simply switched off and a linear quadratic regulator (LQR) takes over to balance the pendulum.</p>
 
         
       </section>
@@ -279,7 +281,7 @@
     
       
       
-      <a href="/tags/life" class="page__taxonomy-item" rel="tag">life</a>
+      <a href="/tags/tech" class="page__taxonomy-item" rel="tag">tech</a>
     
     </span>
   </p>
@@ -312,7 +314,7 @@
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-02-25T00:00:00+01:00">February 25, 2017</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2016-04-01T00:00:00+02:00">April 01, 2016</time></p>
         
 
       </footer>
@@ -324,13 +326,13 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=/post/Dairy-2017-2018/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=/post/Inverted-Pendulum/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=/post/Dairy-2017-2018/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=/post/Inverted-Pendulum/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=/post/Dairy-2017-2018/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=/post/Inverted-Pendulum/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=/post/Dairy-2017-2018/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=/post/Inverted-Pendulum/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
       
@@ -338,11 +340,11 @@
 
   <nav class="pagination">
     
-      <a href="/post/Audio-Decoder/" class="pagination--pager" title="My First Home Made HiFi Audio Decoder and Amplifier
+      <a href="/post/Servo-Motor-Driver-Project/" class="pagination--pager" title="Building a 3-Phase Servo Motor Driver
 ">Previous</a>
     
     
-      <a href="/post/OpenVC-Color-Tracking/" class="pagination--pager" title="Tracking a Patch of Color with OpenCV
+      <a href="/post/MPU6050/" class="pagination--pager" title="Driver for MPU6050 IMU Sensor, and Pose Estimation with Kalman Filter
 ">Next</a>
     
   </nav>
@@ -355,7 +357,7 @@
 <div class="page__comments">
   <h4 class="page__comments-title">Leave a Comment</h4>
   
-    <section class="fb-comments" data-href="/post/Dairy-2017-2018/" data-mobile="true" data-num-posts="5" data-width="100%" data-colorscheme="light"></section>
+    <section class="fb-comments" data-href="/post/Inverted-Pendulum/" data-mobile="true" data-num-posts="5" data-width="100%" data-colorscheme="light"></section>
   
 </div>
 
@@ -391,6 +393,32 @@
       
       <p class="archive__item-excerpt" itemprop="description">OpenCV is a really powerful tool for computer vision developers. Combined with
 python, prototyping and deployment become really fast. Motivated by the heat i...</p>
+    </article>
+  </a>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  
+    <a href="/post/Dairy-2017-2018/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Dairy
+</h2>
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  4 minutes read
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">April 2018
+
+</p>
     </article>
   </a>
 </div>
@@ -439,32 +467,6 @@ python, prototyping and deployment become really fast. Motivated by the heat i..
 </p>
       
       <p class="archive__item-excerpt" itemprop="description">This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea a...</p>
-    </article>
-  </a>
-</div>
-        
-          
-
-
-
-<div class="grid__item">
-  
-    <a href="/post/MPU6050/">
-  
-    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-      
-      <h2 class="archive__item-title" itemprop="headline">Driver for MPU6050 IMU Sensor, and Pose Estimation with Kalman Filter
-</h2>
-      
-        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
-
-
-  1 minute read
-</p>
-      
-      <p class="archive__item-excerpt" itemprop="description">MPU6050
-is a low-cost IMU sensor, which provides 3-axis acceleration and 3-axis angular
-velocity measurements (6 DOF in total). This sensor is really handy w...</p>
     </article>
   </a>
 </div>

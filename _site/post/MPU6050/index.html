@@ -34,7 +34,7 @@
 
 
 
-  <meta property="og:description" content="MPU6050is a low-cost IMU sensor, which provides 3-axis acceleration and 3-axis angularvelocity measurements (6 DOF in total). This sensor is really handy when itcomes to implementing things like wearable devices and drones. I got anevaluation module of this sensor, and decided to build a very simple interfaceto it using Arduino. Source code is available at https://github.com/YifanJiangPolyU/MPU6050">
+  <meta property="og:description" content="MPU6050is a low-cost IMU sensor, which provides 3-axis acceleration and 3-axis angularvelocity measurements (6 DOF in total). This sensor is really handy when itcomes to implementing things like wearable devices and drones. I got anevaluation module of this sensor, and decided to build a very simple interfacefor it using a 8-bit MCU. Source code is available at https://github.com/YifanJiangPolyU/MPU6050">
 
 
 
@@ -49,12 +49,12 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2016-08-02T00:00:00+02:00">
+  <meta property="article:published_time" content="2016-05-10T00:00:00+02:00">
   
-    <link rel="next" href="/post/Dairy-Archive/" title="Dairy Archive">
+    <link rel="next" href="/post/UAV-Communication-Relay-for-another-UAV/" title="UAV Communication Relay for another UAV">
   
   
-    <link rel="prev" href="/post/Audio-Decoder/" title="My First Home Made HiFi Audio Decoder and Amplifier">
+    <link rel="prev" href="/post/Inverted-Pendulum/" title="Swing-up and Balancing Control of an Inverted Pendulum">
   
 
 
@@ -199,8 +199,8 @@
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Driver for MPU6050 IMU Sensor, and Pose Estimation with Kalman Filter">
-    <meta itemprop="description" content="MPU6050is a low-cost IMU sensor, which provides 3-axis acceleration and 3-axis angularvelocity measurements (6 DOF in total). This sensor is really handy when itcomes to implementing things like wearable devices and drones. I got anevaluation module of this sensor, and decided to build a very simple interfaceto it using Arduino. Source code is available at https://github.com/YifanJiangPolyU/MPU6050">
-    <meta itemprop="datePublished" content="August 02, 2016">
+    <meta itemprop="description" content="MPU6050is a low-cost IMU sensor, which provides 3-axis acceleration and 3-axis angularvelocity measurements (6 DOF in total). This sensor is really handy when itcomes to implementing things like wearable devices and drones. I got anevaluation module of this sensor, and decided to build a very simple interfacefor it using a 8-bit MCU. Source code is available at https://github.com/YifanJiangPolyU/MPU6050">
+    <meta itemprop="datePublished" content="May 10, 2016">
     
 
     <div class="page__inner-wrap">
@@ -224,7 +224,7 @@ is a low-cost IMU sensor, which provides 3-axis acceleration and 3-axis angular
 velocity measurements (6 DOF in total). This sensor is really handy when it
 comes to implementing things like wearable devices and drones. I got an
 evaluation module of this sensor, and decided to build a very simple interface
-to it using Arduino. Source code is available at <a href="https://github.com/YifanJiangPolyU/MPU6050">https://github.com/YifanJiangPolyU/MPU6050</a></p>
+for it using a 8-bit MCU. Source code is available at <a href="https://github.com/YifanJiangPolyU/MPU6050">https://github.com/YifanJiangPolyU/MPU6050</a></p>
 
 <p>A video showing how it works:</p>
 
@@ -246,6 +246,7 @@ real time.</p>
   <li>The 8-bit MCU is not powerful enough to execute pose estimation.</li>
   <li>Delay is sever, because of inadequate processing power of the MCU.</li>
   <li>Communication protocol between Arduino and PC is too primitive. Better protocol can be used to enable data integrity checking and miss data detection.</li>
+  <li>The data acquisition and the Kalman filter run in an infinite loop in <code class="highlighter-rouge">main()</code>. A better way would be to make this interrupt-triggered, for a more deterministic sample time.</li>
 </ol>
 
         
@@ -309,7 +310,7 @@ real time.</p>
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2016-08-02T00:00:00+02:00">August 02, 2016</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2016-05-10T00:00:00+02:00">May 10, 2016</time></p>
         
 
       </footer>
@@ -335,11 +336,11 @@ real time.</p>
 
   <nav class="pagination">
     
-      <a href="/post/Audio-Decoder/" class="pagination--pager" title="My First Home Made HiFi Audio Decoder and Amplifier
+      <a href="/post/Inverted-Pendulum/" class="pagination--pager" title="Swing-up and Balancing Control of an Inverted Pendulum
 ">Previous</a>
     
     
-      <a href="/post/Dairy-Archive/" class="pagination--pager" title="Dairy Archive
+      <a href="/post/UAV-Communication-Relay-for-another-UAV/" class="pagination--pager" title="UAV Communication Relay for another UAV
 ">Next</a>
     
   </nav>
@@ -387,7 +388,7 @@ real time.</p>
 </p>
       
       <p class="archive__item-excerpt" itemprop="description">OpenCV is a really powerful tool for computer vision developers. Combined with
-python, prototyping and deployment becomes really fast. Motivated by the heat ...</p>
+python, prototyping and deployment become really fast. Motivated by the heat i...</p>
     </article>
   </a>
 </div>
@@ -424,31 +425,6 @@ python, prototyping and deployment becomes really fast. Motivated by the heat ..
 
 <div class="grid__item">
   
-    <a href="/post/Dairy-Archive/">
-  
-    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-      
-      <h2 class="archive__item-title" itemprop="headline">Dairy Archive
-</h2>
-      
-        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
-
-
-  1 minute read
-</p>
-      
-      <p class="archive__item-excerpt" itemprop="description">2016
-Travelling to Dawson city in Canada, a small town that took shape in early the 20th century because of the famous gold rush. Although it still produces ...</p>
-    </article>
-  </a>
-</div>
-        
-          
-
-
-
-<div class="grid__item">
-  
     <a href="/post/Audio-Decoder/">
   
     <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
@@ -463,6 +439,30 @@ Travelling to Dawson city in Canada, a small town that took shape in early the 2
 </p>
       
       <p class="archive__item-excerpt" itemprop="description">Recently I developed my first in-house hi-fi audio decoder + amplifier project. Having tested it with my own ears I was very much surprised by the outstandin...</p>
+    </article>
+  </a>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  
+    <a href="/post/UAV-Communication-Relay-for-another-UAV/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">UAV Communication Relay for another UAV
+</h2>
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  12 minutes read
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea a...</p>
     </article>
   </a>
 </div>

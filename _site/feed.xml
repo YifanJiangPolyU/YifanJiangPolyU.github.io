@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.0.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-04-28T12:42:21+02:00</updated><id>/</id><title>Yifan Jiang</title><subtitle>My personal homepage.</subtitle><author><name>Yifan Jiang</name></author><entry><title>Tracking a Patch of Color with OpenCV</title><link href="/post/OpenVC-Color-Tracking/" rel="alternate" type="text/html" title="Tracking a Patch of Color with OpenCV" /><published>2018-02-10T00:00:00+01:00</published><updated>2018-02-10T00:00:00+01:00</updated><id>/post/OpenVC-Color-Tracking</id><content type="html" xml:base="/post/OpenVC-Color-Tracking/">&lt;p&gt;OpenCV is a really powerful tool for computer vision developers. Combined with
-python, prototyping and deployment becomes really fast. Motivated by the heat in
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.0.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-04-29T10:43:50+02:00</updated><id>/</id><title>Yifan Jiang</title><subtitle>My personal homepage.</subtitle><author><name>Yifan Jiang</name></author><entry><title>Tracking a Patch of Color with OpenCV</title><link href="/post/OpenVC-Color-Tracking/" rel="alternate" type="text/html" title="Tracking a Patch of Color with OpenCV" /><published>2018-02-10T00:00:00+01:00</published><updated>2018-02-10T00:00:00+01:00</updated><id>/post/OpenVC-Color-Tracking</id><content type="html" xml:base="/post/OpenVC-Color-Tracking/">&lt;p&gt;OpenCV is a really powerful tool for computer vision developers. Combined with
+python, prototyping and deployment become really fast. Motivated by the heat in
 computer vision recently, I revisited some basic features of OpenCV, and
 re-discovered this little project I did a few years ago.&lt;/p&gt;
 
@@ -44,7 +44,7 @@ tracking robustness. Namely:&lt;/p&gt;
 &lt;p&gt;The adaptive thresholding method ensures that the program consistently tracks
 the largest green area in the video stream. The method fails horribly, however,
 when lighting conditions change too drastically (e.g. shadows or reflections).&lt;/p&gt;</content><category term="Hobby" /><category term="tech" /><summary>OpenCV is a really powerful tool for computer vision developers. Combined with
-python, prototyping and deployment becomes really fast. Motivated by the heat in
+python, prototyping and deployment become really fast. Motivated by the heat in
 computer vision recently, I revisited some basic features of OpenCV, and
 re-discovered this little project I did a few years ago.</summary></entry><entry><title>Dairy</title><link href="/post/Dairy-2017-2018/" rel="alternate" type="text/html" title="Dairy" /><published>2017-02-25T00:00:00+01:00</published><updated>2017-02-25T00:00:00+01:00</updated><id>/post/Dairy-2017-2018</id><content type="html" xml:base="/post/Dairy-2017-2018/">&lt;h2 id=&quot;april-2018&quot;&gt;April 2018&lt;/h2&gt;
 
@@ -76,67 +76,7 @@ re-discovered this little project I did a few years ago.</summary></entry><entry
 &lt;p&gt;Have been doing a part-time job at ETH’s famous Robotic System Lab (RSL) for a few months, a fantastic experience! RSL is among the world’s best labs that study quadrupedal robots, or “robotic dogs” as I like call them. It’s really exciting to see it walk and jump. Digging deep into the low-level control systems for the robot is also full of fun.&lt;/p&gt;
 &lt;figure&gt;
     &lt;a href=&quot;/images/Life-Collection/2017-01-me-with-dog.jpg&quot;&gt;&lt;img src=&quot;/images/Life-Collection/2017-01-me-with-dog.jpg&quot; /&gt;&lt;/a&gt;
-&lt;/figure&gt;</content><category term="Hobby" /><category term="life" /><summary>April 2018</summary></entry><entry><title>Dairy Archive</title><link href="/post/Dairy-Archive/" rel="alternate" type="text/html" title="Dairy Archive" /><published>2016-08-21T00:00:00+02:00</published><updated>2016-08-21T00:00:00+02:00</updated><id>/post/Dairy-Archive</id><content type="html" xml:base="/post/Dairy-Archive/">&lt;h2 id=&quot;section&quot;&gt;2016&lt;/h2&gt;
-&lt;p&gt;Travelling to Dawson city in Canada, a small town that took shape in early the 20th century because of the famous gold rush. Although it still produces some gold today, the town has almost lost its past glories. Glad to have found this nice slide rule in an antique shop in Dawson. I’ve wanted to own a slide rule for a long time. This little piece of history brings me back to the days before calculators, a deep emotional connection.&lt;/p&gt;
-&lt;figure&gt;
-    &lt;a href=&quot;/images/Life-Collection/2016-08-20-slide-rule.jpg&quot;&gt;&lt;img src=&quot;/images/Life-Collection/2016-08-20-slide-rule.jpg&quot; /&gt;&lt;/a&gt;
-&lt;/figure&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;2014&lt;/h2&gt;
-&lt;p&gt;Travelled to probably the most mysterious country in the world, Turkey. Previously only existed in stories and fairy tales, being so close to it made me feel unreal.&lt;/p&gt;
-
-&lt;p&gt;Being in Istanbul itself is like being in fairy tale: the churches and mosques, the calls for prayer from minarets, the old streets and dessert shops, everything seems frozen back in time, just as they were hundreds (or thousands) of years ago. History makes this city romantic, maybe even dog and cat can fall in love~&lt;/p&gt;
-
-&lt;figure class=&quot;half&quot;&gt;
-    &lt;a href=&quot;/images/Life-Collection/turkey-1.jpg&quot;&gt;&lt;img src=&quot;/images/Life-Collection/turkey-1.jpg&quot; /&gt;&lt;/a&gt;
-    &lt;a href=&quot;/images/Life-Collection/turkey-cat-dog.jpg&quot;&gt;&lt;img src=&quot;/images/Life-Collection/turkey-cat-dog.jpg&quot; /&gt;&lt;/a&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;In Turkey there are many ducks, and strangely people don’t eat them. Instead they are pretty generously fed (in an unhealthy diet though). Like in Pamukkale, people enjoy feeding ducks with bread.&lt;/p&gt;
-&lt;figure&gt;
-    &lt;a href=&quot;/images/Life-Collection/turkey-feed-duck.jpg&quot;&gt;&lt;img src=&quot;/images/Life-Collection/turkey-feed-duck.jpg&quot; /&gt;&lt;/a&gt;
-&lt;/figure&gt;
-
-&lt;h2 id=&quot;section-2&quot;&gt;2013&lt;/h2&gt;
-&lt;p&gt;My first time in Canada, everything seemed so friendly to me. In the morning of my first day at Montreal, I saw some surprisingly beautiful patterns of frozen moisture, right on the window! Squirrels seem to like me as well, or did this one mistook my leg for a tree?&lt;/p&gt;
-
-&lt;figure class=&quot;half&quot;&gt;
-    &lt;a href=&quot;/images/Life-Collection/Montreal-ice.JPG&quot;&gt;&lt;img src=&quot;/images/Life-Collection/Montreal-ice.JPG&quot; /&gt;&lt;/a&gt;
-    &lt;a href=&quot;/images/Life-Collection/Montreal-squirrel.jpg&quot;&gt;&lt;img src=&quot;/images/Life-Collection/Montreal-squirrel.jpg&quot; /&gt;&lt;/a&gt;
-&lt;/figure&gt;</content><category term="Hobby" /><category term="life" /><summary>2016
-Travelling to Dawson city in Canada, a small town that took shape in early the 20th century because of the famous gold rush. Although it still produces some gold today, the town has almost lost its past glories. Glad to have found this nice slide rule in an antique shop in Dawson. I’ve wanted to own a slide rule for a long time. This little piece of history brings me back to the days before calculators, a deep emotional connection.</summary></entry><entry><title>Driver for MPU6050 IMU Sensor, and Pose Estimation with Kalman Filter</title><link href="/post/MPU6050/" rel="alternate" type="text/html" title="Driver for MPU6050 IMU Sensor, and Pose Estimation with Kalman Filter" /><published>2016-08-02T00:00:00+02:00</published><updated>2016-08-02T00:00:00+02:00</updated><id>/post/MPU6050</id><content type="html" xml:base="/post/MPU6050/">&lt;p&gt;&lt;a href=&quot;https://www.invensense.com/products/motion-tracking/6-axis/mpu-6050/&quot;&gt;MPU6050&lt;/a&gt;
-is a low-cost IMU sensor, which provides 3-axis acceleration and 3-axis angular
-velocity measurements (6 DOF in total). This sensor is really handy when it
-comes to implementing things like wearable devices and drones. I got an
-evaluation module of this sensor, and decided to build a very simple interface
-to it using Arduino. Source code is available at &lt;a href=&quot;https://github.com/YifanJiangPolyU/MPU6050&quot;&gt;https://github.com/YifanJiangPolyU/MPU6050&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;A video showing how it works:&lt;/p&gt;
-
-&lt;iframe width=&quot;1294&quot; height=&quot;480&quot; src=&quot;https://www.youtube.com/embed/-LPgOFSReEU&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-
-&lt;p&gt;MPU6050 has build-in ADC and is capable of outputting readings digitally via a
-I2C interface. In this interface, a Arduino Nano, which has a 8MHz 8-bit MCU, is
-used as the I2C master. The Arduino reads measurements from MPU6050 cyclically,
-and estimates the pose of the sensor, represented as Euler angles, using
-a Kalman filter.&lt;/p&gt;
-
-&lt;p&gt;The estimated Euler angles are then transmitted to the PC via serial port (i.e.
-UART). On the PC side, a python script reads the pose data and visualizes it in
-real time.&lt;/p&gt;
-
-&lt;p&gt;The current implementation has a number of problems, but improvements are also easy to implement.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;The 8-bit MCU is not powerful enough to execute pose estimation.&lt;/li&gt;
-  &lt;li&gt;Delay is sever, because of inadequate processing power of the MCU.&lt;/li&gt;
-  &lt;li&gt;Communication protocol between Arduino and PC is too primitive. Better protocol can be used to enable data integrity checking and miss data detection.&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Hobby" /><category term="tech" /><summary>MPU6050
-is a low-cost IMU sensor, which provides 3-axis acceleration and 3-axis angular
-velocity measurements (6 DOF in total). This sensor is really handy when it
-comes to implementing things like wearable devices and drones. I got an
-evaluation module of this sensor, and decided to build a very simple interface
-to it using Arduino. Source code is available at https://github.com/YifanJiangPolyU/MPU6050</summary></entry><entry><title>My First Home Made HiFi Audio Decoder and Amplifier</title><link href="/post/Audio-Decoder/" rel="alternate" type="text/html" title="My First Home Made HiFi Audio Decoder and Amplifier" /><published>2016-07-28T00:00:00+02:00</published><updated>2016-07-28T00:00:00+02:00</updated><id>/post/Audio-Decoder</id><content type="html" xml:base="/post/Audio-Decoder/">&lt;p&gt;Recently I developed my first in-house hi-fi audio decoder + amplifier project. Having tested it with my own ears I was very much surprised by the outstanding sound quality. Considering the fact that this project has costed me less than 300 HKD (thanks to cheap PCBs from Shenzhen), I am sooooo happy with the result! It has a name: “JAudio Decoder Amp”&lt;/p&gt;
+&lt;/figure&gt;</content><category term="Hobby" /><category term="life" /><summary>April 2018</summary></entry><entry><title>My First Home Made HiFi Audio Decoder and Amplifier</title><link href="/post/Audio-Decoder/" rel="alternate" type="text/html" title="My First Home Made HiFi Audio Decoder and Amplifier" /><published>2016-07-28T00:00:00+02:00</published><updated>2016-07-28T00:00:00+02:00</updated><id>/post/Audio-Decoder</id><content type="html" xml:base="/post/Audio-Decoder/">&lt;p&gt;Recently I developed my first in-house hi-fi audio decoder + amplifier project. Having tested it with my own ears I was very much surprised by the outstanding sound quality. Considering the fact that this project has costed me less than 300 HKD (thanks to cheap PCBs from Shenzhen), I am sooooo happy with the result! It has a name: “JAudio Decoder Amp”&lt;/p&gt;
 
 &lt;h2 id=&quot;the-design&quot;&gt;The Design&lt;/h2&gt;
 
@@ -305,11 +245,72 @@ rtl              return to home position, and land there
 &lt;figure&gt;
     &lt;a href=&quot;/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/RSSI.png&quot;&gt;&lt;img src=&quot;/images/2016-05-30-UAV-Communication-Relay-for-another-UAV/RSSI.png&quot; /&gt;&lt;/a&gt;
     &lt;figcaption&gt;Fig.10 Radio signal &amp;amp; noise level, between &quot;Son&quot; and GCS&lt;/figcaption&gt;
-&lt;/figure&gt;</content><category term="tech" /><summary>This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea about what I’ve done. This project was a teamwork, I could not complete it without my team mates Cai Lingfeng and Wan Hiu Fung. I would also like to thank our supervisor Prof Wen Chih Yung, an absolutely nice and helpful prof.</summary></entry><entry><title>First Post</title><link href="/post/try/" rel="alternate" type="text/html" title="First Post" /><published>2016-04-25T00:00:00+02:00</published><updated>2016-04-25T00:00:00+02:00</updated><id>/post/try</id><content type="html" xml:base="/post/try/">&lt;p&gt;Hey guys. I am trying to construct a personal homepage, and this is my very first post. GitHub provids a really convenient place to host my homepage, and Jekyll is making the development easy.&lt;/p&gt;
+&lt;/figure&gt;</content><category term="tech" /><summary>This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea about what I’ve done. This project was a teamwork, I could not complete it without my team mates Cai Lingfeng and Wan Hiu Fung. I would also like to thank our supervisor Prof Wen Chih Yung, an absolutely nice and helpful prof.</summary></entry><entry><title>Driver for MPU6050 IMU Sensor, and Pose Estimation with Kalman Filter</title><link href="/post/MPU6050/" rel="alternate" type="text/html" title="Driver for MPU6050 IMU Sensor, and Pose Estimation with Kalman Filter" /><published>2016-05-10T00:00:00+02:00</published><updated>2016-05-10T00:00:00+02:00</updated><id>/post/MPU6050</id><content type="html" xml:base="/post/MPU6050/">&lt;p&gt;&lt;a href=&quot;https://www.invensense.com/products/motion-tracking/6-axis/mpu-6050/&quot;&gt;MPU6050&lt;/a&gt;
+is a low-cost IMU sensor, which provides 3-axis acceleration and 3-axis angular
+velocity measurements (6 DOF in total). This sensor is really handy when it
+comes to implementing things like wearable devices and drones. I got an
+evaluation module of this sensor, and decided to build a very simple interface
+for it using a 8-bit MCU. Source code is available at &lt;a href=&quot;https://github.com/YifanJiangPolyU/MPU6050&quot;&gt;https://github.com/YifanJiangPolyU/MPU6050&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Building a homepage requires consistent efforts. I will try to add interesting things to it bit by bit, and hopefully one day this homepage will become lively and interesting.&lt;/p&gt;
+&lt;p&gt;A video showing how it works:&lt;/p&gt;
 
-&lt;p&gt;Don’t be surprised to see posts earlier than this “First Post”, because when I move old stuff into this website, I’ll keep the original date.&lt;/p&gt;</content><category term="life" /><summary>Hey guys. I am trying to construct a personal homepage, and this is my very first post. GitHub provids a really convenient place to host my homepage, and Jekyll is making the development easy.</summary></entry><entry><title>Building a 3-Phase Servo Motor Driver</title><link href="/post/Servo-Motor-Driver-Project/" rel="alternate" type="text/html" title="Building a 3-Phase Servo Motor Driver" /><published>2014-05-10T00:00:00+02:00</published><updated>2014-05-10T00:00:00+02:00</updated><id>/post/Servo-Motor-Driver-Project</id><content type="html" xml:base="/post/Servo-Motor-Driver-Project/">&lt;p&gt;In the past few months I was intensively exposed to servo motors: their constructions, working principles, and driving circuits, thanks to my internship. These motors are brushless, driven by 3-phase AC currents, and when properly controlled (as in my internship company), can execute motion with nanometer-level of resolution. The science and technology behind these motors deeply fascinated me, which inspired me to try building my own 3-phase servo motor driver, one of the core components in the motor’s control.&lt;/p&gt;
+&lt;iframe width=&quot;1294&quot; height=&quot;480&quot; src=&quot;https://www.youtube.com/embed/-LPgOFSReEU&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;MPU6050 has build-in ADC and is capable of outputting readings digitally via a
+I2C interface. In this interface, a Arduino Nano, which has a 8MHz 8-bit MCU, is
+used as the I2C master. The Arduino reads measurements from MPU6050 cyclically,
+and estimates the pose of the sensor, represented as Euler angles, using
+a Kalman filter.&lt;/p&gt;
+
+&lt;p&gt;The estimated Euler angles are then transmitted to the PC via serial port (i.e.
+UART). On the PC side, a python script reads the pose data and visualizes it in
+real time.&lt;/p&gt;
+
+&lt;p&gt;The current implementation has a number of problems, but improvements are also easy to implement.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The 8-bit MCU is not powerful enough to execute pose estimation.&lt;/li&gt;
+  &lt;li&gt;Delay is sever, because of inadequate processing power of the MCU.&lt;/li&gt;
+  &lt;li&gt;Communication protocol between Arduino and PC is too primitive. Better protocol can be used to enable data integrity checking and miss data detection.&lt;/li&gt;
+  &lt;li&gt;The data acquisition and the Kalman filter run in an infinite loop in &lt;code class=&quot;highlighter-rouge&quot;&gt;main()&lt;/code&gt;. A better way would be to make this interrupt-triggered, for a more deterministic sample time.&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Hobby" /><category term="tech" /><summary>MPU6050
+is a low-cost IMU sensor, which provides 3-axis acceleration and 3-axis angular
+velocity measurements (6 DOF in total). This sensor is really handy when it
+comes to implementing things like wearable devices and drones. I got an
+evaluation module of this sensor, and decided to build a very simple interface
+for it using a 8-bit MCU. Source code is available at https://github.com/YifanJiangPolyU/MPU6050</summary></entry><entry><title>Swing-up and Balancing Control of an Inverted Pendulum</title><link href="/post/Inverted-Pendulum/" rel="alternate" type="text/html" title="Swing-up and Balancing Control of an Inverted Pendulum" /><published>2016-04-01T00:00:00+02:00</published><updated>2016-04-01T00:00:00+02:00</updated><id>/post/Inverted-Pendulum</id><content type="html" xml:base="/post/Inverted-Pendulum/">&lt;p&gt;In this mini project, nonlinear control strategies for the swing-up control of an inverted pendulum on a cart (i.e. the cart-pole system) is explored. The controller is verified in a simulation. Let’s take a look at how it works in the video below. Only the pendulum is visualized, and the cart is not visible.&lt;/p&gt;
+
+&lt;iframe width=&quot;1294&quot; height=&quot;480&quot; src=&quot;https://www.youtube.com/embed/SJh4P6uV5ag&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Source code for this project is available at &lt;a href=&quot;https://github.com/YifanJiangPolyU/cart-pole-nonlinear-control&quot;&gt;https://github.com/YifanJiangPolyU/cart-pole-nonlinear-control&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;the-system&quot;&gt;The System&lt;/h2&gt;
+
+&lt;p&gt;A cart-pole system is a classical example used in control engineering. It is something that looks like Figure 1.&lt;/p&gt;
+
+&lt;figure style=&quot;width: 360px&quot; class=&quot;align-center&quot;&gt;
+  &lt;img src=&quot;/images/2016-04-01-Inverted-Pendulum/cart-pole.png&quot; /&gt;
+  &lt;figcaption&gt;Fig 1. The Cart Pole System (&lt;a href=&quot;https://danielpiedrahita.wordpress.com/portfolio/cart-pole-control/&quot;&gt;source&lt;/a&gt;)&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;A pendulum (the pole) freely rotates on a shaft mounted on a moving cart. The shaft is NOT
+actuated, and the only control action applicable is a force on the cart.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-algorithm&quot;&gt;The Algorithm&lt;/h2&gt;
+
+&lt;p&gt;Initially, the pendulum is at its stable equilibrium position (i.e. lowest position). The control algorithm does 2 jobs. First, it tires to move the cart so that the pendulum swings up to the unstable equilibrium position (i.e. the highest position). Second, it tries to balance the pendulum at its unstable equilibrium.&lt;/p&gt;
+
+&lt;p&gt;The swing-up part of the job is more interesting and more challenging. The during swing-up, the pendulum travels through highly nonlinear regions of the state space, rendering conventional linear system techniques unusable. Further more, the system is under-actuated, and when the pendulum is horizontal, moving the cart does not generate any effect on the pendulum (even for a very brief moment).&lt;/p&gt;
+
+&lt;p&gt;The method implemented here was mentioned in the course materials of &lt;a href=&quot;https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-832-underactuated-robotics-spring-2009/&quot;&gt;MIT OpenCourseWare 6.832, Underactuated Robotics&lt;/a&gt; This method transforms the swing-up control problem into the regulation problem of an energy-like term. Namely, the energy error term is defined as follows:&lt;/p&gt;
+
+&lt;figure style=&quot;width: 254px&quot; class=&quot;align-center&quot;&gt;
+  &lt;img src=&quot;/images/2016-04-01-Inverted-Pendulum/energy-error.png&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;In the equation, J is the moment of inertia of the pendulum, and g is the gravitational acceleration. Other notations are consistent with Figure 1. Note that when the pendulum is at upright position, the energy error term goes to zero. A regulator is then added to drive the energy error to zero, which is effectively the same as making the pendulum approach the upright position.&lt;/p&gt;
+
+&lt;p&gt;When the pendulum is close enough to the upright position, the system can effectively be replaced by its linearization about the upright position. At this moment, the energy error regulator is simply switched off and a linear quadratic regulator (LQR) takes over to balance the pendulum.&lt;/p&gt;</content><category term="Hobby" /><category term="tech" /><summary>In this mini project, nonlinear control strategies for the swing-up control of an inverted pendulum on a cart (i.e. the cart-pole system) is explored. The controller is verified in a simulation. Let’s take a look at how it works in the video below. Only the pendulum is visualized, and the cart is not visible.</summary></entry><entry><title>Building a 3-Phase Servo Motor Driver</title><link href="/post/Servo-Motor-Driver-Project/" rel="alternate" type="text/html" title="Building a 3-Phase Servo Motor Driver" /><published>2014-05-10T00:00:00+02:00</published><updated>2014-05-10T00:00:00+02:00</updated><id>/post/Servo-Motor-Driver-Project</id><content type="html" xml:base="/post/Servo-Motor-Driver-Project/">&lt;p&gt;In the past few months I was intensively exposed to servo motors: their constructions, working principles, and driving circuits, thanks to my internship. These motors are brushless, driven by 3-phase AC currents, and when properly controlled (as in my internship company), can execute motion with nanometer-level of resolution. The science and technology behind these motors deeply fascinated me, which inspired me to try building my own 3-phase servo motor driver, one of the core components in the motor’s control.&lt;/p&gt;
 
 &lt;p&gt;The 3-phase servo motor driver is essentially a 3-phase DC-to-AC converter, which provides current measurement and feedback for control purpose. The major functional blocks of the driver are as follows:&lt;/p&gt;
 
@@ -397,7 +398,7 @@ rtl              return to home position, and land there
     &lt;figcaption&gt;Fig.12 (Right) Finished PCB, Back Side&lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;p&gt;Fig.13 shows the finished motor driver in use, driving a brushed DC motor (only one of the 3 phases are used).&lt;/p&gt;
+&lt;p&gt;Fig.13 shows the finished motor driver in use, driving a brushed DC motor (only one of the 3 phases is used).&lt;/p&gt;
 &lt;figure&gt;
     &lt;a href=&quot;/images/2014-05-10-Servo-Motor-Driver-Project/test-product.jpg&quot;&gt;&lt;img src=&quot;/images/2014-05-10-Servo-Motor-Driver-Project/test-product.jpg&quot; /&gt;&lt;/a&gt;
     &lt;figcaption&gt;Fig.13 Driving a Brushed DC Motor&lt;/figcaption&gt;
@@ -416,4 +417,32 @@ rtl              return to home position, and land there
     &lt;figcaption&gt;Fig.1 (Left) OR gate, my design&lt;/figcaption&gt;
     &lt;figcaption&gt;Fig.2 (Mid) 8-bit binary adder/subtractor&lt;/figcaption&gt;
     &lt;figcaption&gt;Fig.3 (Right) 4-bit binary multiplier&lt;/figcaption&gt;
-&lt;/figure&gt;</content><category term="life" /><category term="hobby" /><summary>I’m not a game person, and I rarely play games. However, there’s one game to which I’m particularly addicted: Minecraft!!!</summary></entry></feed>
+&lt;/figure&gt;</content><category term="life" /><category term="hobby" /><summary>I’m not a game person, and I rarely play games. However, there’s one game to which I’m particularly addicted: Minecraft!!!</summary></entry><entry><title>Dairy Archive</title><link href="/post/Dairy-Archive/" rel="alternate" type="text/html" title="Dairy Archive" /><published>2013-06-01T00:00:00+02:00</published><updated>2013-06-01T00:00:00+02:00</updated><id>/post/Dairy-Archive</id><content type="html" xml:base="/post/Dairy-Archive/">&lt;h2 id=&quot;section&quot;&gt;2016&lt;/h2&gt;
+&lt;p&gt;Travelling to Dawson city in Canada, a small town that took shape in early the 20th century because of the famous gold rush. Although it still produces some gold today, the town has almost lost its past glories. Glad to have found this nice slide rule in an antique shop in Dawson. I’ve wanted to own a slide rule for a long time. This little piece of history brings me back to the days before calculators, a deep emotional connection.&lt;/p&gt;
+&lt;figure&gt;
+    &lt;a href=&quot;/images/Life-Collection/2016-08-20-slide-rule.jpg&quot;&gt;&lt;img src=&quot;/images/Life-Collection/2016-08-20-slide-rule.jpg&quot; /&gt;&lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;2014&lt;/h2&gt;
+&lt;p&gt;Travelled to probably the most mysterious country in the world, Turkey. Previously only existed in stories and fairy tales, being so close to it made me feel unreal.&lt;/p&gt;
+
+&lt;p&gt;Being in Istanbul itself is like being in fairy tale: the churches and mosques, the calls for prayer from minarets, the old streets and dessert shops, everything seems frozen back in time, just as they were hundreds (or thousands) of years ago. History makes this city romantic, maybe even dog and cat can fall in love~&lt;/p&gt;
+
+&lt;figure class=&quot;half&quot;&gt;
+    &lt;a href=&quot;/images/Life-Collection/turkey-1.jpg&quot;&gt;&lt;img src=&quot;/images/Life-Collection/turkey-1.jpg&quot; /&gt;&lt;/a&gt;
+    &lt;a href=&quot;/images/Life-Collection/turkey-cat-dog.jpg&quot;&gt;&lt;img src=&quot;/images/Life-Collection/turkey-cat-dog.jpg&quot; /&gt;&lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;In Turkey there are many ducks, and strangely people don’t eat them. Instead they are pretty generously fed (in an unhealthy diet though). Like in Pamukkale, people enjoy feeding ducks with bread.&lt;/p&gt;
+&lt;figure&gt;
+    &lt;a href=&quot;/images/Life-Collection/turkey-feed-duck.jpg&quot;&gt;&lt;img src=&quot;/images/Life-Collection/turkey-feed-duck.jpg&quot; /&gt;&lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;2013&lt;/h2&gt;
+&lt;p&gt;My first time in Canada, everything seemed so friendly to me. In the morning of my first day at Montreal, I saw some surprisingly beautiful patterns of frozen moisture, right on the window! Squirrels seem to like me as well, or did this one mistook my leg for a tree?&lt;/p&gt;
+
+&lt;figure class=&quot;half&quot;&gt;
+    &lt;a href=&quot;/images/Life-Collection/Montreal-ice.JPG&quot;&gt;&lt;img src=&quot;/images/Life-Collection/Montreal-ice.JPG&quot; /&gt;&lt;/a&gt;
+    &lt;a href=&quot;/images/Life-Collection/Montreal-squirrel.jpg&quot;&gt;&lt;img src=&quot;/images/Life-Collection/Montreal-squirrel.jpg&quot; /&gt;&lt;/a&gt;
+&lt;/figure&gt;</content><category term="Hobby" /><category term="life" /><summary>2016
+Travelling to Dawson city in Canada, a small town that took shape in early the 20th century because of the famous gold rush. Although it still produces some gold today, the town has almost lost its past glories. Glad to have found this nice slide rule in an antique shop in Dawson. I’ve wanted to own a slide rule for a long time. This little piece of history brings me back to the days before calculators, a deep emotional connection.</summary></entry></feed>
