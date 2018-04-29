@@ -55,11 +55,11 @@ In my driver, the motor is powered from V+ (user-defined, max 100V DC). However,
   * 15V: power supply to MOSTEF gate drivers
   * 5V: for high-power circuits that needs 5V supply (e.g. opto-isolator, high-power side).
 
-In addition, there is another 5V linear regulator, which supplies power for low-power circuits that needs 5V: opto-isolator low-power side, current transducers, etc. 
+In addition, there is another 5V linear regulator, which supplies power for low-power circuits that needs 5V: opto-isolator low-power side, current transducers, etc.
 
 An additional 5V voltage, VREF, is provided by REF195 (by Analog Devices). this is the precision voltage reference for an the onboard ADC (which was never tested, sadly)
 
-The power supply curcuit is shown in Fig.6. 
+The power supply curcuit is shown in Fig.6.
 
 <figure>
     <a href="/images/2014-05-10-Servo-Motor-Driver-Project/power-supply.png"><img src="/images/2014-05-10-Servo-Motor-Driver-Project/power-supply.png"></a>
@@ -96,7 +96,7 @@ My driver board features 4-layer PCB, with middle layers dedicated to GND and po
     <figcaption>Fig.12 (Right) Finished PCB, Back Side</figcaption>
 </figure>
 
-Fig.13 shows the finished motor driver in use, driving a brushed DC motor (only one of the 3 phases are used).
+Fig.13 shows the finished motor driver in use, driving a brushed DC motor (only one of the 3 phases is used).
 <figure>
     <a href="/images/2014-05-10-Servo-Motor-Driver-Project/test-product.jpg"><img src="/images/2014-05-10-Servo-Motor-Driver-Project/test-product.jpg"></a>
     <figcaption>Fig.13 Driving a Brushed DC Motor</figcaption>

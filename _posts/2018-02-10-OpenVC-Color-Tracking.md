@@ -10,7 +10,7 @@ layout: single
 ---
 
 OpenCV is a really powerful tool for computer vision developers. Combined with
-python, prototyping and deployment becomes really fast. Motivated by the heat in
+python, prototyping and deployment become really fast. Motivated by the heat in
 computer vision recently, I revisited some basic features of OpenCV, and
 re-discovered this little project I did a few years ago.
 
