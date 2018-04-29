@@ -7,11 +7,9 @@ permalink: /about_me/
 
 <hr>
 
-I am a passionate mechanical engineer with an interest in robotics, automation, and control. I have rich experience in designing and implementing automation systems, in motor and motion control, in mechanical design, as well as in programming.
+I am a passionate mechanical engineer with an interest in robotics, automation, and control. I have rich experience in designing and implementing automation systems, in motor and motion control, in programming, as well as in mechanical design.
 
-I received my bachelor degree in Mechanical Engineering at the Hong Kong Polytechnic University, and am pursuing my MSc in Robotics Systems and Control, at ETH Zurich. ETH brings me close to the world's most innovative and pioneering researchers in robotics and control, a great opportunity for me to learn and to train myself. I am really looking forward to the challenges!
-
-More details about me? Please see my CV below. Click on the <a class="btn btn--info">blue buttons</a> to jump to the section that interests you.
+I received my bachelor degree in Mechanical Engineering at the Hong Kong Polytechnic University, and am pursuing my MSc in Robotics Systems and Control, at ETH Zurich. More details about me? Please see my CV below. Click on the <a class="btn btn--info">blue buttons</a> to jump to the section that interests you.
 
 <a href="#tag_edu" class="btn btn--info">Education</a>
 <a href="#tag_exp" class="btn btn--info">Experience</a>
@@ -28,14 +26,13 @@ More details about me? Please see my CV below. Click on the <a class="btn btn--i
 <b><font color="#000000"> ETH Zurich, Switzerland (2016-09 ~ Present) </font></b>
 
   * MSc Robotics Systems and Control
-  * Cumulative GPA: -
-  * Selected courses: robotic dynamics, computer vision, industrial process control
+  * Selected courses: robot dynamics, computer vision, physical human-robot interaction, probabilistic artificial intelligence, power electronic system, industrial process control
 
 <b><font color="#000000"> The Hong Kong Polytechnic University (HKPU), Hong Kong (2011-09 ~ 2016-06) </font></b>
 
   * BEng Mechanical Engineering, <b>First Class Honour</b>
   * Cumulative GPA: 3.52/4.00
-  * Selected courses: control engineering, aircraft flight mechanics, artificial intelligence, CAD, vibration and sound
+  * Selected courses: automatic control system, artificial intelligence, sound and vibration
 
 <b><font color="#000000"> McGill University, Canada (2014-01 ~ 2014-05) </font></b>
 
@@ -49,55 +46,48 @@ More details about me? Please see my CV below. Click on the <a class="btn btn--i
 
 <p style="margin:0" ><b><font color="#000000"> Maxon Motor AG, Switzerland (2017-03 ~ 2017-09) </font></b></p>
 
-<b>Trainee, Advanced Systems Group</b>
+<b>Engineer Trainee, Advanced Systems Group</b>
 
+  * Firmware development for real-time motion control systems.
   * Developed and tested a high-performance sensorless control algorithm for brushless servo motors.
   * Developed and tested advanced system identification methods for motion control systems.
-  * Implementation and testing of firmware for real-time motion control systems.
 
-<p style="margin:0" ><b><font color="#000000"> Robotic System Lab, ETH Zürich, Switzerland (2016-10 ~ 2017-03) </font></b></p>
+<p style="margin:0" ><b><font color="#000000"> Robotic Systems Lab, ETH Zürich, Switzerland (2016-10 ~ 2017-03) </font></b></p>
 
 <b>Research Assistant</b>
 
-  * Designed and implemented a low-level power management and system monitor system for ANYmal, a quadrupedal robot.
-  * Developed a touchscreen-based user interface for the same robot.
+  * Developed firmware and low-level drivers for the battery and power management system of ANYmal, a quadrupedal walking robot.
+  * Developed a touchscreen-based user interface for ANYmal.
 
 <p style="margin:0" ><b><font color="#000000"> The Hong Kong Polytechnic Unviersity, Hong Kong (2016-06 ~ 2016-08) </font></b></p>
 
 <b>Research Assistant</b>
 
-  * Developed a ROS application to realize hardware-in-loop simulation and off-board control of a vertical take-off and landing (VTOL) aircraft.
-  * Developed and tested a multiple unmanned aircraft (UAVs) system that is capable of performing radio communication relay.
+  * Developed data acquisition and image processing systems for an unmanned aerial vehicle (UAV) based search-and-rescue mission platform (using C++ and Python).
+  * Developed ROS applications and PixHawk firmware for an in-house vertical take-off and landing (VTOL) UAV.
 
 <p style="margin:0" ><b><font color="#000000"> ASM Pacific Technology Ltd, Hong Kong (2014-06 ~ 2015-06) </font></b></p>
 
 <b>Engineer Trainee, R&D Motion Group</b>
 
-  * Worked on the developing and testing of high-precision servo motors, sensors and motion systems; improved design of servo motors, increasing performance by up to 10%.
-  * Developed C# & LabView programs for test process control, hardware interfacing, and servo performance simulations; performed control tunning for servo systems; created and analysed mechanical design of servo motors and test jigs.
-
-<p style="margin:0" ><b><font color="#000000"> DONGFANG Turbine Co. Ltd, China (2013-07 ~ 2013-08) </font></b></p>
-
-<b>Engineering Intern</b>
-
-  * Conducted dynamic balancing tests for a variety of turbine rotors: rotor modelling, analysing frequency domain response, balancing the rotor to reduce dynamic vibration by adding weight.
-  * Participated in trainings on a number of subjects: engineering management, field coordination, basics of manufacturing, industrial safety.
+  * Developed a highly user-friendly motor sizing and simulation toolbox+GUI using C#.
+  * Developed various C++ and LabView programs for test automation.
+  * Deployment and tuning of high-precision motion control systems used for semiconductor processes.
 
 <A NAME="tag_proj">
 <hr>
 # <font color="#000000"> Projects </font>
 <p style="margin:0" ><b><font color="#000000"> Master Thesis: Collaborative Workpiece Manipulation with a Torque-Controllable Robot Arm, ETH Zürich (2018-02 ~ Present) </font></b></p>
 
-<b>Researcher</b>
-
+  * Software architecture design and engineering for robot controllers (using C++, python, and ROS).
   * Implement and evaluate state-of-the-art control algorithms (e.g. inverse kinematics control, impedance control, and admittance control) on a MABI Speedy 12 collaborative robot arm.
-  * Develop an semi-automatic workpiece manipulation process, where the robot arm manipulates and assembles workpieces under the guidance of human.
-  * Develop a software framework for the high-level controller of the robot arm.
 
+<p style="margin:0" ><b><font color="#000000"> Single Image Depth Estimation Using Deep CNN, ETH Zürich (2018-03 ~ Present) </font></b></p>
+
+  * Implementation and training of a deep neural network (NN) for single image depth estimation (using Python and PyTorch)
+  * Developing a novel interleaved training method to improve consistency under illumination changes.
 
 <p style="margin:0" ><b><font color="#000000"> Model Predictive Control of a Series Elastic Actuator, ETH Zürich (2017-09 ~ 2017-12) </font></b></p>
-
-<b>Researcher</b>
 
   * Developed and tested a novel model-predictive controller (MPC) for ANYdrive, a series elastic actuator (SEA). The controller is formulated for the whole electro-mechanical system, computing 3-phase voltage to the motor directly from output torque setpoints (output torque is measured as the deflection of the elastic component of the SEA).
   * System identification for ANYdrive; optimization for computational efficiency of the MPC on a MCU;  implementation of firmware.
@@ -149,10 +139,9 @@ More details about me? Please see my CV below. Click on the <a class="btn btn--i
 <hr>
 # <font color="#000000"> Skills </font>
 
-<b>Skills</b>: Control engineering, motor and motion control, mechatronics, mechanical design,
-embedded systems, CAD, manufacturing.
+<b>Skills</b>: Robotics, software engineering, machine learning, system identification, embedded system, electronics, mechanical design.
 
-<b>Programming Languages</b>: C/C++, C#, Matlab, Python, LabView.
+<b>Programming Languages</b>: C++, Python, C#, Matlab, LabView.
 
 <b>Languages</b>: English, German, Mandarin, Cantonese.
 
