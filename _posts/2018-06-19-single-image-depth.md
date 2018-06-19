@@ -19,6 +19,9 @@ href="https://github.com/YifanJiangPolyU/single_image_depth_pytorch">https://git
 Although [2] estimates both per-pixel depth and surface normals, we only trained
 depth estimation here.
 
+This work is done in collaboration with <a
+href="https://github.com/tongguanc">Guanchun Tong</a>
+
 ## The Neural Network
 
 This is a multi-scale CNN model that estimates the depth of each pixel in a RGB
