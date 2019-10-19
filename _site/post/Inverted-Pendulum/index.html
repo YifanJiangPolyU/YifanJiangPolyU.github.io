@@ -34,7 +34,7 @@
 
 
 
-  <meta property="og:description" content="In this mini project, nonlinear control strategies for the swing-up control of an inverted pendulum on a cart (i.e. the cart-pole system) is explored. The controller is verified in a simulation. Let’s take a look at how it works in the video below. Only the pendulum is visualized, and the cart is not visible.">
+  <meta property="og:description" content="In this mini project, nonlinear control strategies for the swing-up control ofan inverted pendulum on a cart (i.e. the cart-pole system) is explored. Thecontroller is verified in a simulation. Let’s take a look at how it works in thevideo below. Only the pendulum is visualized, and the cart is not visible.">
 
 
 
@@ -199,7 +199,7 @@
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Swing-up and Balancing Control of an Inverted Pendulum">
-    <meta itemprop="description" content="In this mini project, nonlinear control strategies for the swing-up control of an inverted pendulum on a cart (i.e. the cart-pole system) is explored. The controller is verified in a simulation. Let’s take a look at how it works in the video below. Only the pendulum is visualized, and the cart is not visible.">
+    <meta itemprop="description" content="In this mini project, nonlinear control strategies for the swing-up control ofan inverted pendulum on a cart (i.e. the cart-pole system) is explored. Thecontroller is verified in a simulation. Let’s take a look at how it works in thevideo below. Only the pendulum is visualized, and the cart is not visible.">
     <meta itemprop="datePublished" content="April 01, 2016">
     
 
@@ -219,7 +219,10 @@
       
 
       <section class="page__content" itemprop="text">
-        <p>In this mini project, nonlinear control strategies for the swing-up control of an inverted pendulum on a cart (i.e. the cart-pole system) is explored. The controller is verified in a simulation. Let’s take a look at how it works in the video below. Only the pendulum is visualized, and the cart is not visible.</p>
+        <p>In this mini project, nonlinear control strategies for the swing-up control of
+an inverted pendulum on a cart (i.e. the cart-pole system) is explored. The
+controller is verified in a simulation. Let’s take a look at how it works in the
+video below. Only the pendulum is visualized, and the cart is not visible.</p>
 
 <iframe width="1294" height="480" src="https://www.youtube.com/embed/SJh4P6uV5ag" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
 
@@ -234,24 +237,44 @@
   <figcaption>Fig 1. The Cart Pole System (<a href="https://danielpiedrahita.wordpress.com/portfolio/cart-pole-control/">source</a>)</figcaption>
 </figure>
 
-<p>A pendulum (the pole) freely rotates on a shaft mounted on a moving cart. The shaft is NOT
-actuated, and the only control action applicable is a force on the cart.</p>
+<p>A pendulum (the pole) freely rotates on a shaft mounted on a moving cart. The
+shaft is NOT actuated, and the only control action applicable is a force on the
+cart.</p>
 
 <h2 id="the-algorithm">The Algorithm</h2>
 
-<p>Initially, the pendulum is at its stable equilibrium position (i.e. lowest position). The control algorithm does 2 jobs. First, it tires to move the cart so that the pendulum swings up to the unstable equilibrium position (i.e. the highest position). Second, it tries to balance the pendulum at its unstable equilibrium.</p>
+<p>Initially, the pendulum is at its stable equilibrium position (i.e. lowest
+position). The control algorithm does 2 jobs. First, it tires to move the cart
+so that the pendulum swings up to the unstable equilibrium position (i.e. the
+highest position). Second, it tries to balance the pendulum at its unstable
+equilibrium.</p>
 
-<p>The swing-up part of the job is more interesting and more challenging. The during swing-up, the pendulum travels through highly nonlinear regions of the state space, rendering conventional linear system techniques unusable. Further more, the system is under-actuated, and when the pendulum is horizontal, moving the cart does not generate any effect on the pendulum (even for a very brief moment).</p>
+<p>The swing-up part of the job is more interesting and more challenging. The
+during swing-up, the pendulum travels through highly nonlinear regions of the
+state space, rendering conventional linear system techniques unusable. Further
+more, the system is under-actuated, and when the pendulum is horizontal, moving
+the cart does not generate any effect on the pendulum (even for a very brief
+moment).</p>
 
-<p>The method implemented here was mentioned in the course materials of <a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-832-underactuated-robotics-spring-2009/">MIT OpenCourseWare 6.832, Underactuated Robotics</a> This method transforms the swing-up control problem into the regulation problem of an energy-like term. Namely, the energy error term is defined as follows:</p>
+<p>The method implemented here was mentioned in the course materials of <a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-832-underactuated-robotics-spring-2009/">MIT
+OpenCourseWare 6.832, Underactuated Robotics</a> This method transforms the
+swing-up control problem into the regulation problem of an energy-like term.
+Namely, the energy error term is defined as follows:</p>
 
 <figure style="width: 254px" class="align-center">
   <img src="/images/2016-04-01-Inverted-Pendulum/energy-error.png" />
 </figure>
 
-<p>In the equation, J is the moment of inertia of the pendulum, and g is the gravitational acceleration. Other notations are consistent with Figure 1. Note that when the pendulum is at upright position, the energy error term goes to zero. A regulator is then added to drive the energy error to zero, which is effectively the same as making the pendulum approach the upright position.</p>
+<p>In the equation, J is the moment of inertia of the pendulum, and g is the
+gravitational acceleration. Other notations are consistent with Figure 1. Note
+that when the pendulum is at upright position, the energy error term goes to
+zero. A regulator is then added to drive the energy error to zero, which is
+effectively the same as making the pendulum approach the upright position.</p>
 
-<p>When the pendulum is close enough to the upright position, the system can effectively be replaced by its linearization about the upright position. At this moment, the energy error regulator is simply switched off and a linear quadratic regulator (LQR) takes over to balance the pendulum.</p>
+<p>When the pendulum is close enough to the upright position, the system can
+effectively be replaced by its linearization about the upright position. At this
+moment, the energy error regulator is simply switched off and a linear quadratic
+regulator (LQR) takes over to balance the pendulum.</p>
 
         
       </section>
@@ -429,6 +452,32 @@ python, prototyping and deployment become really fast. I recently revisited so..
 
 <div class="grid__item">
   
+    <a href="/post/MPC-SEA/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Model Predictive Control of a Series Elastic Actuator
+</h2>
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  10 minutes read
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">Recently I had the pleasure to work on what is probably the best-made Series
+Elastic Actuator (SEA) module in the world: the ANYdrive. from Robotic Systems
+L...</p>
+    </article>
+  </a>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  
     <a href="/post/Dairy-2017-2018/">
   
     <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
@@ -445,30 +494,6 @@ python, prototyping and deployment become really fast. I recently revisited so..
       <p class="archive__item-excerpt" itemprop="description">April 2018
 
 </p>
-    </article>
-  </a>
-</div>
-        
-          
-
-
-
-<div class="grid__item">
-  
-    <a href="/post/Audio-Decoder/">
-  
-    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-      
-      <h2 class="archive__item-title" itemprop="headline">My First Home Made HiFi Audio Decoder and Amplifier
-</h2>
-      
-        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
-
-
-  6 minutes read
-</p>
-      
-      <p class="archive__item-excerpt" itemprop="description">Recently I developed my first in-house hi-fi audio decoder + amplifier project. Having tested it with my own ears I was very much surprised by the outstandin...</p>
     </article>
   </a>
 </div>

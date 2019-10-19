@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.0.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-10-19T22:22:32+02:00</updated><id>/</id><title>Yifan Jiang</title><subtitle>My personal homepage.</subtitle><author><name>Yifan Jiang</name></author><entry><title>Single Image Depth Estimation using PyTorch</title><link href="/post/single-image-depth/" rel="alternate" type="text/html" title="Single Image Depth Estimation using PyTorch" /><published>2018-06-19T00:00:00+02:00</published><updated>2018-06-19T00:00:00+02:00</updated><id>/post/single-image-depth</id><content type="html" xml:base="/post/single-image-depth/">&lt;p&gt;There are a few ways to measure distances to objects: LIDAR, stereo vision,
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.0.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-10-19T23:05:48+02:00</updated><id>/</id><title>Yifan Jiang</title><subtitle>My personal homepage.</subtitle><author><name>Yifan Jiang</name></author><entry><title>Single Image Depth Estimation using PyTorch</title><link href="/post/single-image-depth/" rel="alternate" type="text/html" title="Single Image Depth Estimation using PyTorch" /><published>2018-06-19T00:00:00+02:00</published><updated>2018-06-19T00:00:00+02:00</updated><id>/post/single-image-depth</id><content type="html" xml:base="/post/single-image-depth/">&lt;p&gt;There are a few ways to measure distances to objects: LIDAR, stereo vision,
 ultrasonic sensors, and so on. What about just using a single RGB image and
 estimate the depth of each pixel, using a convolution neural network (CNN)?
 There has been many publications on this topic, such as [1,2,3]. Here, together
@@ -159,7 +159,204 @@ the largest green area in the video stream. The method fails horribly, however,
 when lighting conditions change too drastically (e.g. shadows or reflections).&lt;/p&gt;</content><category term="Hobby" /><category term="tech" /><summary>OpenCV is a really powerful tool for computer vision developers. Combined with
 python, prototyping and deployment become really fast. I recently revisited some
 basic features of OpenCV, and re-discovered this little project I did a few
-years ago.</summary></entry><entry><title>Dairy</title><link href="/post/Dairy-2017-2018/" rel="alternate" type="text/html" title="Dairy" /><published>2017-02-25T00:00:00+01:00</published><updated>2017-02-25T00:00:00+01:00</updated><id>/post/Dairy-2017-2018</id><content type="html" xml:base="/post/Dairy-2017-2018/">&lt;h2 id=&quot;april-2018&quot;&gt;April 2018&lt;/h2&gt;
+years ago.</summary></entry><entry><title>Model Predictive Control of a Series Elastic Actuator</title><link href="/post/MPC-SEA/" rel="alternate" type="text/html" title="Model Predictive Control of a Series Elastic Actuator" /><published>2018-01-10T00:00:00+01:00</published><updated>2018-01-10T00:00:00+01:00</updated><id>/post/MPC-SEA</id><content type="html" xml:base="/post/MPC-SEA/">&lt;p&gt;Recently I had the pleasure to work on what is probably the best-made Series
+Elastic Actuator (SEA) module in the world: the &lt;a href=&quot;https://www.anybotics.com/anydrive/&quot;&gt;ANYdrive&lt;/a&gt;. from Robotic Systems
+Lab at ETH Zürich. I implemented Model Predictive Controller (MPC) for this SEA,
+but not a normal MPC. No specs or details about the design of the ANYdrive will
+be discussed since those are proprietary. But feel free take a look at &lt;a href=&quot;https://www.anybotics.com/&quot;&gt;ANYbotics&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can click on the &lt;a class=&quot;btn btn--info&quot;&gt;blue buttons&lt;/a&gt; to navigate in
+this post.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;#tag_intro&quot; class=&quot;btn btn--info&quot;&gt;Introduction&lt;/a&gt;
+&lt;a href=&quot;#tag_modeling&quot; class=&quot;btn btn--info&quot;&gt;Modeling&lt;/a&gt;
+&lt;a href=&quot;#tag_control&quot; class=&quot;btn btn--info&quot;&gt;The Controller&lt;/a&gt;
+&lt;a href=&quot;#tag_experiment&quot; class=&quot;btn btn--info&quot;&gt;Experimental Results&lt;/a&gt;
+&lt;a href=&quot;#tag_conclusion&quot; class=&quot;btn btn--info&quot;&gt;Conclusion&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&quot;tag_intro&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;SEA is a special class of actuators that is considered particularly suitable for
+robots that physically interact with uncertain environments. It consists of a
+motor and a gearbox, but the load is connected to the output of the gearbox via
+a spring. This spring acts as a buffer between the environment and the rather
+STIFF gearbox, making the robot compliant (less likely to harm people). The
+spring also let you sense torque easily, using Hooke’s Law.&lt;/p&gt;
+
+&lt;p&gt;The ANYdrive is just an example of such actuators. It is drive by a 3-phase
+brushless Permanent Magnet Synchronous Motor (PMSM). Instead of using a cascaded
+loop to control the PMSM, the PMSM &lt;strong&gt;AND&lt;/strong&gt; the spring in series are controlled
+by a single unified controller. Providing an output torque setpoint, the MPC
+computes directly the voltage to be applied to the PMSM. This novel MPC is
+referred to as the Model Based Unified Torque Controller (MBUTC).&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&quot;tag_modeling&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;modeling&quot;&gt;Modeling&lt;/h2&gt;
+
+&lt;p&gt;The first step is to model the ANYdrive. The model contains 2 parts. The first
+part is the electrical dynamics of the PMSM, and the second part the the
+dynamics of the mechanical system.&lt;/p&gt;
+
+&lt;p&gt;The modeling of the PMSM is well established, and exists in a lot of
+literatures. Here, the PMSM is modeled using space vector. All 3-phase
+quantities, currents and voltages, and represented in the DQ coordinate system,
+which is attached to and rotates with the rotor of the PMSM. The &lt;a href=&quot;https://en.wikipedia.org/wiki/Direct-quadrature-zero_transformation&quot;&gt;Park
+Transformation&lt;/a&gt; is used to do this job.&lt;/p&gt;
+
+&lt;p&gt;In DQ coordinate system the dynamics is greatly simplified, and can be writen
+down as follows:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;a href=&quot;/images/2018-01-10-MPC-SEA/pmsm_eq.png&quot;&gt;&lt;img src=&quot;/images/2018-01-10-MPC-SEA/pmsm_eq.png&quot; /&gt;&lt;/a&gt;
+    &lt;figcaption&gt;Equation of the PMSM&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;The mechanical system is essentially a spring-mass-damper system, and its
+free-body diagram is shown below:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;a href=&quot;/images/2018-01-10-MPC-SEA/sea_free_body.png&quot;&gt;&lt;img src=&quot;/images/2018-01-10-MPC-SEA/sea_free_body.png&quot; /&gt;&lt;/a&gt;
+    &lt;figcaption&gt;Free-body Diagram of the SEA&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;The equation of motion is given by:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;a href=&quot;/images/2018-01-10-MPC-SEA/sea_eq.png&quot;&gt;&lt;img src=&quot;/images/2018-01-10-MPC-SEA/sea_eq.png&quot; /&gt;&lt;/a&gt;
+    &lt;figcaption&gt;Free-body Diagram of the SEA&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;The nonlinear friction effect is rather strong in this case, and has to be
+accounted for in the model. Here, the nonlinear friction is modeled as a
+hyperbolic tangent function of the motor’s velocity. This function is continuous
+and differentiable w.r.t velocity, which is a very desirable property. In the
+equation below, Fs is the maximum static friction.&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;a href=&quot;/images/2018-01-10-MPC-SEA/friction_eq.png&quot;&gt;&lt;img src=&quot;/images/2018-01-10-MPC-SEA/friction_eq.png&quot; /&gt;&lt;/a&gt;
+    &lt;figcaption&gt;Modeling of Nonlinear Friction&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Now we define the state vector, x, and state space matrices, as follows:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/images/2018-01-10-MPC-SEA/state_eq.png&quot;&gt;&lt;img src=&quot;/images/2018-01-10-MPC-SEA/state_eq.png&quot; /&gt;&lt;/a&gt;
+&lt;a href=&quot;/images/2018-01-10-MPC-SEA/action_eq.png&quot;&gt;&lt;img src=&quot;/images/2018-01-10-MPC-SEA/action_eq.png&quot; /&gt;&lt;/a&gt;
+&lt;a href=&quot;/images/2018-01-10-MPC-SEA/state_eq.png&quot;&gt;&lt;img src=&quot;/images/2018-01-10-MPC-SEA/A_eq.png&quot; /&gt;&lt;/a&gt;
+&lt;a href=&quot;/images/2018-01-10-MPC-SEA/state_eq.png&quot;&gt;&lt;img src=&quot;/images/2018-01-10-MPC-SEA/B_eq.png&quot; /&gt;&lt;/a&gt;
+&lt;a href=&quot;/images/2018-01-10-MPC-SEA/state_eq.png&quot;&gt;&lt;img src=&quot;/images/2018-01-10-MPC-SEA/g_eq.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The resulting state space equation of the ANYdrive then looks like this:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;a href=&quot;/images/2018-01-10-MPC-SEA/ss_eq.png&quot;&gt;&lt;img src=&quot;/images/2018-01-10-MPC-SEA/ss_eq.png&quot; /&gt;&lt;/a&gt;
+    &lt;figcaption&gt;State Space Model of a PSMS-drive SEA&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;In fact all SEAs that are driven by a PMSM can be modeled this way. This model
+is therefore potentially applicable to many other SEAs.&lt;/p&gt;
+
+&lt;p&gt;The parameters of the model are identified in a series of experiments. Then, the
+response of the real SEA in an experiment is compared to the result of a
+numerical simulation using the model (implemented in &lt;a href=&quot;https://ch.mathworks.com/products/simulink.html&quot;&gt;Simulink&lt;/a&gt;). Results
+are seen in figures below.&lt;/p&gt;
+
+&lt;figure class=&quot;half&quot;&gt;
+    &lt;a href=&quot;/images/2018-01-10-MPC-SEA/verify-model-time.png&quot;&gt;&lt;img src=&quot;/images/2018-01-10-MPC-SEA/verify-model-time.png&quot; /&gt;&lt;/a&gt;
+    &lt;a href=&quot;/images/2018-01-10-MPC-SEA/verify-model-bode.png&quot;&gt;&lt;img src=&quot;/images/2018-01-10-MPC-SEA/verify-model-bode.png&quot; /&gt;&lt;/a&gt;
+    &lt;figcaption&gt;Comparison between Experimental Data and Numerical Simulation&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;The fact that simulation matches well with experimental data shows the accuracy
+of the model.&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&quot;tag_control&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;the-controller&quot;&gt;The Controller&lt;/h2&gt;
+
+&lt;p&gt;The controller is essentially an MPC that controls the deflection of the spring.
+The MPC is a form of receding horizon controller. At time step k, the controller
+computes optimal actions for time steps k+1 ~ k+N (N is called the horizon).
+However, only the action at k+1 is applied to the system, while actions k+2 ~
+k+N are discarded. At time step k+1, the above-mentioned step is repeated. The
+idea is shown in figure below:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;a href=&quot;/images/2018-01-10-MPC-SEA/rhc.png&quot;&gt;&lt;img src=&quot;/images/2018-01-10-MPC-SEA/rhc.png&quot; /&gt;&lt;/a&gt;
+    &lt;figcaption&gt;Receding horizon controller&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;The following steps are involved at each timestep:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;measurements of the state variables are taken.&lt;/li&gt;
+  &lt;li&gt;desired joint torque is converted to the desired spring deflection (using Hooke’s law).&lt;/li&gt;
+  &lt;li&gt;the system model derived before is linearized about the measured states.&lt;/li&gt;
+  &lt;li&gt;formulate a finite-horizon linear-quadratic-regulator (LQR) for the linearized system.&lt;/li&gt;
+  &lt;li&gt;solve this LOR deterministically, using the dynamic programming algorithm.&lt;/li&gt;
+  &lt;li&gt;apply the computed optimal action (i.e. voltage) to the motor.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Similar to most MPCs, this control law is relatively computationally expensive.
+It was a challenge to implement it in the MCU that controls the SEA, which is
+strictly real-time. The algorithm is optimally divided into a number of stages
+which run during different hardware interrupt cycles, so the algorithm is able
+to run deterministically at the desirable frequency.&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&quot;tag_experiment&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;experimental-results&quot;&gt;Experimental Results&lt;/h2&gt;
+
+&lt;p&gt;The MBUTC is tested in two different setups. First, the output shaft of the SEA
+is blocked, so the motor sees an infinite output impedance. Second, a pendulum
+of an inertia of approximately 0.1 kg m^2 is attached to the output shaft,
+simulating a more realistic loading condition. The setups are shown in figure below:&lt;/p&gt;
+
+&lt;figure class=&quot;half&quot;&gt;
+    &lt;a href=&quot;/images/2018-01-10-MPC-SEA/setup-block.jpg&quot;&gt;&lt;img src=&quot;/images/2018-01-10-MPC-SEA/setup-block.jpg&quot; /&gt;&lt;/a&gt;
+    &lt;a href=&quot;/images/2018-01-10-MPC-SEA/setup-pendulum.jpg&quot;&gt;&lt;img src=&quot;/images/2018-01-10-MPC-SEA/setup-pendulum.jpg&quot; /&gt;&lt;/a&gt;
+    &lt;figcaption&gt;Left: The shaft is blocked. Right: pendulum attached to the shaft.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;The step response of the MBUTC is measured. The response with the shaft blocked
+is shown as follow:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;a href=&quot;/images/2018-01-10-MPC-SEA/step-block.png&quot;&gt;&lt;img src=&quot;/images/2018-01-10-MPC-SEA/step-block.png&quot; /&gt;&lt;/a&gt;
+    &lt;figcaption&gt;Torque step response, shaft blocked.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;The response with a pendulum attached is shown as follows:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;a href=&quot;/images/2018-01-10-MPC-SEA/step-pendulum.png&quot;&gt;&lt;img src=&quot;/images/2018-01-10-MPC-SEA/step-pendulum.png&quot; /&gt;&lt;/a&gt;
+    &lt;figcaption&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;a name=&quot;tag_conclusion&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;The modeling and system identification of the SEA are satisfactory. However, the
+MBUTC performs worse than the traditional PID controller with cascaded loops.&lt;/p&gt;
+
+&lt;p&gt;A number of possible explanations of the sub-optimal performance:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;the MBUTC does not have a integrator action to eliminate steady-state error.&lt;/li&gt;
+  &lt;li&gt;the MBUTC is too short-sighted, due to the finite (and short) horizon used here.&lt;/li&gt;
+  &lt;li&gt;the model of static friction is not perfect (the model is continuous w.r.t velocity, but the real static friction is not).&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The most promising candidate for improvement is to add an disturbance observer
+to this MPC. An disturbance observer will help eliminating steady-state error,
+and may be able to mitigate the effect of imperfect friction model.&lt;/p&gt;</content><category term="tech" /><category term="life" /><summary>Recently I had the pleasure to work on what is probably the best-made Series
+Elastic Actuator (SEA) module in the world: the ANYdrive. from Robotic Systems
+Lab at ETH Zürich. I implemented Model Predictive Controller (MPC) for this SEA,
+but not a normal MPC. No specs or details about the design of the ANYdrive will
+be discussed since those are proprietary. But feel free take a look at ANYbotics.</summary></entry><entry><title>Dairy</title><link href="/post/Dairy-2017-2018/" rel="alternate" type="text/html" title="Dairy" /><published>2017-02-25T00:00:00+01:00</published><updated>2017-02-25T00:00:00+01:00</updated><id>/post/Dairy-2017-2018</id><content type="html" xml:base="/post/Dairy-2017-2018/">&lt;h2 id=&quot;april-2018&quot;&gt;April 2018&lt;/h2&gt;
 
 &lt;p&gt;Got a fancy new toy for my master thesis :)&lt;/p&gt;
 
@@ -391,7 +588,10 @@ is a low-cost IMU sensor, which provides 3-axis acceleration and 3-axis angular
 velocity measurements (6 DOF in total). This sensor is really handy when it
 comes to implementing things like wearable devices and drones. I got an
 evaluation module of this sensor, and decided to build a very simple interface
-for it using a 8-bit MCU. Source code is available at https://github.com/YifanJiangPolyU/MPU6050</summary></entry><entry><title>Swing-up and Balancing Control of an Inverted Pendulum</title><link href="/post/Inverted-Pendulum/" rel="alternate" type="text/html" title="Swing-up and Balancing Control of an Inverted Pendulum" /><published>2016-04-01T00:00:00+02:00</published><updated>2016-04-01T00:00:00+02:00</updated><id>/post/Inverted-Pendulum</id><content type="html" xml:base="/post/Inverted-Pendulum/">&lt;p&gt;In this mini project, nonlinear control strategies for the swing-up control of an inverted pendulum on a cart (i.e. the cart-pole system) is explored. The controller is verified in a simulation. Let’s take a look at how it works in the video below. Only the pendulum is visualized, and the cart is not visible.&lt;/p&gt;
+for it using a 8-bit MCU. Source code is available at https://github.com/YifanJiangPolyU/MPU6050</summary></entry><entry><title>Swing-up and Balancing Control of an Inverted Pendulum</title><link href="/post/Inverted-Pendulum/" rel="alternate" type="text/html" title="Swing-up and Balancing Control of an Inverted Pendulum" /><published>2016-04-01T00:00:00+02:00</published><updated>2016-04-01T00:00:00+02:00</updated><id>/post/Inverted-Pendulum</id><content type="html" xml:base="/post/Inverted-Pendulum/">&lt;p&gt;In this mini project, nonlinear control strategies for the swing-up control of
+an inverted pendulum on a cart (i.e. the cart-pole system) is explored. The
+controller is verified in a simulation. Let’s take a look at how it works in the
+video below. Only the pendulum is visualized, and the cart is not visible.&lt;/p&gt;
 
 &lt;iframe width=&quot;1294&quot; height=&quot;480&quot; src=&quot;https://www.youtube.com/embed/SJh4P6uV5ag&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 
@@ -406,24 +606,47 @@ for it using a 8-bit MCU. Source code is available at https://github.com/YifanJi
   &lt;figcaption&gt;Fig 1. The Cart Pole System (&lt;a href=&quot;https://danielpiedrahita.wordpress.com/portfolio/cart-pole-control/&quot;&gt;source&lt;/a&gt;)&lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;p&gt;A pendulum (the pole) freely rotates on a shaft mounted on a moving cart. The shaft is NOT
-actuated, and the only control action applicable is a force on the cart.&lt;/p&gt;
+&lt;p&gt;A pendulum (the pole) freely rotates on a shaft mounted on a moving cart. The
+shaft is NOT actuated, and the only control action applicable is a force on the
+cart.&lt;/p&gt;
 
 &lt;h2 id=&quot;the-algorithm&quot;&gt;The Algorithm&lt;/h2&gt;
 
-&lt;p&gt;Initially, the pendulum is at its stable equilibrium position (i.e. lowest position). The control algorithm does 2 jobs. First, it tires to move the cart so that the pendulum swings up to the unstable equilibrium position (i.e. the highest position). Second, it tries to balance the pendulum at its unstable equilibrium.&lt;/p&gt;
+&lt;p&gt;Initially, the pendulum is at its stable equilibrium position (i.e. lowest
+position). The control algorithm does 2 jobs. First, it tires to move the cart
+so that the pendulum swings up to the unstable equilibrium position (i.e. the
+highest position). Second, it tries to balance the pendulum at its unstable
+equilibrium.&lt;/p&gt;
 
-&lt;p&gt;The swing-up part of the job is more interesting and more challenging. The during swing-up, the pendulum travels through highly nonlinear regions of the state space, rendering conventional linear system techniques unusable. Further more, the system is under-actuated, and when the pendulum is horizontal, moving the cart does not generate any effect on the pendulum (even for a very brief moment).&lt;/p&gt;
+&lt;p&gt;The swing-up part of the job is more interesting and more challenging. The
+during swing-up, the pendulum travels through highly nonlinear regions of the
+state space, rendering conventional linear system techniques unusable. Further
+more, the system is under-actuated, and when the pendulum is horizontal, moving
+the cart does not generate any effect on the pendulum (even for a very brief
+moment).&lt;/p&gt;
 
-&lt;p&gt;The method implemented here was mentioned in the course materials of &lt;a href=&quot;https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-832-underactuated-robotics-spring-2009/&quot;&gt;MIT OpenCourseWare 6.832, Underactuated Robotics&lt;/a&gt; This method transforms the swing-up control problem into the regulation problem of an energy-like term. Namely, the energy error term is defined as follows:&lt;/p&gt;
+&lt;p&gt;The method implemented here was mentioned in the course materials of &lt;a href=&quot;https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-832-underactuated-robotics-spring-2009/&quot;&gt;MIT
+OpenCourseWare 6.832, Underactuated Robotics&lt;/a&gt; This method transforms the
+swing-up control problem into the regulation problem of an energy-like term.
+Namely, the energy error term is defined as follows:&lt;/p&gt;
 
 &lt;figure style=&quot;width: 254px&quot; class=&quot;align-center&quot;&gt;
   &lt;img src=&quot;/images/2016-04-01-Inverted-Pendulum/energy-error.png&quot; /&gt;
 &lt;/figure&gt;
 
-&lt;p&gt;In the equation, J is the moment of inertia of the pendulum, and g is the gravitational acceleration. Other notations are consistent with Figure 1. Note that when the pendulum is at upright position, the energy error term goes to zero. A regulator is then added to drive the energy error to zero, which is effectively the same as making the pendulum approach the upright position.&lt;/p&gt;
+&lt;p&gt;In the equation, J is the moment of inertia of the pendulum, and g is the
+gravitational acceleration. Other notations are consistent with Figure 1. Note
+that when the pendulum is at upright position, the energy error term goes to
+zero. A regulator is then added to drive the energy error to zero, which is
+effectively the same as making the pendulum approach the upright position.&lt;/p&gt;
 
-&lt;p&gt;When the pendulum is close enough to the upright position, the system can effectively be replaced by its linearization about the upright position. At this moment, the energy error regulator is simply switched off and a linear quadratic regulator (LQR) takes over to balance the pendulum.&lt;/p&gt;</content><category term="Hobby" /><category term="tech" /><summary>In this mini project, nonlinear control strategies for the swing-up control of an inverted pendulum on a cart (i.e. the cart-pole system) is explored. The controller is verified in a simulation. Let’s take a look at how it works in the video below. Only the pendulum is visualized, and the cart is not visible.</summary></entry><entry><title>Building a 3-Phase Servo Motor Driver</title><link href="/post/Servo-Motor-Driver-Project/" rel="alternate" type="text/html" title="Building a 3-Phase Servo Motor Driver" /><published>2014-05-10T00:00:00+02:00</published><updated>2014-05-10T00:00:00+02:00</updated><id>/post/Servo-Motor-Driver-Project</id><content type="html" xml:base="/post/Servo-Motor-Driver-Project/">&lt;p&gt;In the past few months I was intensively exposed to servo motors: their constructions, working principles, and driving circuits, thanks to my internship. These motors are brushless, driven by 3-phase AC currents, and when properly controlled (as in my internship company), can execute motion with nanometer-level of resolution. The science and technology behind these motors deeply fascinated me, which inspired me to try building my own 3-phase servo motor driver, one of the core components in the motor’s control.&lt;/p&gt;
+&lt;p&gt;When the pendulum is close enough to the upright position, the system can
+effectively be replaced by its linearization about the upright position. At this
+moment, the energy error regulator is simply switched off and a linear quadratic
+regulator (LQR) takes over to balance the pendulum.&lt;/p&gt;</content><category term="Hobby" /><category term="tech" /><summary>In this mini project, nonlinear control strategies for the swing-up control of
+an inverted pendulum on a cart (i.e. the cart-pole system) is explored. The
+controller is verified in a simulation. Let’s take a look at how it works in the
+video below. Only the pendulum is visualized, and the cart is not visible.</summary></entry><entry><title>Building a 3-Phase Servo Motor Driver</title><link href="/post/Servo-Motor-Driver-Project/" rel="alternate" type="text/html" title="Building a 3-Phase Servo Motor Driver" /><published>2014-05-10T00:00:00+02:00</published><updated>2014-05-10T00:00:00+02:00</updated><id>/post/Servo-Motor-Driver-Project</id><content type="html" xml:base="/post/Servo-Motor-Driver-Project/">&lt;p&gt;In the past few months I was intensively exposed to servo motors: their constructions, working principles, and driving circuits, thanks to my internship. These motors are brushless, driven by 3-phase AC currents, and when properly controlled (as in my internship company), can execute motion with nanometer-level of resolution. The science and technology behind these motors deeply fascinated me, which inspired me to try building my own 3-phase servo motor driver, one of the core components in the motor’s control.&lt;/p&gt;
 
 &lt;p&gt;The 3-phase servo motor driver is essentially a 3-phase DC-to-AC converter, which provides current measurement and feedback for control purpose. The major functional blocks of the driver are as follows:&lt;/p&gt;
 
@@ -530,32 +753,4 @@ actuated, and the only control action applicable is a force on the cart.&lt;/p&g
     &lt;figcaption&gt;Fig.1 (Left) OR gate, my design&lt;/figcaption&gt;
     &lt;figcaption&gt;Fig.2 (Mid) 8-bit binary adder/subtractor&lt;/figcaption&gt;
     &lt;figcaption&gt;Fig.3 (Right) 4-bit binary multiplier&lt;/figcaption&gt;
-&lt;/figure&gt;</content><category term="life" /><category term="hobby" /><summary>I’m not a game person, and I rarely play games. However, there’s one game to which I’m particularly addicted: Minecraft!!!</summary></entry><entry><title>Dairy Archive</title><link href="/post/Dairy-Archive/" rel="alternate" type="text/html" title="Dairy Archive" /><published>2013-06-01T00:00:00+02:00</published><updated>2013-06-01T00:00:00+02:00</updated><id>/post/Dairy-Archive</id><content type="html" xml:base="/post/Dairy-Archive/">&lt;h2 id=&quot;section&quot;&gt;2016&lt;/h2&gt;
-&lt;p&gt;Travelling to Dawson city in Canada, a small town that took shape in early the 20th century because of the famous gold rush. Although it still produces some gold today, the town has almost lost its past glories. Glad to have found this nice slide rule in an antique shop in Dawson. I’ve wanted to own a slide rule for a long time. This little piece of history brings me back to the days before calculators, a deep emotional connection.&lt;/p&gt;
-&lt;figure&gt;
-    &lt;a href=&quot;/images/Life-Collection/2016-08-20-slide-rule.jpg&quot;&gt;&lt;img src=&quot;/images/Life-Collection/2016-08-20-slide-rule.jpg&quot; /&gt;&lt;/a&gt;
-&lt;/figure&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;2014&lt;/h2&gt;
-&lt;p&gt;Travelled to probably the most mysterious country in the world, Turkey. Previously only existed in stories and fairy tales, being so close to it made me feel unreal.&lt;/p&gt;
-
-&lt;p&gt;Being in Istanbul itself is like being in fairy tale: the churches and mosques, the calls for prayer from minarets, the old streets and dessert shops, everything seems frozen back in time, just as they were hundreds (or thousands) of years ago. History makes this city romantic, maybe even dog and cat can fall in love~&lt;/p&gt;
-
-&lt;figure class=&quot;half&quot;&gt;
-    &lt;a href=&quot;/images/Life-Collection/turkey-1.jpg&quot;&gt;&lt;img src=&quot;/images/Life-Collection/turkey-1.jpg&quot; /&gt;&lt;/a&gt;
-    &lt;a href=&quot;/images/Life-Collection/turkey-cat-dog.jpg&quot;&gt;&lt;img src=&quot;/images/Life-Collection/turkey-cat-dog.jpg&quot; /&gt;&lt;/a&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;In Turkey there are many ducks, and strangely people don’t eat them. Instead they are pretty generously fed (in an unhealthy diet though). Like in Pamukkale, people enjoy feeding ducks with bread.&lt;/p&gt;
-&lt;figure&gt;
-    &lt;a href=&quot;/images/Life-Collection/turkey-feed-duck.jpg&quot;&gt;&lt;img src=&quot;/images/Life-Collection/turkey-feed-duck.jpg&quot; /&gt;&lt;/a&gt;
-&lt;/figure&gt;
-
-&lt;h2 id=&quot;section-2&quot;&gt;2013&lt;/h2&gt;
-&lt;p&gt;My first time in Canada, everything seemed so friendly to me. In the morning of my first day at Montreal, I saw some surprisingly beautiful patterns of frozen moisture, right on the window! Squirrels seem to like me as well, or did this one mistook my leg for a tree?&lt;/p&gt;
-
-&lt;figure class=&quot;half&quot;&gt;
-    &lt;a href=&quot;/images/Life-Collection/Montreal-ice.JPG&quot;&gt;&lt;img src=&quot;/images/Life-Collection/Montreal-ice.JPG&quot; /&gt;&lt;/a&gt;
-    &lt;a href=&quot;/images/Life-Collection/Montreal-squirrel.jpg&quot;&gt;&lt;img src=&quot;/images/Life-Collection/Montreal-squirrel.jpg&quot; /&gt;&lt;/a&gt;
-&lt;/figure&gt;</content><category term="Hobby" /><category term="life" /><summary>2016
-Travelling to Dawson city in Canada, a small town that took shape in early the 20th century because of the famous gold rush. Although it still produces some gold today, the town has almost lost its past glories. Glad to have found this nice slide rule in an antique shop in Dawson. I’ve wanted to own a slide rule for a long time. This little piece of history brings me back to the days before calculators, a deep emotional connection.</summary></entry></feed>
+&lt;/figure&gt;</content><category term="life" /><category term="hobby" /><summary>I’m not a game person, and I rarely play games. However, there’s one game to which I’m particularly addicted: Minecraft!!!</summary></entry></feed>

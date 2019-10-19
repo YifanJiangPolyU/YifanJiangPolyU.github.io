@@ -34,7 +34,7 @@
 
 
 
-  <meta property="og:description" content="Recently I had the pleasure to work on what is probably the best-made SeriesElastic Actuator (SEA) module in the world: the ANYdrive. from Robotic SystemsLab at ETH Zürich. I took this chance to try out something really novel: a ModelPredictive Controller (MPC) for this SEA, but not a normal MPC. No specs ordetails about the design of the ANYdrive will be discussed because those areproprietary. But feel free take a look at ANYbotics.">
+  <meta property="og:description" content="Recently I had the pleasure to work on what is probably the best-made SeriesElastic Actuator (SEA) module in the world: the ANYdrive. from Robotic SystemsLab at ETH Zürich. I implemented Model Predictive Controller (MPC) for this SEA,but not a normal MPC. No specs or details about the design of the ANYdrive willbe discussed since those are proprietary. But feel free take a look at ANYbotics.">
 
 
 
@@ -50,6 +50,8 @@
 
   <meta property="og:type" content="article">
   <meta property="article:published_time" content="2018-01-10T00:00:00+01:00">
+  
+    <link rel="next" href="/post/OpenVC-Color-Tracking/" title="Object Tracking based on Color with OpenCV">
   
   
     <link rel="prev" href="/post/Dairy-2017-2018/" title="Dairy">
@@ -197,7 +199,7 @@
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Model Predictive Control of a Series Elastic Actuator">
-    <meta itemprop="description" content="Recently I had the pleasure to work on what is probably the best-made SeriesElastic Actuator (SEA) module in the world: the ANYdrive. from Robotic SystemsLab at ETH Zürich. I took this chance to try out something really novel: a ModelPredictive Controller (MPC) for this SEA, but not a normal MPC. No specs ordetails about the design of the ANYdrive will be discussed because those areproprietary. But feel free take a look at ANYbotics.">
+    <meta itemprop="description" content="Recently I had the pleasure to work on what is probably the best-made SeriesElastic Actuator (SEA) module in the world: the ANYdrive. from Robotic SystemsLab at ETH Zürich. I implemented Model Predictive Controller (MPC) for this SEA,but not a normal MPC. No specs or details about the design of the ANYdrive willbe discussed since those are proprietary. But feel free take a look at ANYbotics.">
     <meta itemprop="datePublished" content="January 10, 2018">
     
 
@@ -219,10 +221,9 @@
       <section class="page__content" itemprop="text">
         <p>Recently I had the pleasure to work on what is probably the best-made Series
 Elastic Actuator (SEA) module in the world: the <a href="https://www.anybotics.com/anydrive/">ANYdrive</a>. from Robotic Systems
-Lab at ETH Zürich. I took this chance to try out something really novel: a Model
-Predictive Controller (MPC) for this SEA, but not a normal MPC. No specs or
-details about the design of the ANYdrive will be discussed because those are
-proprietary. But feel free take a look at <a href="https://www.anybotics.com/">ANYbotics</a>.</p>
+Lab at ETH Zürich. I implemented Model Predictive Controller (MPC) for this SEA,
+but not a normal MPC. No specs or details about the design of the ANYdrive will
+be discussed since those are proprietary. But feel free take a look at <a href="https://www.anybotics.com/">ANYbotics</a>.</p>
 
 <p>You can click on the <a class="btn btn--info">blue buttons</a> to navigate in
 this post.</p>
@@ -245,12 +246,11 @@ STIFF gearbox, making the robot compliant (less likely to harm people). The
 spring also let you sense torque easily, using Hooke’s Law.</p>
 
 <p>The ANYdrive is just an example of such actuators. It is drive by a 3-phase
-brushless Permanent Magnet Synchronous Motor (PMSM). The <strong>major novelty</strong> of my
-MPC is that, instead of using a cascaded loop to control the PMSM, the PMSM
-<strong>AND</strong> the spring in series are controlled by a single unified controller. You
-provide a output torque setpoint, and the MPC computes directly the voltage to
-be applied to the PMSM. I gave this controller a pretty stupid name: the Model
-Based Unified Torque Controller (MBUTC).</p>
+brushless Permanent Magnet Synchronous Motor (PMSM). Instead of using a cascaded
+loop to control the PMSM, the PMSM <strong>AND</strong> the spring in series are controlled
+by a single unified controller. Providing an output torque setpoint, the MPC
+computes directly the voltage to be applied to the PMSM. This novel MPC is
+referred to as the Model Based Unified Torque Controller (MBUTC).</p>
 
 <p><a name="tag_modeling"></a></p>
 
@@ -329,64 +329,90 @@ are seen in figures below.</p>
     <figcaption>Comparison between Experimental Data and Numerical Simulation</figcaption>
 </figure>
 
-<p>The fact that simulation matches well with experimental data shows the validity
-and accuracy of the model.</p>
+<p>The fact that simulation matches well with experimental data shows the accuracy
+of the model.</p>
 
 <p><a name="tag_control"></a></p>
 
 <h2 id="the-controller">The Controller</h2>
 
 <p>The controller is essentially an MPC that controls the deflection of the spring.
-The following steps are involved at each timestep:</p>
+The MPC is a form of receding horizon controller. At time step k, the controller
+computes optimal actions for time steps k+1 ~ k+N (N is called the horizon).
+However, only the action at k+1 is applied to the system, while actions k+2 ~
+k+N are discarded. At time step k+1, the above-mentioned step is repeated. The
+idea is shown in figure below:</p>
+
+<figure>
+    <a href="/images/2018-01-10-MPC-SEA/rhc.png"><img src="/images/2018-01-10-MPC-SEA/rhc.png" /></a>
+    <figcaption>Receding horizon controller</figcaption>
+</figure>
+
+<p>The following steps are involved at each timestep:</p>
 
 <ol>
-  <li>measurements of the state variables are taken</li>
-  <li>desired joint torque is converted to the desired spring deflection (using Hooke’s law)</li>
-  <li>the system model derived before is linearized about the measured states</li>
-  <li>formulate a finite-horizon linear-quadratic-regulator (LQR) for the linearized system</li>
+  <li>measurements of the state variables are taken.</li>
+  <li>desired joint torque is converted to the desired spring deflection (using Hooke’s law).</li>
+  <li>the system model derived before is linearized about the measured states.</li>
+  <li>formulate a finite-horizon linear-quadratic-regulator (LQR) for the linearized system.</li>
   <li>solve this LOR deterministically, using the dynamic programming algorithm.</li>
-  <li>apply the computed optimal action (i.e. voltage) to the motor</li>
+  <li>apply the computed optimal action (i.e. voltage) to the motor.</li>
 </ol>
 
 <p>Similar to most MPCs, this control law is relatively computationally expensive.
 It was a challenge to implement it in the MCU that controls the SEA, which is
-strictly real-time. In spite of that I successfully coded it in a bare-metal
-way, and was able to run the controller deterministically at 2500 Hz.</p>
+strictly real-time. The algorithm is optimally divided into a number of stages
+which run during different hardware interrupt cycles, so the algorithm is able
+to run deterministically at the desirable frequency.</p>
 
 <p><a name="tag_experiment"></a></p>
 
 <h2 id="experimental-results">Experimental Results</h2>
 
-<p>The controller is verified experimentally. In the figures, this MPC controller
-is referred to as the MBUTC.</p>
+<p>The MBUTC is tested in two different setups. First, the output shaft of the SEA
+is blocked, so the motor sees an infinite output impedance. Second, a pendulum
+of an inertia of approximately 0.1 kg m^2 is attached to the output shaft,
+simulating a more realistic loading condition. The setups are shown in figure below:</p>
 
-<p>First, I blocked the output shaft of the SEA, and applied a step input (desired
-joint torque) to the controller.</p>
+<figure class="half">
+    <a href="/images/2018-01-10-MPC-SEA/setup-block.jpg"><img src="/images/2018-01-10-MPC-SEA/setup-block.jpg" /></a>
+    <a href="/images/2018-01-10-MPC-SEA/setup-pendulum.jpg"><img src="/images/2018-01-10-MPC-SEA/setup-pendulum.jpg" /></a>
+    <figcaption>Left: The shaft is blocked. Right: pendulum attached to the shaft.</figcaption>
+</figure>
+
+<p>The step response of the MBUTC is measured. The response with the shaft blocked
+is shown as follow:</p>
+
+<figure>
+    <a href="/images/2018-01-10-MPC-SEA/step-block.png"><img src="/images/2018-01-10-MPC-SEA/step-block.png" /></a>
+    <figcaption>Torque step response, shaft blocked.</figcaption>
+</figure>
+
+<p>The response with a pendulum attached is shown as follows:</p>
+
+<figure>
+    <a href="/images/2018-01-10-MPC-SEA/step-pendulum.png"><img src="/images/2018-01-10-MPC-SEA/step-pendulum.png" /></a>
+    <figcaption></figcaption>
+</figure>
 
 <p><a name="tag_conclusion"></a></p>
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>It’s a pitty that the MPC controller actually gives worse performance than the
-default PID controller. Although I don’t want to admit that, I’ll just have to
-face the music LOL.</p>
+<p>The modeling and system identification of the SEA are satisfactory. However, the
+MBUTC performs worse than the traditional PID controller with cascaded loops.</p>
 
-<p>I thought about a few explanations for this results, which I’d share below:</p>
+<p>A number of possible explanations of the sub-optimal performance:</p>
 
 <ol>
-  <li>the MPC controller does not have a integrator action to eliminate steady-state error.</li>
-  <li>the MPC is too short-sighted, due to the finite (and short) horizon used here.</li>
-  <li>the model of static friction is not perfect (the model is continous w.r.t velocity, but the real static friction is not).</li>
+  <li>the MBUTC does not have a integrator action to eliminate steady-state error.</li>
+  <li>the MBUTC is too short-sighted, due to the finite (and short) horizon used here.</li>
+  <li>the model of static friction is not perfect (the model is continuous w.r.t velocity, but the real static friction is not).</li>
 </ol>
 
 <p>The most promising candidate for improvement is to add an disturbance observer
 to this MPC. An disturbance observer will help eliminating steady-state error,
 and may be able to mitigate the effect of imperfect friction model.</p>
-
-<p>It’s time to say goodbye to the lovely ANYdrive, so it’s unlikely I’ll have a
-chance to test my algorithm on the real system in the near future. I’ll
-nevertheless try some fixes (inc. the disturbance observer) in my free time
-using simulations, and hope to see some more positive results.</p>
 
         
       </section>
@@ -479,7 +505,8 @@ using simulations, and hope to see some more positive results.</p>
 ">Previous</a>
     
     
-      <a href="#" class="pagination--pager disabled">Next</a>
+      <a href="/post/OpenVC-Color-Tracking/" class="pagination--pager" title="Object Tracking based on Color with OpenCV
+">Next</a>
     
   </nav>
 
@@ -512,6 +539,57 @@ using simulations, and hope to see some more positive results.</p>
 
 <div class="grid__item">
   
+    <a href="/post/single-image-depth/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Single Image Depth Estimation using PyTorch
+</h2>
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  5 minutes read
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">There are a few ways to measure distances to objects: LIDAR, stereo vision,
+ultrasonic sensors, and so on. What about just using a single RGB image and
+estim...</p>
+    </article>
+  </a>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  
+    <a href="/post/OpenVC-Color-Tracking/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Object Tracking based on Color with OpenCV
+</h2>
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  1 minute read
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">OpenCV is a really powerful tool for computer vision developers. Combined with
+python, prototyping and deployment become really fast. I recently revisited so...</p>
+    </article>
+  </a>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  
     <a href="/post/Dairy-2017-2018/">
   
     <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
@@ -525,34 +603,9 @@ using simulations, and hope to see some more positive results.</p>
   4 minutes read
 </p>
       
-      <p class="archive__item-excerpt" itemprop="description">A dairy-like record of interesting moments in my life~ I’ll keep updating ~
+      <p class="archive__item-excerpt" itemprop="description">April 2018
 
 </p>
-    </article>
-  </a>
-</div>
-        
-          
-
-
-
-<div class="grid__item">
-  
-    <a href="/post/Dairy-Archive/">
-  
-    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-      
-      <h2 class="archive__item-title" itemprop="headline">Dairy Archive
-</h2>
-      
-        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
-
-
-  1 minute read
-</p>
-      
-      <p class="archive__item-excerpt" itemprop="description">2016
-Travelling to Dawson city in Canada, a small town that took shape in early the 20th century because of the famous gold rush. Although it still produces ...</p>
     </article>
   </a>
 </div>
@@ -581,30 +634,6 @@ Travelling to Dawson city in Canada, a small town that took shape in early the 2
   </a>
 </div>
         
-          
-
-
-
-<div class="grid__item">
-  
-    <a href="/post/UAV-Communication-Relay-for-another-UAV/">
-  
-    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-      
-      <h2 class="archive__item-title" itemprop="headline">UAV Communication Relay for another UAV
-</h2>
-      
-        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
-
-
-  12 minutes read
-</p>
-      
-      <p class="archive__item-excerpt" itemprop="description">This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea a...</p>
-    </article>
-  </a>
-</div>
-        
       </div>
     </div>
   
@@ -628,7 +657,7 @@ Travelling to Dawson city in Canada, a small town that took shape in early the 2
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2018 Yifan Jiang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2019 Yifan Jiang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
       </footer>
     </div>
 
