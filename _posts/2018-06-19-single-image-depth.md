@@ -69,14 +69,14 @@ The training takes place in a few stages. First, scale 1 and 2 are trained as fo
 </figure>
 
 Then, scale 3 is trained. The depth loss described earlier is simply
-back-propagated. Scale 3 was trained for at most 100 epochs, and the training is
+back-propagated. Scale 3 is trained for at most 100 epochs, and the training is
 terminated early if performance stops improving.
 
 ## Results
 
-The results are pretty bad compared to [2]. The reason is probably that our
-training dataset is much smaller. Baselines of comparisons are detailed in [1].
-The results are shown below:
+The resulting accuracy is worse compared to [2], which is to be expected since
+the training dataset is much smaller. Baselines of comparisons are detailed in
+[1]. The results are shown below:
 
 <figure style="width: 600px" class="align-center">
   <img src="/images/2018-06-19-single-image-depth/table-res.png">
