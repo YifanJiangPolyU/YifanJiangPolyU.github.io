@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.0.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-10-19T22:07:04+02:00</updated><id>/</id><title>Yifan Jiang</title><subtitle>My personal homepage.</subtitle><author><name>Yifan Jiang</name></author><entry><title>Single Image Depth Estimation using PyTorch</title><link href="/post/single-image-depth/" rel="alternate" type="text/html" title="Single Image Depth Estimation using PyTorch" /><published>2018-06-19T00:00:00+02:00</published><updated>2018-06-19T00:00:00+02:00</updated><id>/post/single-image-depth</id><content type="html" xml:base="/post/single-image-depth/">&lt;p&gt;There are a few ways to measure distances to objects: LIDAR, stereo vision,
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.0.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-10-19T22:22:32+02:00</updated><id>/</id><title>Yifan Jiang</title><subtitle>My personal homepage.</subtitle><author><name>Yifan Jiang</name></author><entry><title>Single Image Depth Estimation using PyTorch</title><link href="/post/single-image-depth/" rel="alternate" type="text/html" title="Single Image Depth Estimation using PyTorch" /><published>2018-06-19T00:00:00+02:00</published><updated>2018-06-19T00:00:00+02:00</updated><id>/post/single-image-depth</id><content type="html" xml:base="/post/single-image-depth/">&lt;p&gt;There are a few ways to measure distances to objects: LIDAR, stereo vision,
 ultrasonic sensors, and so on. What about just using a single RGB image and
 estimate the depth of each pixel, using a convolution neural network (CNN)?
 There has been many publications on this topic, such as [1,2,3]. Here, together
 with a friend, I implemented the algorithm of [2], trained it from scratch and
-tested it, using PyTorch. In addition, we trained&lt;/p&gt;
+tested it, using PyTorch.&lt;/p&gt;
 
 &lt;p&gt;The code is in my GitHub repository: &lt;a href=&quot;https://github.com/YifanJiangPolyU/single_image_depth_pytorch&quot;&gt;https://github.com/YifanJiangPolyU/single_image_depth_pytorch&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Although [2] estimates both per-pixel depth and surface normals, we only trained
-depth estimation here.&lt;/p&gt;
+&lt;p&gt;Although [2] estimates both per-pixel depth and surface normals, we only
+experimented depth estimation here.&lt;/p&gt;
 
 &lt;p&gt;This work is done in collaboration with &lt;a href=&quot;https://github.com/tongguanc&quot;&gt;Guanchun Tong&lt;/a&gt;&lt;/p&gt;
 
@@ -48,7 +48,8 @@ training, and the remaining 5% are used for validation.&lt;/p&gt;
 
 &lt;h3 id=&quot;training&quot;&gt;Training&lt;/h3&gt;
 
-&lt;p&gt;The training takes place in a few stages. First, scale 1 and 2 are trained as follows:&lt;/p&gt;
+&lt;p&gt;The training takes place in two stages. First, scale 1 and 2 are trained as
+shown in the following flow chart:&lt;/p&gt;
 
 &lt;figure style=&quot;width: 200px&quot; class=&quot;align-center&quot;&gt;
   &lt;img src=&quot;/images/2018-06-19-single-image-depth/flow-chart-training.png&quot; /&gt;
@@ -79,8 +80,7 @@ achieves good estimation even for fine details.&lt;/p&gt;
   &lt;figcaption&gt;Fig 4. From left to right: Input RGB image, ours, Eigen[2], ground truth &lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;p&gt;Histograms below show the distribution of per-pixel depth estimation errors. In
-general, [2] has much smaller estimation errors.&lt;/p&gt;
+&lt;p&gt;Histograms below show the distribution of per-pixel depth estimation errors.&lt;/p&gt;
 
 &lt;figure style=&quot;width: 800px&quot; class=&quot;align-center&quot;&gt;
   &lt;img src=&quot;/images/2018-06-19-single-image-depth/compare-hist.png&quot; /&gt;
@@ -111,7 +111,7 @@ ultrasonic sensors, and so on. What about just using a single RGB image and
 estimate the depth of each pixel, using a convolution neural network (CNN)?
 There has been many publications on this topic, such as [1,2,3]. Here, together
 with a friend, I implemented the algorithm of [2], trained it from scratch and
-tested it, using PyTorch. In addition, we trained</summary></entry><entry><title>Object Tracking based on Color with OpenCV</title><link href="/post/OpenVC-Color-Tracking/" rel="alternate" type="text/html" title="Object Tracking based on Color with OpenCV" /><published>2018-02-10T00:00:00+01:00</published><updated>2018-02-10T00:00:00+01:00</updated><id>/post/OpenVC-Color-Tracking</id><content type="html" xml:base="/post/OpenVC-Color-Tracking/">&lt;p&gt;OpenCV is a really powerful tool for computer vision developers. Combined with
+tested it, using PyTorch.</summary></entry><entry><title>Object Tracking based on Color with OpenCV</title><link href="/post/OpenVC-Color-Tracking/" rel="alternate" type="text/html" title="Object Tracking based on Color with OpenCV" /><published>2018-02-10T00:00:00+01:00</published><updated>2018-02-10T00:00:00+01:00</updated><id>/post/OpenVC-Color-Tracking</id><content type="html" xml:base="/post/OpenVC-Color-Tracking/">&lt;p&gt;OpenCV is a really powerful tool for computer vision developers. Combined with
 python, prototyping and deployment become really fast. I recently revisited some
 basic features of OpenCV, and re-discovered this little project I did a few
 years ago.&lt;/p&gt;

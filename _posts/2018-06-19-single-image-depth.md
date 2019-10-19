@@ -13,13 +13,13 @@ ultrasonic sensors, and so on. What about just using a single RGB image and
 estimate the depth of each pixel, using a convolution neural network (CNN)?
 There has been many publications on this topic, such as [1,2,3]. Here, together
 with a friend, I implemented the algorithm of [2], trained it from scratch and
-tested it, using PyTorch. In addition, we trained
+tested it, using PyTorch.
 
 The code is in my GitHub repository: <a
 href="https://github.com/YifanJiangPolyU/single_image_depth_pytorch">https://github.com/YifanJiangPolyU/single_image_depth_pytorch</a>.
 
-Although [2] estimates both per-pixel depth and surface normals, we only trained
-depth estimation here.
+Although [2] estimates both per-pixel depth and surface normals, we only
+experimented depth estimation here.
 
 This work is done in collaboration with <a
 href="https://github.com/tongguanc">Guanchun Tong</a>
@@ -61,7 +61,8 @@ The loss functions used for training are taken from [1].
 
 ### Training
 
-The training takes place in a few stages. First, scale 1 and 2 are trained as follows:
+The training takes place in two stages. First, scale 1 and 2 are trained as
+shown in the following flow chart:
 
 <figure style="width: 200px" class="align-center">
   <img src="/images/2018-06-19-single-image-depth/flow-chart-training.png">
@@ -92,8 +93,7 @@ achieves good estimation even for fine details.
   <figcaption>Fig 4. From left to right: Input RGB image, ours, Eigen[2], ground truth </figcaption>
 </figure>
 
-Histograms below show the distribution of per-pixel depth estimation errors. In
-general, [2] has much smaller estimation errors.
+Histograms below show the distribution of per-pixel depth estimation errors.
 
 <figure style="width: 800px" class="align-center">
   <img src="/images/2018-06-19-single-image-depth/compare-hist.png">
