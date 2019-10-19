@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.0.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-10-19T23:19:16+02:00</updated><id>/</id><title>Yifan Jiang</title><subtitle>My personal homepage.</subtitle><author><name>Yifan Jiang</name></author><entry><title>Single Image Depth Estimation using PyTorch</title><link href="/post/single-image-depth/" rel="alternate" type="text/html" title="Single Image Depth Estimation using PyTorch" /><published>2018-06-19T00:00:00+02:00</published><updated>2018-06-19T00:00:00+02:00</updated><id>/post/single-image-depth</id><content type="html" xml:base="/post/single-image-depth/">&lt;p&gt;There are a few ways to measure distances to objects: LIDAR, stereo vision,
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.0.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-10-19T23:20:58+02:00</updated><id>/</id><title>Yifan Jiang</title><subtitle>My personal homepage.</subtitle><author><name>Yifan Jiang</name></author><entry><title>Single Image Depth Estimation using PyTorch</title><link href="/post/single-image-depth/" rel="alternate" type="text/html" title="Single Image Depth Estimation using PyTorch" /><published>2018-06-19T00:00:00+02:00</published><updated>2018-06-19T00:00:00+02:00</updated><id>/post/single-image-depth</id><content type="html" xml:base="/post/single-image-depth/">&lt;p&gt;There are a few ways to measure distances to objects: LIDAR, stereo vision,
 ultrasonic sensors, and so on. What about just using a single RGB image and
 estimate the depth of each pixel, using a convolution neural network (CNN)?
 There has been many publications on this topic, such as [1,2,3]. Here, together
@@ -359,37 +359,7 @@ and may be able to mitigate the effect of imperfect friction model.&lt;/p&gt;</c
 Elastic Actuator (SEA) module in the world: the ANYdrive. from Robotic Systems
 Lab at ETH Zürich. I implemented Model Predictive Controller (MPC) for this SEA,
 but not a normal MPC. No specs or details about the design of the ANYdrive will
-be discussed since those are proprietary. But feel free take a look at ANYbotics.</summary></entry><entry><title>Dairy</title><link href="/post/Dairy-2017-2018/" rel="alternate" type="text/html" title="Dairy" /><published>2017-02-25T00:00:00+01:00</published><updated>2017-02-25T00:00:00+01:00</updated><id>/post/Dairy-2017-2018</id><content type="html" xml:base="/post/Dairy-2017-2018/">&lt;h2 id=&quot;april-2018&quot;&gt;April 2018&lt;/h2&gt;
-
-&lt;p&gt;Got a fancy new toy for my master thesis :)&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;a href=&quot;/images/Life-Collection/2018-03-mabi.jpg&quot;&gt;&lt;img src=&quot;/images/Life-Collection/2018-03-mabi.jpg&quot; /&gt;&lt;/a&gt;
-&lt;/figure&gt;
-
-&lt;h2 id=&quot;sep-2017&quot;&gt;Sep 2017&lt;/h2&gt;
-&lt;p&gt;An interesting jorney has ended, and another one must start. Having finished the internship at Maxon Motor, it’s time to go back to school and be academic again :)&lt;/p&gt;
-
-&lt;p&gt;About the internship, there is so much to love about it. I’ve got a lovely workplace, friendly and helpful colleagues, and a ton of interesting motors to work with. Now I’ve really got to know motors and drivers as well as my fingers, and my German did improve a lot. Not to mention that at the end of the job my colleagues gave me the most special gift I’ve ever received! Can’t love it more.&lt;/p&gt;
-
-&lt;p&gt;Worth mentioning, I’ve also started a project of my own, to develop a motor control platform. The target is to develop a controller for 3-phase PMSM, capable of executing current, speed, and position control. It will be able to control a series elastic actuator (SEA). Development has already started on a development kit, and the design of in-house hardware platform is underway. Hopefully a full solution can be turned out next year.&lt;/p&gt;
-
-&lt;p&gt;Back in school, still a ton of work is waiting for me. A few courses, my small thesis, and finding a job. The small thesis is particularly interesting for me. It’s about the modeling and control of a series elastic actuator (SEA), which is a special type of motor that’s particularly useful for robots that have to interact safely with human. Given the boom in cobot market that everybody envisions, SEA is a technology with big potentials. Really excited to work on it!&lt;/p&gt;
-
-&lt;h2 id=&quot;feb-2017&quot;&gt;Feb 2017&lt;/h2&gt;
-&lt;p&gt;End of February is the begining of a new journey! Last December I got an offer for an internship at the world-famous Maxon Motor AG! Excited for quite a while, and I’m soon going to start it! Really like the company’s nice location and huge lab, dream of all engineers~.&lt;/p&gt;
-
-&lt;p&gt;My part-time job at RSL has also come to an end. Must say it’s a nice experience, in which I learned a ton of things about electronics, system integration, team working, and much more. The people are supper nice and supportive, a great part of the job. Although it’s a bit stressful sometimes, it’s not too bad, and I’m happy in the end. Hope to do my semester project or thesis with them, would be a great option!&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;a href=&quot;/images/Life-Collection/2017-01-maxon.jpg&quot;&gt;&lt;img src=&quot;/images/Life-Collection/2017-01-maxon.jpg&quot; /&gt;&lt;/a&gt;
-&lt;/figure&gt;
-
-&lt;h2 id=&quot;jan-2017&quot;&gt;Jan 2017&lt;/h2&gt;
-&lt;p&gt;Have been doing a part-time job at ETH’s famous Robotic System Lab (RSL) for a few months, a fantastic experience! RSL is among the world’s best labs that study quadrupedal robots, or “robotic dogs” as I like call them. It’s really exciting to see it walk and jump. Digging deep into the low-level control systems for the robot is also full of fun.&lt;/p&gt;
-&lt;figure&gt;
-    &lt;a href=&quot;/images/Life-Collection/2017-01-me-with-dog.jpg&quot;&gt;&lt;img src=&quot;/images/Life-Collection/2017-01-me-with-dog.jpg&quot; /&gt;&lt;/a&gt;
-&lt;/figure&gt;</content><category term="Hobby" /><category term="life" /><summary>April 2018</summary></entry><entry><title>My First Home Made HiFi Audio Decoder and Amplifier</title><link href="/post/Audio-Decoder/" rel="alternate" type="text/html" title="My First Home Made HiFi Audio Decoder and Amplifier" /><published>2016-07-28T00:00:00+02:00</published><updated>2016-07-28T00:00:00+02:00</updated><id>/post/Audio-Decoder</id><content type="html" xml:base="/post/Audio-Decoder/">&lt;p&gt;Recently I developed my first in-house hi-fi audio decoder + amplifier project. Having tested it with my own ears I was very much surprised by the outstanding sound quality. Considering the fact that this project has costed me less than 300 HKD (thanks to cheap PCBs from Shenzhen), I am sooooo happy with the result! It has a name: “JAudio Decoder Amp”&lt;/p&gt;
+be discussed since those are proprietary. But feel free take a look at ANYbotics.</summary></entry><entry><title>My First Home Made HiFi Audio Decoder and Amplifier</title><link href="/post/Audio-Decoder/" rel="alternate" type="text/html" title="My First Home Made HiFi Audio Decoder and Amplifier" /><published>2016-07-28T00:00:00+02:00</published><updated>2016-07-28T00:00:00+02:00</updated><id>/post/Audio-Decoder</id><content type="html" xml:base="/post/Audio-Decoder/">&lt;p&gt;Recently I developed my first in-house hi-fi audio decoder + amplifier project. Having tested it with my own ears I was very much surprised by the outstanding sound quality. Considering the fact that this project has costed me less than 300 HKD (thanks to cheap PCBs from Shenzhen), I am sooooo happy with the result! It has a name: “JAudio Decoder Amp”&lt;/p&gt;
 
 &lt;h2 id=&quot;the-design&quot;&gt;The Design&lt;/h2&gt;
 
