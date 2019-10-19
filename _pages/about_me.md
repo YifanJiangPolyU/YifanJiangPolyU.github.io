@@ -96,8 +96,8 @@ I received my bachelor degree in Mechanical Engineering at the Hong Kong Polytec
 <p style="margin:0" ><b><font color="#000000"> Model Predictive Control of a Series Elastic Actuator, ETH Zürich (2017-09 ~ 2017-12) </font></b></p>
 
   * Developed and tested a novel model-predictive controller (MPC) for ANYdrive, a series elastic actuator (SEA). The controller is formulated for the whole electro-mechanical system, computing 3-phase voltage to the motor directly from output torque setpoints (output torque is measured as the deflection of the elastic component of the SEA).
-  * System identification for ANYdrive.
-  * Optimization for computational efficiency of the MPC on a MCU.
+  * System identification of a SEA.
+  * Optimization to increase computational efficiency of the MPC on a MCU.
 
 <p style="margin:0" ><b><font color="#000000"> Multiple UAV Mission System, HKPU, Hong Kong (2015-08 ~ 2016-04) </font></b></p>
 
