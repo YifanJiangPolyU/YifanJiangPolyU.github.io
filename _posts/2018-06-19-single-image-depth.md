@@ -13,7 +13,9 @@ ultrasonic sensors, and so on. What about just using a single RGB image and
 estimate the depth of each pixel, using a convolution neural network (CNN)?
 There has been many publications on this topic, such as [1,2,3]. Here, together
 with a friend, I implemented the algorithm of [2], trained it from scratch and
-tested it, using PyTorch. The code is in my GitHub repository: <a
+tested it, using PyTorch. In addition, we trained
+
+The code is in my GitHub repository: <a
 href="https://github.com/YifanJiangPolyU/single_image_depth_pytorch">https://github.com/YifanJiangPolyU/single_image_depth_pytorch</a>.
 
 Although [2] estimates both per-pixel depth and surface normals, we only trained
@@ -27,7 +29,7 @@ href="https://github.com/tongguanc">Guanchun Tong</a>
 This is a multi-scale CNN model that estimates the depth of each pixel in a RGB
 input image.
 
-The model consists of 3 different scales. Each scale is a set of convolutional
+The model consists of 3 different scales. Each scale is a set of convolution
 and pooling layers that processes a scaled-down copy of the original input
 image. The input image (304x228) is first processed by the scale 1 and 2,
 creating a small-size estimation (74x55). Then, the small-sized estimation is
@@ -44,8 +46,8 @@ structure is exactly the same as [2], and is illustrated in figure below:
 
 ### Dataset
 
-The NYUDepth v2 dataset [4] is used to train this model. Unfortunately, because
-of my small storage space, I could not use the entire dataset for training.
+The NYUDepth v2 dataset [4] is used to train this model. Unfortunately, due to
+disk space limitations, the entire dataset could not be used for training.
 Instead, a densely labeled subset of NYUDepth v2 is used (containing 1499
 images). The dataset is available <a
 href="https://cs.nyu.edu/~silberman/datasets/nyu_depth_v2.html">here</a>.
