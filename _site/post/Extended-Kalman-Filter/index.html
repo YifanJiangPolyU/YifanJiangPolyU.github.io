@@ -215,7 +215,7 @@
             <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
 
 
-  4 minutes read
+  6 minutes read
 </p>
           
         </header>
@@ -234,91 +234,133 @@ properties of a system at a specific time point is related to its properties at
 previous times. We can capture this relationship using the following probability
 distribution:</p>
 
-<script type="math/tex; mode=display">P(\bf{x}_k \mid \bf{x}_{k-1})</script>
+<script type="math/tex; mode=display">P(\mathbf{x}_k \mid \mathbf{x}_{k-1})</script>
 
-<p>where <script type="math/tex">\bf{x}_k</script> is the value of the properties at a specific discrete time
-point <script type="math/tex">k</script>.</p>
+<p>where <script type="math/tex">\mathbf{x}_k</script> is the value of the properties at a specific discrete time
+point <script type="math/tex">k</script>. The dynamics can often be modeled as follows:</p>
+
+<script type="math/tex; mode=display">\mathbf{x}_k = f(\mathbf{x}_{k-1}, \mathbf{u}_{k-1}) + \mathbf{v}</script>
+
+<p>Where <script type="math/tex">f(\mathbf{x})</script> is a (linear or nonlinear) function,
+<script type="math/tex">\mathbf{u}_{k-1}</script> is the control input and <script type="math/tex">\mathbf{v}</script> is the noise term,
+often referred to as process noise.</p>
 
 <h1 id="observation-model">Observation Model</h1>
 
 <p>To understand the behavior of a system, we must measure its properties. However,
 every measurement contains errors and not all properties are directly
-measurable. Let the actual value of the property be <script type="math/tex">\bf{x}</script> (<script type="math/tex">\bf{x}</script> can
-be a vector), the observation that we make, which consists of all measurable
-element of <script type="math/tex">\bf{x}</script> and is denoted <script type="math/tex">\bf{z}</script>, can be modeled as follows:</p>
+measurable. Let the actual value of the property be <script type="math/tex">\mathbf{x}</script>
+(<script type="math/tex">\mathbf{x}</script> can be a vector), the observation that we make, which consists
+of all measurable element of <script type="math/tex">\mathbf{x}</script> and is denoted <script type="math/tex">\mathbf{z}</script>, can
+be modeled as follows:</p>
 
-<script type="math/tex; mode=display">\bf{z} = \bf{Hx} + \bf{w}</script>
+<script type="math/tex; mode=display">\mathbf{z} = \mathbf{Hx} + \mathbf{w}</script>
 
-<p>where <script type="math/tex">\bf{H}</script> is the observation matrix, and <script type="math/tex">\bf{w}</script> is a noise term that
-has a specific probability distribution.</p>
+<p>where <script type="math/tex">\mathbf{H}</script> is the observation matrix and <script type="math/tex">\mathbf{w}</script> is the observation
+noise term which has a specific probability distribution.</p>
 
 <p>For example, let <script type="math/tex">% <![CDATA[
-\bf{x} = \begin{bmatrix} x_1 & x_2 & x_3 \end{bmatrix}^T %]]></script>.
+\mathbf{x} = \begin{bmatrix} x_1 & x_2 & x_3 \end{bmatrix}^T %]]></script>.
 If we are only able to measure <script type="math/tex">x_1</script> and <script type="math/tex">x_3</script> (because, for example, the
 sensor to measure <script type="math/tex">x_2</script> is too expensive and we don’t want to pay for that),
 then <script type="math/tex">% <![CDATA[
-\bf{H} = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 0 & 1 \end{bmatrix} %]]></script>.</p>
+\mathbf{H} = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 0 & 1 \end{bmatrix} %]]></script>.</p>
 
 <p>If the properties of the noise term is well known, we can easily compute the
-observation model, which is the probability distribution of <script type="math/tex">\bf{z}</script> given the
-value of <script type="math/tex">\bf{x}</script>:</p>
+observation model, which is the probability distribution of <script type="math/tex">\mathbf{z}</script> given the
+value of <script type="math/tex">\mathbf{x}</script>:</p>
 
-<script type="math/tex; mode=display">P(\bf{z} \mid \bf{x})</script>
+<script type="math/tex; mode=display">P(\mathbf{z} \mid \mathbf{x})</script>
 
 <h1 id="recursive-estimation">Recursive Estimation</h1>
 
 <p>Probabilistic state estimation tries to answer the following question: given a
-series of observations <script type="math/tex">\bf{z}_1</script> ~ <script type="math/tex">\bf{z}_k</script> taken at discrete time points
-<script type="math/tex">1</script> ~ <script type="math/tex">k</script>, what is the probability distribution of the actual property <script type="math/tex">\bf{x}_k</script>
+series of observations <script type="math/tex">\mathbf{z}_1</script> ~ <script type="math/tex">\mathbf{z}_k</script> taken at discrete time points
+<script type="math/tex">1</script> ~ <script type="math/tex">k</script>, what is the probability distribution of the actual property <script type="math/tex">\mathbf{x}_k</script>
 at time point <script type="math/tex">k</script>? The probability distribution is given by:</p>
 
-<script type="math/tex; mode=display">P(\bf{x}_k \mid \bf{z}_{1:k})</script>
+<script type="math/tex; mode=display">P(\mathbf{x}_k \mid \mathbf{z}_{1:k})</script>
 
 <p>The recursive estimation is a method to compute the above mentioned probability
-is a more efficient way. As the name suggests, the probability distribution at
+in a more efficient way. As the name suggests, the probability distribution at
 time point <script type="math/tex">k</script> is obtained recursively, using only the distribution at the
 previous time point <script type="math/tex">k-1</script> and the new observation at time point <script type="math/tex">k</script>. This is
 done in two steps.</p>
 
-<p><strong>First</strong>, we compute an estimation of the probability distribution of <script type="math/tex">\bf{x}_k</script>
+<p><strong>First</strong>, we compute an estimation of the probability distribution of <script type="math/tex">\mathbf{x}_k</script>
 using only the observations taken up to time point <script type="math/tex">k-1</script>:</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{aligned}
-    P(\bf{x}_k \mid \bf{z}_{1:k-1}) &= \sum_{\bf{x}_{k-1}} P(\bf{x}_k, \bf{x}_{k-1} \mid \bf{z}_{1:k-1}) \\
-                                 &= \sum_{\bf{x}_{k-1}} P(\bf{x}_k \mid \bf{x}_{k-1}) P(\bf{x}_{k-1} \mid \bf{z}_{1:k-1})
+    P(\mathbf{x}_k \mid \mathbf{z}_{1:k-1}) &= \sum_{\mathbf{x}_{k-1}} P(\mathbf{x}_k, \mathbf{x}_{k-1} \mid \mathbf{z}_{1:k-1}) \\
+                                 &= \sum_{\mathbf{x}_{k-1}} P(\mathbf{x}_k \mid \mathbf{x}_{k-1}) P(\mathbf{x}_{k-1} \mid \mathbf{z}_{1:k-1})
 \end{aligned} %]]></script>
 
-<p>The equation above holds because <script type="math/tex">\bf{x}_k</script> and <script type="math/tex">\bf{z}_{1:k-1}</script> are
+<p>The equation above holds because <script type="math/tex">\mathbf{x}_k</script> and <script type="math/tex">\mathbf{z}_{1:k-1}</script> are
 independent random variables given that we already know the value of
-<script type="math/tex">\bf{x}_{k-1}</script>.</p>
+<script type="math/tex">\mathbf{x}_{k-1}</script>.</p>
 
 <p><strong>Second</strong>, we improve the estimation obtained in the previous step using the
-latest measurement <script type="math/tex">\bf{z}_k</script> taken at time point <script type="math/tex">k</script>:</p>
+latest measurement <script type="math/tex">\mathbf{z}_k</script> taken at time point <script type="math/tex">k</script>:</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{aligned}
-    P(\bf{x}_k \mid \bf{z}_{1:k}) &= \frac{ P(\bf{x}_k, \bf{z}_k \mid \bf{z}_{1:k-1}) }{ P(\bf{z}_k \mid \bf{z}_{1:k-1}) } \\
-                               &= \frac{ P(\bf{z}_k \mid \bf{x}_k) P(\bf{x}_k \mid \bf{z}_{1:k-1}) }{ \sum_{\bf{x}_k} P(\bf{z}_k \mid \bf{x}_k) P(\bf{x}_k \mid \bf{z}_{1:k-1}) }
+    P(\mathbf{x}_k \mid \mathbf{z}_{1:k}) &= \frac{ P(\mathbf{x}_k, \mathbf{z}_k \mid \mathbf{z}_{1:k-1}) }{ P(\mathbf{z}_k \mid \mathbf{z}_{1:k-1}) } \\
+                               &= \frac{ P(\mathbf{z}_k \mid \mathbf{x}_k) P(\mathbf{x}_k \mid \mathbf{z}_{1:k-1}) }{ \sum_{\mathbf{x}_k} P(\mathbf{z}_k \mid \mathbf{x}_k) P(\mathbf{x}_k \mid \mathbf{z}_{1:k-1}) }
 \end{aligned} %]]></script>
 
-<p>This is true because <script type="math/tex">\bf{z}_k</script> and <script type="math/tex">\bf{z}_{1:k-1}</script> are
+<p>This is true because <script type="math/tex">\mathbf{z}_k</script> and <script type="math/tex">\mathbf{z}_{1:k-1}</script> are
 independent random variables given that we already know the value of
-<script type="math/tex">\bf{x}_{k}</script>.</p>
+<script type="math/tex">\mathbf{x}_{k}</script>.</p>
 
-<p>At this point, we are able to recursively compute P(\bf{x}<em>k \mid \bf{z}</em>{1:k})
+<p>At this point, we are able to recursively compute P(\mathbf{x}<em>k \mid \mathbf{z}</em>{1:k})
 using three main ingredients:</p>
 
 <ul>
-  <li>Estimation at previous time step, <script type="math/tex">P(\bf{x}_{k-1} \mid \bf{z}_{1:k-1})</script></li>
-  <li>System dynamics, <script type="math/tex">P(\bf{x}_k \mid \bf{x}_{k-1})</script></li>
-  <li>Observation model, <script type="math/tex">P(\bf{z} \mid \bf{x})</script></li>
+  <li>Estimation at previous time step, <script type="math/tex">P(\mathbf{x}_{k-1} \mid \mathbf{z}_{1:k-1})</script></li>
+  <li>System dynamics, <script type="math/tex">P(\mathbf{x}_k \mid \mathbf{x}_{k-1})</script></li>
+  <li>Observation model, <script type="math/tex">P(\mathbf{z} \mid \mathbf{x})</script></li>
 </ul>
 
 <h1 id="kalman-filter">Kalman Filter</h1>
 
 <p>Kalman filter is a special case of the probabilistic recursive estimation
-formulation described above.</p>
+formulation described above. Kalman filter greatly simplifies the computation by
+introducing a number of strong assumptions:</p>
+
+<ul>
+  <li>The system dynamics is linear: <script type="math/tex">\mathbf{x}_k = \mathbf{A}\mathbf{x}_{k-1} + \mathbf{B}\mathbf{u}_{k-1}</script> (this assumption can be dropped, as we will see later).</li>
+  <li>The noise (both observation and process) terms are normally distributed with zero mean.</li>
+</ul>
+
+<p>With the two assumptions, we are able to obtain an analytical solution to the
+recursive estimation equations derived earlier. Let <script type="math/tex">\mathcal{N}(\mathbf{\mu},
+\mathbf{\Sigma})</script> be the normal distribution with mean <script type="math/tex">\mathbf{\mu}</script> and
+variance <script type="math/tex">\mathbf{\Sigma}</script> (covariance matrix in case of a multi-variable
+normal distribution). We define symbols as follows:</p>
+
+<ul>
+  <li><script type="math/tex">\mathbf{\Sigma}_{k}</script> is the covariance matrix of <script type="math/tex">P(\mathbf{x}_k \mid \mathbf{z}_{1:k})</script>.</li>
+  <li><script type="math/tex">\mathbf{\hat{x}}_{k}</script> is the mean of <script type="math/tex">P(\mathbf{x}_k \mid \mathbf{z}_{1:k})</script>.</li>
+  <li><script type="math/tex">\mathbf{\Sigma}_{v}</script> is the covariance matrix of the process noise <script type="math/tex">\mathbf{v}</script>.</li>
+  <li><script type="math/tex">\mathbf{R}</script> is the Kalman filter gain matrix, the only tunable parameter in this estimator.</li>
+</ul>
+
+<p><strong>First</strong>, we estimate the mean and variance using previous measurements:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned}
+    \mathbf{\hat{x}}_{k, est} &= \mathbf{A\hat{x}_{k-1}} + \mathbf{B}\mathbf{u}_{k-1} \\
+    \mathbf{\Sigma}_{k, est} &= \mathbf{A} \mathbf{\Sigma}_{k-1} \mathbf{A^T} + \mathbf{\Sigma}_{v}
+\end{aligned} %]]></script>
+
+<p><strong>Second</strong>, we improve the estimates using measurement <script type="math/tex">\mathbf{z}_k</script>:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned}
+    \mathbf{\Sigma}_{k} &= (\mathbf{\Sigma}_{k, est}^{-1} + \mathbf{H^T} \mathbf{R}^{-1} \mathbf{H})^{-1} \\
+    \mathbf{\hat{x}}_{k} &= \mathbf{\hat{x}}_{k, est} + \mathbf{\Sigma}_{k} \mathbf{H^T} \mathbf{R}^{-1} (\mathbf{z}_k - \mathbf{H\hat{x}}_{k, est})
+\end{aligned} %]]></script>
 
         
       </section>

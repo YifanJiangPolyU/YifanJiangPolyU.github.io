@@ -22,93 +22,135 @@ previous times. We can capture this relationship using the following probability
 distribution:
 
 $$
-    P(\bf{x}_k \mid \bf{x}_{k-1})
+    P(\mathbf{x}_k \mid \mathbf{x}_{k-1})
 $$
 
-where $$\bf{x}_k$$ is the value of the properties at a specific discrete time
-point $$k$$.
+where $$\mathbf{x}_k$$ is the value of the properties at a specific discrete time
+point $$k$$. The dynamics can often be modeled as follows:
+
+$$
+    \mathbf{x}_k = f(\mathbf{x}_{k-1}, \mathbf{u}_{k-1}) + \mathbf{v}
+$$
+
+Where $$f(\mathbf{x})$$ is a (linear or nonlinear) function,
+$$\mathbf{u}_{k-1}$$ is the control input and $$\mathbf{v}$$ is the noise term,
+often referred to as process noise.
 
 # Observation Model
 
 To understand the behavior of a system, we must measure its properties. However,
 every measurement contains errors and not all properties are directly
-measurable. Let the actual value of the property be $$\bf{x}$$ ($$\bf{x}$$ can
-be a vector), the observation that we make, which consists of all measurable
-element of $$\bf{x}$$ and is denoted $$\bf{z}$$, can be modeled as follows:
+measurable. Let the actual value of the property be $$\mathbf{x}$$
+($$\mathbf{x}$$ can be a vector), the observation that we make, which consists
+of all measurable element of $$\mathbf{x}$$ and is denoted $$\mathbf{z}$$, can
+be modeled as follows:
 
 $$
-    \bf{z} = \bf{Hx} + \bf{w}
+    \mathbf{z} = \mathbf{Hx} + \mathbf{w}
 $$
 
-where $$\bf{H}$$ is the observation matrix, and $$\bf{w}$$ is a noise term that
-has a specific probability distribution.
+where $$\mathbf{H}$$ is the observation matrix and $$\mathbf{w}$$ is the observation
+noise term which has a specific probability distribution.
 
-For example, let $$ \bf{x} = \begin{bmatrix} x_1 & x_2 & x_3 \end{bmatrix}^T $$.
+For example, let $$ \mathbf{x} = \begin{bmatrix} x_1 & x_2 & x_3 \end{bmatrix}^T $$.
 If we are only able to measure $$x_1$$ and $$x_3$$ (because, for example, the
 sensor to measure $$x_2$$ is too expensive and we don't want to pay for that),
-then $$\bf{H} = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 0 & 1 \end{bmatrix}$$.
+then $$\mathbf{H} = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 0 & 1 \end{bmatrix}$$.
 
 If the properties of the noise term is well known, we can easily compute the
-observation model, which is the probability distribution of $$\bf{z}$$ given the
-value of $$\bf{x}$$:
+observation model, which is the probability distribution of $$\mathbf{z}$$ given the
+value of $$\mathbf{x}$$:
 
 $$
-    P(\bf{z} \mid \bf{x})
+    P(\mathbf{z} \mid \mathbf{x})
 $$
 
 # Recursive Estimation
 
 Probabilistic state estimation tries to answer the following question: given a
-series of observations $$\bf{z}_1$$ ~ $$\bf{z}_k$$ taken at discrete time points
-$$1$$ ~ $$k$$, what is the probability distribution of the actual property $$\bf{x}_k$$
+series of observations $$\mathbf{z}_1$$ ~ $$\mathbf{z}_k$$ taken at discrete time points
+$$1$$ ~ $$k$$, what is the probability distribution of the actual property $$\mathbf{x}_k$$
 at time point $$k$$? The probability distribution is given by:
 
 $$
-    P(\bf{x}_k \mid \bf{z}_{1:k})
+    P(\mathbf{x}_k \mid \mathbf{z}_{1:k})
 $$
 
 The recursive estimation is a method to compute the above mentioned probability
-is a more efficient way. As the name suggests, the probability distribution at
+in a more efficient way. As the name suggests, the probability distribution at
 time point $$k$$ is obtained recursively, using only the distribution at the
 previous time point $$k-1$$ and the new observation at time point $$k$$. This is
 done in two steps.
 
-**First**, we compute an estimation of the probability distribution of $$\bf{x}_k$$
+**First**, we compute an estimation of the probability distribution of $$\mathbf{x}_k$$
 using only the observations taken up to time point $$k-1$$:
 
 $$
 \begin{aligned}
-    P(\bf{x}_k \mid \bf{z}_{1:k-1}) &= \sum_{\bf{x}_{k-1}} P(\bf{x}_k, \bf{x}_{k-1} \mid \bf{z}_{1:k-1}) \\
-                                 &= \sum_{\bf{x}_{k-1}} P(\bf{x}_k \mid \bf{x}_{k-1}) P(\bf{x}_{k-1} \mid \bf{z}_{1:k-1})
+    P(\mathbf{x}_k \mid \mathbf{z}_{1:k-1}) &= \sum_{\mathbf{x}_{k-1}} P(\mathbf{x}_k, \mathbf{x}_{k-1} \mid \mathbf{z}_{1:k-1}) \\
+                                 &= \sum_{\mathbf{x}_{k-1}} P(\mathbf{x}_k \mid \mathbf{x}_{k-1}) P(\mathbf{x}_{k-1} \mid \mathbf{z}_{1:k-1})
 \end{aligned}
 $$
 
-The equation above holds because $$\bf{x}_k$$ and $$\bf{z}_{1:k-1}$$ are
+The equation above holds because $$\mathbf{x}_k$$ and $$\mathbf{z}_{1:k-1}$$ are
 independent random variables given that we already know the value of
-$$\bf{x}_{k-1}$$.
+$$\mathbf{x}_{k-1}$$.
 
 **Second**, we improve the estimation obtained in the previous step using the
-latest measurement $$\bf{z}_k$$ taken at time point $$k$$:
+latest measurement $$\mathbf{z}_k$$ taken at time point $$k$$:
 
 $$
 \begin{aligned}
-    P(\bf{x}_k \mid \bf{z}_{1:k}) &= \frac{ P(\bf{x}_k, \bf{z}_k \mid \bf{z}_{1:k-1}) }{ P(\bf{z}_k \mid \bf{z}_{1:k-1}) } \\
-                               &= \frac{ P(\bf{z}_k \mid \bf{x}_k) P(\bf{x}_k \mid \bf{z}_{1:k-1}) }{ \sum_{\bf{x}_k} P(\bf{z}_k \mid \bf{x}_k) P(\bf{x}_k \mid \bf{z}_{1:k-1}) }
+    P(\mathbf{x}_k \mid \mathbf{z}_{1:k}) &= \frac{ P(\mathbf{x}_k, \mathbf{z}_k \mid \mathbf{z}_{1:k-1}) }{ P(\mathbf{z}_k \mid \mathbf{z}_{1:k-1}) } \\
+                               &= \frac{ P(\mathbf{z}_k \mid \mathbf{x}_k) P(\mathbf{x}_k \mid \mathbf{z}_{1:k-1}) }{ \sum_{\mathbf{x}_k} P(\mathbf{z}_k \mid \mathbf{x}_k) P(\mathbf{x}_k \mid \mathbf{z}_{1:k-1}) }
 \end{aligned}
 $$
 
-This is true because $$\bf{z}_k$$ and $$\bf{z}_{1:k-1}$$ are
+This is true because $$\mathbf{z}_k$$ and $$\mathbf{z}_{1:k-1}$$ are
 independent random variables given that we already know the value of
-$$\bf{x}_{k}$$.
+$$\mathbf{x}_{k}$$.
 
-At this point, we are able to recursively compute P(\bf{x}_k \mid \bf{z}_{1:k})
+At this point, we are able to recursively compute P(\mathbf{x}_k \mid \mathbf{z}_{1:k})
 using three main ingredients:
 
-* Estimation at previous time step, $$ P(\bf{x}_{k-1} \mid \bf{z}_{1:k-1}) $$
-* System dynamics, $$ P(\bf{x}_k \mid \bf{x}_{k-1}) $$
-* Observation model, $$ P(\bf{z} \mid \bf{x}) $$
+* Estimation at previous time step, $$ P(\mathbf{x}_{k-1} \mid \mathbf{z}_{1:k-1}) $$
+* System dynamics, $$ P(\mathbf{x}_k \mid \mathbf{x}_{k-1}) $$
+* Observation model, $$ P(\mathbf{z} \mid \mathbf{x}) $$
 
 # Kalman Filter
 
 Kalman filter is a special case of the probabilistic recursive estimation
-formulation described above.
+formulation described above. Kalman filter greatly simplifies the computation by
+introducing a number of strong assumptions:
+
+* The system dynamics is linear: $$ \mathbf{x}_k = \mathbf{A}\mathbf{x}_{k-1} + \mathbf{B}\mathbf{u}_{k-1}$$ (this assumption can be dropped, as we will see later).
+* The noise (both observation and process) terms are normally distributed with zero mean.
+
+With the two assumptions, we are able to obtain an analytical solution to the
+recursive estimation equations derived earlier. Let $$\mathcal{N}(\mathbf{\mu},
+\mathbf{\Sigma})$$ be the normal distribution with mean $$\mathbf{\mu}$$ and
+variance $$\mathbf{\Sigma}$$ (covariance matrix in case of a multi-variable
+normal distribution). We define symbols as follows:
+
+* $$\mathbf{\Sigma}_{k}$$ is the covariance matrix of $$P(\mathbf{x}_k \mid \mathbf{z}_{1:k})$$.
+* $$\mathbf{\hat{x}}_{k}$$ is the mean of $$P(\mathbf{x}_k \mid \mathbf{z}_{1:k})$$.
+* $$\mathbf{\Sigma}_{v}$$ is the covariance matrix of the process noise $$\mathbf{v}$$.
+* $$\mathbf{R}$$ is the Kalman filter gain matrix, the only tunable parameter in this estimator.
+
+**First**, we estimate the mean and variance using previous measurements:
+
+$$
+\begin{aligned}
+    \mathbf{\hat{x}}_{k, est} &= \mathbf{A\hat{x}_{k-1}} + \mathbf{B}\mathbf{u}_{k-1} \\
+    \mathbf{\Sigma}_{k, est} &= \mathbf{A} \mathbf{\Sigma}_{k-1} \mathbf{A^T} + \mathbf{\Sigma}_{v}
+\end{aligned}
+$$
+
+**Second**, we improve the estimates using measurement $$\mathbf{z}_k$$:
+
+$$
+\begin{aligned}
+    \mathbf{\Sigma}_{k} &= (\mathbf{\Sigma}_{k, est}^{-1} + \mathbf{H^T} \mathbf{R}^{-1} \mathbf{H})^{-1} \\
+    \mathbf{\hat{x}}_{k} &= \mathbf{\hat{x}}_{k, est} + \mathbf{\Sigma}_{k} \mathbf{H^T} \mathbf{R}^{-1} (\mathbf{z}_k - \mathbf{H\hat{x}}_{k, est})
+\end{aligned}
+$$
