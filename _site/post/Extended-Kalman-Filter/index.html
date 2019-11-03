@@ -1,0 +1,592 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Extended Kalman Filter with an Example - Yifan Jiang</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Yifan Jiang">
+<meta property="og:title" content="Extended Kalman Filter with an Example">
+
+
+
+
+  <meta property="og:description" content="Recently I’m working on projects that require state estimation. As a result, Iwould like to review the formulation of the Kalman Filter and how to apply it tononlinear systems, using a simple example.">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2019-10-10T00:00:00+02:00">
+  
+  
+    <link rel="prev" href="/post/MPC-SEA/" title="Model Predictive Control of a Series Elastic Actuator">
+  
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "person",
+      "name" : "Yifan Jiang",
+      "url" : null,
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Yifan Jiang Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="/">Yifan Jiang</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="/about_me/">About Me</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="/archive/posts_by_year/">Posts</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="/contact/">Contact Me</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="/images/bio-photo.jpg" class="author__avatar" alt="Yifan Jiang">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Yifan Jiang</h3>
+    <p class="author__bio">An Enthusiastic Robotics Engineer</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Switzerland</li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Extended Kalman Filter with an Example">
+    <meta itemprop="description" content="Recently I’m working on projects that require state estimation. As a result, Iwould like to review the formulation of the Kalman Filter and how to apply it tononlinear systems, using a simple example.">
+    <meta itemprop="datePublished" content="October 10, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Extended Kalman Filter with an Example
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  4 minutes read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>Recently I’m working on projects that require state estimation. As a result, I
+would like to review the formulation of the Kalman Filter and how to apply it to
+nonlinear systems, using a simple example.</p>
+
+<h1 id="system-dynamics">System Dynamics</h1>
+
+<p>The universe is in perpetual motion and nothing looks the same anymore if you
+just blink your eyes. However, the laws of physics also tell us that the
+properties of a system at a specific time point is related to its properties at
+previous times. We can capture this relationship using the following probability
+distribution:</p>
+
+<script type="math/tex; mode=display">P(\bf{x}_k \mid \bf{x}_{k-1})</script>
+
+<p>where <script type="math/tex">\bf{x}_k</script> is the value of the properties at a specific discrete time
+point <script type="math/tex">k</script>.</p>
+
+<h1 id="observation-model">Observation Model</h1>
+
+<p>To understand the behavior of a system, we must measure its properties. However,
+every measurement contains errors and not all properties are directly
+measurable. Let the actual value of the property be <script type="math/tex">\bf{x}</script> (<script type="math/tex">\bf{x}</script> can
+be a vector), the observation that we make, which consists of all measurable
+element of <script type="math/tex">\bf{x}</script> and is denoted <script type="math/tex">\bf{z}</script>, can be modeled as follows:</p>
+
+<script type="math/tex; mode=display">\bf{z} = \bf{Hx} + \bf{w}</script>
+
+<p>where <script type="math/tex">\bf{H}</script> is the observation matrix, and <script type="math/tex">\bf{w}</script> is a noise term that
+has a specific probability distribution.</p>
+
+<p>For example, let <script type="math/tex">% <![CDATA[
+\bf{x} = \begin{bmatrix} x_1 & x_2 & x_3 \end{bmatrix}^T %]]></script>.
+If we are only able to measure <script type="math/tex">x_1</script> and <script type="math/tex">x_3</script> (because, for example, the
+sensor to measure <script type="math/tex">x_2</script> is too expensive and we don’t want to pay for that),
+then <script type="math/tex">% <![CDATA[
+\bf{H} = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 0 & 1 \end{bmatrix} %]]></script>.</p>
+
+<p>If the properties of the noise term is well known, we can easily compute the
+observation model, which is the probability distribution of <script type="math/tex">\bf{z}</script> given the
+value of <script type="math/tex">\bf{x}</script>:</p>
+
+<script type="math/tex; mode=display">P(\bf{z} \mid \bf{x})</script>
+
+<h1 id="recursive-estimation">Recursive Estimation</h1>
+
+<p>Probabilistic state estimation tries to answer the following question: given a
+series of observations <script type="math/tex">\bf{z}_1</script> ~ <script type="math/tex">\bf{z}_k</script> taken at discrete time points
+<script type="math/tex">1</script> ~ <script type="math/tex">k</script>, what is the probability distribution of the actual property <script type="math/tex">\bf{x}_k</script>
+at time point <script type="math/tex">k</script>? The probability distribution is given by:</p>
+
+<script type="math/tex; mode=display">P(\bf{x}_k \mid \bf{z}_{1:k})</script>
+
+<p>The recursive estimation is a method to compute the above mentioned probability
+is a more efficient way. As the name suggests, the probability distribution at
+time point <script type="math/tex">k</script> is obtained recursively, using only the distribution at the
+previous time point <script type="math/tex">k-1</script> and the new observation at time point <script type="math/tex">k</script>. This is
+done in two steps.</p>
+
+<p><strong>First</strong>, we compute an estimation of the probability distribution of <script type="math/tex">\bf{x}_k</script>
+using only the observations taken up to time point <script type="math/tex">k-1</script>:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned}
+    P(\bf{x}_k \mid \bf{z}_{1:k-1}) &= \sum_{\bf{x}_{k-1}} P(\bf{x}_k, \bf{x}_{k-1} \mid \bf{z}_{1:k-1}) \\
+                                 &= \sum_{\bf{x}_{k-1}} P(\bf{x}_k \mid \bf{x}_{k-1}) P(\bf{x}_{k-1} \mid \bf{z}_{1:k-1})
+\end{aligned} %]]></script>
+
+<p>The equation above holds because <script type="math/tex">\bf{x}_k</script> and <script type="math/tex">\bf{z}_{1:k-1}</script> are
+independent random variables given that we already know the value of
+<script type="math/tex">\bf{x}_{k-1}</script>.</p>
+
+<p><strong>Second</strong>, we improve the estimation obtained in the previous step using the
+latest measurement <script type="math/tex">\bf{z}_k</script> taken at time point <script type="math/tex">k</script>:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned}
+    P(\bf{x}_k \mid \bf{z}_{1:k}) &= \frac{ P(\bf{x}_k, \bf{z}_k \mid \bf{z}_{1:k-1}) }{ P(\bf{z}_k \mid \bf{z}_{1:k-1}) } \\
+                               &= \frac{ P(\bf{z}_k \mid \bf{x}_k) P(\bf{x}_k \mid \bf{z}_{1:k-1}) }{ \sum_{\bf{x}_k} P(\bf{z}_k \mid \bf{x}_k) P(\bf{x}_k \mid \bf{z}_{1:k-1}) }
+\end{aligned} %]]></script>
+
+<p>This is true because <script type="math/tex">\bf{z}_k</script> and <script type="math/tex">\bf{z}_{1:k-1}</script> are
+independent random variables given that we already know the value of
+<script type="math/tex">\bf{x}_{k}</script>.</p>
+
+<p>At this point, we are able to recursively compute P(\bf{x}<em>k \mid \bf{z}</em>{1:k})
+using three main ingredients:</p>
+
+<ul>
+  <li>Estimation at previous time step, <script type="math/tex">P(\bf{x}_{k-1} \mid \bf{z}_{1:k-1})</script></li>
+  <li>System dynamics, <script type="math/tex">P(\bf{x}_k \mid \bf{x}_{k-1})</script></li>
+  <li>Observation model, <script type="math/tex">P(\bf{z} \mid \bf{x})</script></li>
+</ul>
+
+<h1 id="kalman-filter">Kalman Filter</h1>
+
+<p>Kalman filter is a special case of the probabilistic recursive estimation
+formulation described above.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+
+        
+
+
+
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/life" class="page__taxonomy-item" rel="tag">life</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/tech" class="page__taxonomy-item" rel="tag">tech</a>
+    
+    </span>
+  </p>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#post" class="page__taxonomy-item" rel="tag">post</a>
+    
+    </span>
+  </p>
+
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-10-10T00:00:00+02:00">October 10, 2019</time></p>
+        
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=/post/Extended-Kalman-Filter/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=/post/Extended-Kalman-Filter/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=/post/Extended-Kalman-Filter/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=/post/Extended-Kalman-Filter/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="/post/MPC-SEA/" class="pagination--pager" title="Model Predictive Control of a Series Elastic Actuator
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      
+
+<div class="page__comments">
+  <h4 class="page__comments-title">Leave a Comment</h4>
+  
+    <section class="fb-comments" data-href="/post/Extended-Kalman-Filter/" data-mobile="true" data-num-posts="5" data-width="100%" data-colorscheme="light"></section>
+  
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  
+    <a href="/post/MPC-SEA/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Model Predictive Control of a Series Elastic Actuator
+</h2>
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  9 minutes read
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">Recently I had the pleasure to work on what is probably the best-made Series
+Elastic Actuator (SEA) module in the world: the ANYdrive. from Robotic Systems
+L...</p>
+    </article>
+  </a>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  
+    <a href="/post/Audio-Decoder/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">My First Home Made HiFi Audio Decoder and Amplifier
+</h2>
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  6 minutes read
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">Recently I developed my first in-house hi-fi audio decoder + amplifier project. Having tested it with my own ears I was very much surprised by the outstandin...</p>
+    </article>
+  </a>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  
+    <a href="/post/UAV-Communication-Relay-for-another-UAV/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">UAV Communication Relay for another UAV
+</h2>
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  12 minutes read
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">This project is my undergraduate final year project, and I wrote my undergraduate thesis out of it. Hopefully this short article will give you a brief idea a...</p>
+    </article>
+  </a>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  
+    <a href="/post/MPU6050/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Driver for MPU6050 IMU Sensor, and Pose Estimation with Kalman Filter
+</h2>
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  1 minute read
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">MPU6050
+is a low-cost IMU sensor, which provides 3-axis acceleration and 3-axis angular
+velocity measurements (6 DOF in total). This sensor is really handy w...</p>
+    </article>
+  </a>
+</div>
+        
+      </div>
+    </div>
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+    
+    <li><a href="/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 Yifan Jiang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+    <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+
+  </body>
+</html>
+

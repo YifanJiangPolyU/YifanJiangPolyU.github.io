@@ -1,0 +1,114 @@
+---
+title: "Extended Kalman Filter with an Example"
+categories:
+  - post
+tags:
+  - tech
+  - life
+
+layout: single
+---
+
+Recently I'm working on projects that require state estimation. As a result, I
+would like to review the formulation of the Kalman Filter and how to apply it to
+nonlinear systems, using a simple example.
+
+# System Dynamics
+
+The universe is in perpetual motion and nothing looks the same anymore if you
+just blink your eyes. However, the laws of physics also tell us that the
+properties of a system at a specific time point is related to its properties at
+previous times. We can capture this relationship using the following probability
+distribution:
+
+$$
+    P(\bf{x}_k \mid \bf{x}_{k-1})
+$$
+
+where $$\bf{x}_k$$ is the value of the properties at a specific discrete time
+point $$k$$.
+
+# Observation Model
+
+To understand the behavior of a system, we must measure its properties. However,
+every measurement contains errors and not all properties are directly
+measurable. Let the actual value of the property be $$\bf{x}$$ ($$\bf{x}$$ can
+be a vector), the observation that we make, which consists of all measurable
+element of $$\bf{x}$$ and is denoted $$\bf{z}$$, can be modeled as follows:
+
+$$
+    \bf{z} = \bf{Hx} + \bf{w}
+$$
+
+where $$\bf{H}$$ is the observation matrix, and $$\bf{w}$$ is a noise term that
+has a specific probability distribution.
+
+For example, let $$ \bf{x} = \begin{bmatrix} x_1 & x_2 & x_3 \end{bmatrix}^T $$.
+If we are only able to measure $$x_1$$ and $$x_3$$ (because, for example, the
+sensor to measure $$x_2$$ is too expensive and we don't want to pay for that),
+then $$\bf{H} = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 0 & 1 \end{bmatrix}$$.
+
+If the properties of the noise term is well known, we can easily compute the
+observation model, which is the probability distribution of $$\bf{z}$$ given the
+value of $$\bf{x}$$:
+
+$$
+    P(\bf{z} \mid \bf{x})
+$$
+
+# Recursive Estimation
+
+Probabilistic state estimation tries to answer the following question: given a
+series of observations $$\bf{z}_1$$ ~ $$\bf{z}_k$$ taken at discrete time points
+$$1$$ ~ $$k$$, what is the probability distribution of the actual property $$\bf{x}_k$$
+at time point $$k$$? The probability distribution is given by:
+
+$$
+    P(\bf{x}_k \mid \bf{z}_{1:k})
+$$
+
+The recursive estimation is a method to compute the above mentioned probability
+is a more efficient way. As the name suggests, the probability distribution at
+time point $$k$$ is obtained recursively, using only the distribution at the
+previous time point $$k-1$$ and the new observation at time point $$k$$. This is
+done in two steps.
+
+**First**, we compute an estimation of the probability distribution of $$\bf{x}_k$$
+using only the observations taken up to time point $$k-1$$:
+
+$$
+\begin{aligned}
+    P(\bf{x}_k \mid \bf{z}_{1:k-1}) &= \sum_{\bf{x}_{k-1}} P(\bf{x}_k, \bf{x}_{k-1} \mid \bf{z}_{1:k-1}) \\
+                                 &= \sum_{\bf{x}_{k-1}} P(\bf{x}_k \mid \bf{x}_{k-1}) P(\bf{x}_{k-1} \mid \bf{z}_{1:k-1})
+\end{aligned}
+$$
+
+The equation above holds because $$\bf{x}_k$$ and $$\bf{z}_{1:k-1}$$ are
+independent random variables given that we already know the value of
+$$\bf{x}_{k-1}$$.
+
+**Second**, we improve the estimation obtained in the previous step using the
+latest measurement $$\bf{z}_k$$ taken at time point $$k$$:
+
+$$
+\begin{aligned}
+    P(\bf{x}_k \mid \bf{z}_{1:k}) &= \frac{ P(\bf{x}_k, \bf{z}_k \mid \bf{z}_{1:k-1}) }{ P(\bf{z}_k \mid \bf{z}_{1:k-1}) } \\
+                               &= \frac{ P(\bf{z}_k \mid \bf{x}_k) P(\bf{x}_k \mid \bf{z}_{1:k-1}) }{ \sum_{\bf{x}_k} P(\bf{z}_k \mid \bf{x}_k) P(\bf{x}_k \mid \bf{z}_{1:k-1}) }
+\end{aligned}
+$$
+
+This is true because $$\bf{z}_k$$ and $$\bf{z}_{1:k-1}$$ are
+independent random variables given that we already know the value of
+$$\bf{x}_{k}$$.
+
+At this point, we are able to recursively compute P(\bf{x}_k \mid \bf{z}_{1:k})
+using three main ingredients:
+
+* Estimation at previous time step, $$ P(\bf{x}_{k-1} \mid \bf{z}_{1:k-1}) $$
+* System dynamics, $$ P(\bf{x}_k \mid \bf{x}_{k-1}) $$
+* Observation model, $$ P(\bf{z} \mid \bf{x}) $$
+
+# Kalman Filter
+
+Kalman filter is a special case of the probabilistic recursive estimation
+formulation described above.
