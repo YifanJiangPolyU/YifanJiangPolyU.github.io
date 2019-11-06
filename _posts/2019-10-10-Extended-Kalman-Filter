@@ -135,7 +135,7 @@ normal distribution). We define symbols as follows:
 * $$\mathbf{\Sigma}_{k}$$ is the covariance matrix of $$P(\mathbf{x}_k \mid \mathbf{z}_{1:k})$$.
 * $$\mathbf{\hat{x}}_{k}$$ is the mean of $$P(\mathbf{x}_k \mid \mathbf{z}_{1:k})$$.
 * $$\mathbf{\Sigma}_{v}$$ is the covariance matrix of the process noise $$\mathbf{v}$$.
-* $$\mathbf{R}$$ is the Kalman filter gain matrix, the only tunable parameter in this estimator.
+* $$\mathbf{\Sigma}_{w}$$ is the covariance matrix of the measurement noise $$\mathbf{w}$$.
 
 **First**, we estimate the mean and variance using previous measurements:
 
@@ -150,7 +150,7 @@ $$
 
 $$
 \begin{aligned}
-    \mathbf{\Sigma}_{k} &= (\mathbf{\Sigma}_{k, est}^{-1} + \mathbf{H^T} \mathbf{R}^{-1} \mathbf{H})^{-1} \\
-    \mathbf{\hat{x}}_{k} &= \mathbf{\hat{x}}_{k, est} + \mathbf{\Sigma}_{k} \mathbf{H^T} \mathbf{R}^{-1} (\mathbf{z}_k - \mathbf{H\hat{x}}_{k, est})
+    \mathbf{\Sigma}_{k} &= (\mathbf{\Sigma}_{k, est}^{-1} + \mathbf{H^T} \mathbf{\Sigma}_{w}^{-1} \mathbf{H})^{-1} \\
+    \mathbf{\hat{x}}_{k} &= \mathbf{\hat{x}}_{k, est} + \mathbf{\Sigma}_{k} \mathbf{H^T} \mathbf{\Sigma}_{w}^{-1} (\mathbf{z}_k - \mathbf{H\hat{x}}_{k, est})
 \end{aligned}
 $$
