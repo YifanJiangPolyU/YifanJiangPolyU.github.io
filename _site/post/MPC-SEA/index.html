@@ -275,7 +275,17 @@ Transformation</a> is used to do this job.</p>
 <p>In DQ coordinate system the dynamics is greatly simplified, and can be writen
 down as follows:</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
+<p><a href="/images/2018-01-10-MPC-SEA/pmsm_eq.png"><img src="/images/2018-01-10-MPC-SEA/pmsm_eq.png" /></a></p>
+
+<!-- where:
+
+- $$L_q$$ and $$L_d$$ are the inductances of the motor
+- $$R_s$$ is the electrical resistance of the motor
+- $$i_q$$ and $$i_d$$ are the electrical currents supplied to the motor
+- $$\dot{\theta}_e$$ is the electrical angular velocity of the motor
+- $$u_q$$ and $$u_d$$ are the electrical voltages supplied to the motor -->
+
+<!-- $$
 \begin{equation}
 \begin{bmatrix}L_d & 0 \\0 & L_q \end{bmatrix}
 \begin{bmatrix} \dot{i_d} \\ \dot{i_q} \end{bmatrix}
@@ -286,7 +296,8 @@ down as follows:</p>
 \begin{bmatrix} -i_qL_q \\ i_dL_d \end{bmatrix} \dot{\theta}_e
 =
 \begin{bmatrix} u_d \\ u_q \end{bmatrix}
-\end{equation} %]]></script>
+\end{equation}
+$$ -->
 
 <p>The mechanical system is essentially a spring-mass-damper system, and its
 free-body diagram is shown below:</p>
@@ -307,6 +318,9 @@ J_m\ddot{\phi}_m+(b_m+\frac{b_s}{n_g^2 \eta})\dot{\phi}_m+\frac{k_s}{n_g^2 \eta}
 <script type="math/tex; mode=display">\begin{equation}
   f(\dot{\phi}_m) = F_s\tanh(\frac{2.09}{\omega_{bk}}\dot{\phi}_m)
 \end{equation}</script>
+
+<p>For detailed derivations and the meaning of the symbols, please refer to the
+full work (link to the PDF is given at the beginning of the post).</p>
 
 <p>The nonlinear friction effect is rather strong in this case, and has to be
 accounted for in the model. Here, the nonlinear friction is modeled as a
