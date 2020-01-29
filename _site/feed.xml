@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.0.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-11-06T21:01:25+01:00</updated><id>/</id><title>Yifan Jiang</title><subtitle>My personal homepage.</subtitle><author><name>Yifan Jiang</name></author><entry><title>Model Predictive Control of a Series Elastic Actuator</title><link href="/post/MPC-SEA/" rel="alternate" type="text/html" title="Model Predictive Control of a Series Elastic Actuator" /><published>2018-01-10T00:00:00+01:00</published><updated>2018-01-10T00:00:00+01:00</updated><id>/post/MPC-SEA</id><content type="html" xml:base="/post/MPC-SEA/">&lt;p&gt;Recently I had the pleasure to work on what is probably the best-made Series
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.0.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-01-29T21:48:40+01:00</updated><id>/</id><title>Yifan Jiang</title><subtitle>My personal homepage.</subtitle><author><name>Yifan Jiang</name></author><entry><title>Model Predictive Control of a Series Elastic Actuator</title><link href="/post/MPC-SEA/" rel="alternate" type="text/html" title="Model Predictive Control of a Series Elastic Actuator" /><published>2018-01-10T00:00:00+01:00</published><updated>2018-01-10T00:00:00+01:00</updated><id>/post/MPC-SEA</id><content type="html" xml:base="/post/MPC-SEA/">&lt;p&gt;Recently I had the pleasure to work on what is probably the best-made Series
 Elastic Actuator (SEA) module in the world: the &lt;a href=&quot;https://www.anybotics.com/anydrive/&quot;&gt;ANYdrive&lt;/a&gt;. from Robotic Systems
 Lab at ETH Zürich. I implemented Model Predictive Controller (MPC) for this SEA,
 but not a normal MPC. No specs or details about the design of the ANYdrive will
 be discussed since those are proprietary. But feel free take a look at &lt;a href=&quot;https://www.anybotics.com/&quot;&gt;ANYbotics&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;The content of this post is extracted from the project report of my research
-project at ETH Zürich.&lt;/p&gt;
+project at ETH Zürich. The full work can be found &lt;a href=&quot;/images/2018-01-10-MPC-SEA/report.pdf&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;You can click on the &lt;a class=&quot;btn btn--info&quot;&gt;blue buttons&lt;/a&gt; to navigate in
 this post.&lt;/p&gt;
@@ -24,7 +24,7 @@ this post.&lt;/p&gt;
 robots that physically interact with uncertain environments. It consists of a
 motor and a gearbox, but the load is connected to the output of the gearbox via
 a spring. This spring acts as a buffer between the environment and the rather
-STIFF gearbox, making the robot compliant (less likely to harm people). The
+stiff gearbox, making the robot compliant (less likely to harm people). The
 spring also let you sense torque easily, using Hooke’s Law.&lt;/p&gt;
 
 &lt;p&gt;The ANYdrive is just an example of such actuators. It is drive by a 3-phase
