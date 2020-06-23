@@ -7,8 +7,6 @@ permalink: /about_me/
 
 <hr>
 
-I am a tech enthusiast with an interest in robotics, automation, and control. I have rich experience in designing and implementing automation systems, in motor and motion control, in programming, as well as in mechanical design.
-
 I received my bachelor degree in Mechanical Engineering at the Hong Kong Polytechnic University, and my MSc in Robotics Systems and Control at ETH Zurich. More details about me? Please see my CV below. Click on the <a class="btn btn--info">blue buttons</a> to jump to the section that interests you.
 
 <a href="#tag_edu" class="btn btn--info">Education</a>
@@ -33,28 +31,32 @@ I received my bachelor degree in Mechanical Engineering at the Hong Kong Polytec
   * BEng Mechanical Engineering, <b>First Class Honour</b>
   * Selected courses: automatic control system, artificial intelligence, sound and vibration
 
-<b><font color="#000000"> McGill University, Canada (2014-01 ~ 2014-05) </font></b>
-
-  * Exchange student studying mechanical engineering
-  * Selected courses: system dynamics and control, Lagrangian mechanics, fluid mechanics
-
 <A NAME="tag_exp">
 <hr>
 # <font color="#000000"> Experience </font>
+
+<p style="margin:0" ><b><font color="#000000"> Proprietary Quantitative Investing (2020-02 ~ present) </font></b></p>
+
+<b>Part-time Trader</b>
+
+  * Conduct research on trading strategies for multiple asset classes using a quantitative approach. Trade the strategies with my own saving.
+  * Develop and maintain an in-house strategy backtest/execution platform (with C++, python, HTTP REST). Set up DevOps infrastructure involving GitHub, Docker, and AWS, automating a large part of the workflow.
+
 
 <p style="margin:0" ><b><font color="#000000"> Leica Microsystems AG, Switzerland (2018-10 ~ present) </font></b></p>
 
 <b>Software Engineer, Medical Imaging</b>
 
-  * Developing video quality enhancement and AR algorithms for medical applications.
-  * Accelerating applications using GPU-based parallel computing and NVIDIA CUDA.
-  * Designing software architecture for high-performance real-time image processing system.
+  * Developing high-performance and user-friendly software systems for medical applications using C++.
+  * Accelerating image processing algorithms using GPU-based parallel computing (NVIDIA CUDA), conducting performance analysis and optimization.
+  * Developed and patented a digital video stabilization algorithm for medical microscopes.
+  * Designed a flexible and efficient image rendering framework that are now at the heart of a few major projects.
 
 <p style="margin:0" ><b><font color="#000000"> Maxon Motor AG, Switzerland (2017-03 ~ 2017-09) </font></b></p>
 
 <b>Engineer Trainee, Advanced Systems Group</b>
 
-  * Developed firmware for real-time motion control systems using C++.
+  * Developed firmware for real-time, low-latency motion control systems using C++.
   * Developed and tested a high-performance sensorless control algorithm for brushless permanent magnet synchronous motors (PMSM).
   * Developed system identification methods for motion control systems.
 
