@@ -50,7 +50,7 @@ I received my bachelor degree in Mechanical Engineering at the Hong Kong Polytec
   * Developing high-performance and user-friendly software systems for medical applications using C++.
   * Accelerating image processing algorithms using GPU-based parallel computing (NVIDIA CUDA), conducting performance analysis and optimization.
   * Developed and patented a digital video stabilization algorithm for medical microscopes.
-  * Designed a flexible and efficient image rendering framework that are now at the heart of a few major projects.
+  * Designed a flexible and efficient image rendering framework that is now at the heart of a few major projects.
 
 <p style="margin:0" ><b><font color="#000000"> Maxon Motor AG, Switzerland (2017-03 ~ 2017-09) </font></b></p>
 
